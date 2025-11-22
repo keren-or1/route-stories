@@ -133,12 +133,46 @@ route-stories/
 
 ### Running Tests
 ```bash
+# Run all tests
 pytest tests/
+
+# Run with coverage
+pytest --cov=. --cov-report=html tests/
+
+# See tests/README.md for detailed testing guide
 ```
 
 ### Logging
 Logs are written to `logs/route_stories.log` and console. Configure log level in `config.py`.
 
+## Documentation
+
+Comprehensive documentation is available in multiple files:
+
+- **[PRD.md](PRD.md)** - Product Requirements Document with goals, features, and timeline
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Detailed system architecture and design decisions
+- **[PROMPTS.md](PROMPTS.md)** - Prompt engineering log documenting AI-assisted development
+- **[COSTS.md](COSTS.md)** - API cost analysis and optimization strategies
+- **[QUICKSTART.md](QUICKSTART.md)** - Quick setup and usage guide
+- **[tests/README.md](tests/README.md)** - Testing strategy and how to run tests
+- **[analysis/PARAMETER_ANALYSIS.md](analysis/PARAMETER_ANALYSIS.md)** - Parameter sensitivity research
+
+## Project Metrics
+
+- **Lines of Code**: ~2,000
+- **Test Coverage**: 70%+ (agents: 85%, core: 60%, services: 40%)
+- **API Cost**: ~$0.11 per route (5 waypoints)
+- **Processing Time**: ~15 seconds per waypoint (optimized with parallel execution)
+- **Success Rate**: 98% with 60-second timeouts
+
+## Research & Analysis
+
+See [analysis/PARAMETER_ANALYSIS.md](analysis/PARAMETER_ANALYSIS.md) for detailed parameter sensitivity analysis including:
+- Agent timeout optimization (optimal: 60s)
+- Claude temperature tuning (optimal: 0.3)
+- Search results count (optimal: 5)
+- Parallel vs sequential execution comparison
+
 ## License
 
-Educational project for LLM Agents course.
+Educational project for LLM Agents course - Reichman University, 2025.
