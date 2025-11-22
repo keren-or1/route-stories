@@ -1,0 +1,6 @@
+anthropic==0.39.0
+google-maps-services-python==2.5.3
+python-dotenv==1.0.0
+requests==2.32.3
+pydantic==2.10.3
+pydantic-settings==2.6.1
