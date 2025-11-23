@@ -1,0 +1,161 @@
+{
+  "route_id": "demo_route_tel_aviv_jerusalem",
+  "total_waypoints": 3,
+  "waypoints": [
+    {
+      "point_id": 0,
+      "address": "Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.0853,
+        "lng": 34.7818
+      },
+      "video": {
+        "title": "Exploring Tel Aviv-Yafo, Israel - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Tel Aviv-Yafo, Israel, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "The comprehensive travel guide provides the best overview of Tel Aviv's vibrant culture and modern attractions."
+      },
+      "song": {
+        "title": "Tel Aviv-Yafo, Israel Nights",
+        "artist": "The Wanderers",
+        "url": "https://spotify.com/track/mock_song_2",
+        "duration": "4:12",
+        "genre": "Indie Rock",
+        "album": "City Stories",
+        "reasoning": "The indie rock song captures the modern, energetic vibe of Tel Aviv nights perfectly."
+      },
+      "story": {
+        "title": "The Founding of Tel Aviv-Yafo, Israel",
+        "content": "Tel Aviv-Yafo, Israel was established in the early centuries and has a rich history of cultural development. The area was known for its strategic importance and vibrant marketplace.",
+        "source": "Historical Archives",
+        "url": "https://wikipedia.org/wiki/Tel%20Aviv-Yafo%2C%20Israel",
+        "period": "Historical",
+        "category": "Founding Story",
+        "reasoning": "The founding story provides essential context about Tel Aviv's establishment as the first Hebrew city."
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Tel Aviv-Yafo, Israel - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Tel Aviv-Yafo, Israel, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "The comprehensive travel guide provides the best overview of Tel Aviv's vibrant culture and modern attractions."
+      },
+      "judge_reasoning": "The comprehensive travel guide provides the best overview of Tel Aviv's vibrant culture and modern attractions.",
+      "judge_score": 50,
+      "errors": []
+    },
+    {
+      "point_id": 1,
+      "address": "Latrun, Israel",
+      "location": {
+        "lat": 31.8358,
+        "lng": 34.9878
+      },
+      "video": {
+        "title": "Latrun, Israel in 4K - Drone Footage",
+        "url": "https://youtube.com/watch?v=mock_video_2",
+        "description": "Breathtaking aerial views of Latrun, Israel captured in stunning 4K quality.",
+        "duration": "5:18",
+        "views": "89K",
+        "channel": "Aerial World",
+        "reasoning": "Drone footage captures the historical significance and beautiful landscape of Latrun from a unique aerial perspective."
+      },
+      "song": {
+        "title": "Streets of Latrun, Israel",
+        "artist": "Local Artists Collective",
+        "url": "https://spotify.com/track/mock_song_1",
+        "duration": "3:45",
+        "genre": "Folk",
+        "album": "Sounds of Latrun, Israel",
+        "reasoning": "The folk song reflects the traditional and historical atmosphere of the area."
+      },
+      "story": {
+        "title": "Famous Figures from Latrun, Israel",
+        "content": "Many notable personalities have connections to Latrun, Israel, including artists, scientists, and political leaders who shaped the region's identity.",
+        "source": "Biography Database",
+        "url": "https://history.com/places/Latrun%2C%20Israel",
+        "period": "Various",
+        "category": "People",
+        "reasoning": "The stories of notable figures from this region add personal and human dimensions to the location's history."
+      },
+      "chosen_type": "song",
+      "chosen_content": {
+        "title": "Streets of Latrun, Israel",
+        "artist": "Local Artists Collective",
+        "url": "https://spotify.com/track/mock_song_1",
+        "duration": "3:45",
+        "genre": "Folk",
+        "album": "Sounds of Latrun, Israel",
+        "reasoning": "The folk song reflects the traditional and historical atmosphere of the area."
+      },
+      "judge_reasoning": "Drone footage captures the historical significance and beautiful landscape of Latrun from a unique aerial perspective.",
+      "judge_score": 50,
+      "errors": []
+    },
+    {
+      "point_id": 2,
+      "address": "Jerusalem, Israel",
+      "location": {
+        "lat": 31.7683,
+        "lng": 35.2137
+      },
+      "video": {
+        "title": "History of Jerusalem, Israel - Documentary",
+        "url": "https://youtube.com/watch?v=mock_video_3",
+        "description": "Discover the rich history and cultural significance of Jerusalem, Israel.",
+        "duration": "22:45",
+        "views": "203K",
+        "channel": "History Channel",
+        "reasoning": "The historical documentary offers deep insights into Jerusalem's rich heritage and cultural importance."
+      },
+      "song": {
+        "title": "Memories of Jerusalem, Israel",
+        "artist": "Traditional Ensemble",
+        "url": "https://spotify.com/track/mock_song_3",
+        "duration": "5:30",
+        "genre": "Traditional",
+        "album": "Heritage Collection",
+        "reasoning": "Traditional music honors Jerusalem's deep cultural and spiritual heritage."
+      },
+      "story": {
+        "title": "Architectural Heritage of Jerusalem, Israel",
+        "content": "The architectural landscape of Jerusalem, Israel reflects centuries of cultural influences, from ancient structures to modern landmarks.",
+        "source": "Architecture Journal",
+        "url": "https://architecture.org/places/Jerusalem%2C%20Israel",
+        "period": "Multi-era",
+        "category": "Architecture",
+        "reasoning": "The architectural heritage showcases Jerusalem's millennia of cultural and religious significance."
+      },
+      "chosen_type": "story",
+      "chosen_content": {
+        "title": "Architectural Heritage of Jerusalem, Israel",
+        "content": "The architectural landscape of Jerusalem, Israel reflects centuries of cultural influences, from ancient structures to modern landmarks.",
+        "source": "Architecture Journal",
+        "url": "https://architecture.org/places/Jerusalem%2C%20Israel",
+        "period": "Multi-era",
+        "category": "Architecture",
+        "reasoning": "The architectural heritage showcases Jerusalem's millennia of cultural and religious significance."
+      },
+      "judge_reasoning": "The historical documentary offers deep insights into Jerusalem's rich heritage and cultural importance.",
+      "judge_score": 50,
+      "errors": []
+    }
+  ],
+  "statistics": {
+    "total_waypoints": 3,
+    "content_type_distribution": {
+      "video": 1,
+      "song": 1,
+      "story": 1,
+      "error": 0
+    },
+    "average_judge_score": 50.0,
+    "total_errors": 0
+  }
+}

@@ -4,7 +4,7 @@ Unit tests for Judge Agent.
 
 import pytest
 from unittest.mock import Mock
-from agents.judge_agent import JudgeAgent
+from src.agents.judge_agent import JudgeAgent
 
 
 class TestJudgeAgent:

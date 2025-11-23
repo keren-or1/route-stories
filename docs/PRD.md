@@ -184,6 +184,12 @@ Create a demonstration-quality multi-agent system that showcases:
 - **Timeout Protection**: Agents don't block indefinitely
 - **Graceful Degradation**: Missing results don't crash system
 - **Input Validation**: Invalid inputs rejected with helpful messages
+- **Mock Data (v1.0)**: Search tools use structured mock data to avoid API costs and complexity
+  - YouTube search: Returns pre-formatted video results
+  - Music search: Returns pre-formatted song results
+  - Historical stories: Returns pre-formatted content
+  - **Rationale**: Enables full system testing and demonstration without external API dependencies
+  - **Future Enhancement**: Real API integration planned for v2.0 (YouTube Data API, Spotify API, Wikipedia API)
 
 ### 4.3 Scalability
 - **Route Length**: Support routes with up to 10 waypoints

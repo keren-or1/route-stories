@@ -4,8 +4,8 @@ Unit tests for Video Agent.
 
 import pytest
 from unittest.mock import Mock, patch
-from agents.video_agent import VideoAgent
-from agents.base_agent import AgentTask
+from src.agents.video_agent import VideoAgent
+from src.agents.base_agent import AgentTask
 
 
 class TestVideoAgent:

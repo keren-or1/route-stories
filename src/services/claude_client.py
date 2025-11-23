@@ -5,7 +5,7 @@ Provides a simplified interface for Claude API calls.
 
 import anthropic
 from typing import List, Dict, Any, Optional
-from utils.logger import get_logger
+from src.utils.logger import get_logger
 
 
 logger = get_logger("claude_client")

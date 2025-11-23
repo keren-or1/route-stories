@@ -6,7 +6,7 @@ import googlemaps
 import uuid
 from typing import List, Dict, Any, Optional, Tuple
 from dataclasses import dataclass
-from utils.logger import get_logger
+from src.utils.logger import get_logger
 
 
 logger = get_logger("google_maps")

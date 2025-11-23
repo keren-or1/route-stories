@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     claude_temperature: float = 0.7
 
     # Paths
-    base_dir: Path = Path(__file__).parent
+    base_dir: Path = Path(__file__).parent.parent  # Project root
     logs_dir: Path = base_dir / "logs"
 
     model_config = SettingsConfigDict(

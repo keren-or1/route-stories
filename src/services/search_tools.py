@@ -6,7 +6,7 @@ Provides mock implementations that can be replaced with real API calls.
 import requests
 from typing import List, Dict, Any, Optional
 from urllib.parse import quote
-from utils.logger import get_logger
+from src.utils.logger import get_logger
 
 
 logger = get_logger("search_tools")

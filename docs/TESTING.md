@@ -12,6 +12,9 @@ tests/
 │   ├── test_song_agent.py    # Song agent tests
 │   ├── test_story_agent.py   # Story agent tests
 │   └── test_judge_agent.py   # Judge agent tests
+├── integration/              # NEW: Integration tests
+│   ├── __init__.py
+│   └── test_end_to_end.py   # End-to-end workflow tests
 ├── services/
 │   # Service layer tests (Google Maps, Claude, Search Tools)
 ├── core/
@@ -79,10 +82,17 @@ Common fixtures are defined in `conftest.py`:
 - **Mocking**: External APIs (Claude, Google Maps) are mocked
 - **Focus**: Business logic, error handling, edge cases
 
-### Integration Tests
-- **Purpose**: Test component interactions
-- **Scope**: Orchestrator + agents, end-to-end flows
-- **Focus**: Threading, queue communication, data flow
+### Integration Tests (NEW)
+- **Purpose**: Test component interactions with real agent instances
+- **Scope**: End-to-end workflows using real agents with mocked external APIs
+- **Focus**: Multi-threading, queue communication, judge evaluation, error handling
+- **Tests**: 6 integration tests covering:
+  - Full waypoint processing with all agents
+  - Parallel execution and timing verification
+  - Error handling with partial failures
+  - Judge decision-making with real agent outputs
+  - Judge consistency across multiple waypoints
+  - Queue-based inter-agent communication
 
 ### Edge Cases Tested
 1. **No results found** (empty search results)
@@ -158,9 +168,29 @@ Tests should be run:
 3. **Integration**: Full end-to-end tests require manual execution
 4. **Coverage Gaps**: Some error paths difficult to trigger in unit tests
 
+## Running Integration Tests
+
+Integration tests use real agent instances and verify end-to-end workflows:
+
+```bash
+# Run only integration tests
+pytest tests/integration/ -v
+
+# Run integration tests with timing output
+pytest tests/integration/ -v -s
+
+# Run specific integration test
+pytest tests/integration/test_end_to_end.py::TestFullWaypointProcessing::test_full_waypoint_with_real_agents -v
+```
+
+**Integration Test Results (November 23, 2025)**:
+- ✓ 6/6 tests passing (100%)
+- Execution time: ~0.14 seconds
+- All tests verify real agent execution with mocked external APIs
+
 ## Future Improvements
 
-- [ ] Add integration tests for full route processing
+- [x] Add integration tests for full route processing
 - [ ] Increase service layer coverage
 - [ ] Add performance benchmarks
 - [ ] Implement property-based testing (hypothesis)

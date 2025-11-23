@@ -3,9 +3,9 @@ Judge Agent - Evaluates and selects the best content from all agents.
 """
 
 from typing import Dict, Any, List
-from agents.base_agent import BaseAgent, AgentTask
-from services.claude_client import ClaudeClient
-from utils.queue_manager import AgentResult
+from src.agents.base_agent import BaseAgent, AgentTask
+from src.services.claude_client import ClaudeClient
+from src.utils.queue_manager import AgentResult
 
 
 class JudgeAgent(BaseAgent):

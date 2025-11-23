@@ -3,8 +3,8 @@ Scheduler - Manages progression through route waypoints.
 """
 
 from typing import List, Optional, Callable
-from services.google_maps import Route, Waypoint
-from utils.logger import get_logger
+from src.services.google_maps import Route, Waypoint
+from src.utils.logger import get_logger
 
 
 logger = get_logger("scheduler")

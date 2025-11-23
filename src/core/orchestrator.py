@@ -5,9 +5,9 @@ Orchestrator - Manages multi-threaded execution of agents.
 import threading
 from typing import Dict, Any
 from concurrent.futures import ThreadPoolExecutor, Future
-from agents import VideoAgent, SongAgent, StoryAgent, JudgeAgent, AgentTask
-from utils.queue_manager import QueueManager, AgentResult
-from utils.logger import get_logger
+from src.agents import VideoAgent, SongAgent, StoryAgent, JudgeAgent, AgentTask
+from src.utils.queue_manager import QueueManager, AgentResult
+from src.utils.logger import get_logger
 
 
 logger = get_logger("orchestrator")

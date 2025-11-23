@@ -6,8 +6,8 @@ from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, asdict
 import json
 from pathlib import Path
-from utils.queue_manager import QueueManager, AgentResult
-from utils.logger import get_logger
+from src.utils.queue_manager import QueueManager, AgentResult
+from src.utils.logger import get_logger
 
 
 logger = get_logger("collector")

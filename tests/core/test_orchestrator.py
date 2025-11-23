@@ -5,9 +5,9 @@ Unit tests for Orchestrator.
 import pytest
 from unittest.mock import Mock, patch
 from concurrent.futures import ThreadPoolExecutor
-from core.orchestrator import Orchestrator
-from agents.base_agent import AgentTask
-from utils.queue_manager import AgentResult, QueueManager
+from src.core.orchestrator import Orchestrator
+from src.agents.base_agent import AgentTask
+from src.utils.queue_manager import AgentResult, QueueManager
 
 
 class TestOrchestrator:

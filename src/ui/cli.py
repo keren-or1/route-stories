@@ -4,9 +4,9 @@ Command-line interface for Route Stories.
 
 import sys
 from typing import Optional
-from services.google_maps import Route, Waypoint
-from core import Orchestrator, Scheduler, Collector
-from utils.logger import get_logger
+from src.services.google_maps import Route, Waypoint
+from src.core import Orchestrator, Scheduler, Collector
+from src.utils.logger import get_logger
 
 
 logger = get_logger("cli")

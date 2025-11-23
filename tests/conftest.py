@@ -5,8 +5,8 @@ Shared test fixtures for Route Stories tests.
 import pytest
 from datetime import datetime
 from unittest.mock import Mock, MagicMock
-from agents.base_agent import AgentTask
-from utils.queue_manager import AgentResult
+from src.agents.base_agent import AgentTask
+from src.utils.queue_manager import AgentResult
 
 
 @pytest.fixture

@@ -9,14 +9,14 @@ import argparse
 from pathlib import Path
 
 # Add project root to path
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from config import get_settings
-from utils import setup_logger, QueueManager
-from services import GoogleMapsService, ClaudeClient, SearchTools
-from agents import VideoAgent, SongAgent, StoryAgent, JudgeAgent
-from core import Orchestrator, Collector
-from ui import CLI
+from src.config import get_settings
+from src.utils import setup_logger, QueueManager
+from src.services import GoogleMapsService, ClaudeClient, SearchTools
+from src.agents import VideoAgent, SongAgent, StoryAgent, JudgeAgent
+from src.core import Orchestrator, Collector
+from src.ui import CLI
 
 
 def parse_arguments():

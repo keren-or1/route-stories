@@ -6,8 +6,8 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Dict, Any, Optional
 from datetime import datetime
-from utils.logger import get_logger
-from utils.queue_manager import AgentResult
+from src.utils.logger import get_logger
+from src.utils.queue_manager import AgentResult
 
 
 logger = get_logger("base_agent")

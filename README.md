@@ -1,178 +1,136 @@
-# Route Stories - AI-Powered Journey Guide
+# Route Stories
 
-A multi-agent system that enriches your route with curated content (videos, songs, and stories) for each waypoint along your journey.
+AI-powered journey content curator using multi-agent system architecture.
 
 ## Overview
 
-Route Stories uses Google Maps API to plan your route and deploys AI agents to find relevant content for each location:
-- **Agent A (Video)**: Searches for YouTube videos about the location
-- **Agent B (Song)**: Searches for songs/music related to the location
-- **Agent C (Story)**: Finds historical facts and interesting stories
-- **Judge Agent**: Evaluates all three options and selects the most appropriate content
+Route Stories transforms road trips into enriched experiences by intelligently selecting content (videos, music, and stories) for each location along your route. The system uses Google Maps API to plan your journey and employs a sophisticated multi-agent architecture powered by Claude AI to curate the perfect content for each waypoint.
 
-## Architecture
+## Key Features
 
-```
-User Input (CLI)
-    ↓
-Google Maps API → Route with Waypoints
-    ↓
-Scheduler (Manual/Timer)
-    ↓
-Orchestrator (Multi-threaded)
-    ├─→ Video Agent (Thread 1)
-    ├─→ Song Agent (Thread 2)
-    ├─→ Story Agent (Thread 3)
-    └─→ Judge Agent (Thread 4)
-    ↓
-Results Queue → Collector
-    ↓
-Output (Display Results)
-```
+- **Multi-Agent Architecture**: Four specialized AI agents (Video, Song, Story, and Judge) work in parallel
+- **Intelligent Content Curation**: Each location gets matched with the most relevant video, song, or story
+- **Google Maps Integration**: Automatic route planning with waypoint extraction
+- **Concurrent Processing**: ThreadPoolExecutor for efficient parallel agent execution
+- **Queue-Based Communication**: Robust inter-agent communication system
+- **Comprehensive Logging**: Detailed execution logs and performance metrics
 
-## Requirements
+## Quick Start
 
-- Python 3.8+
-- Google Maps API Key
-- Anthropic Claude API Key
-
-## Installation
-
-1. Install dependencies:
 ```bash
+# Install dependencies
 pip install -r requirements.txt
+
+# Configure environment
+cp config/.env.example .env
+# Edit .env with your API keys
+
+# Run the application
+python src/main.py
+
+# Run with specific route
+python src/main.py --start "Tel Aviv" --end "Jerusalem"
 ```
 
-2. Set up environment variables:
-```bash
-cp .env.example .env
-# Edit .env and add your API keys:
-# GOOGLE_MAPS_API_KEY=your_key_here
-# ANTHROPIC_API_KEY=your_key_here
-```
-
-## Usage
-
-### Basic Usage (Manual Mode)
-
-```bash
-python main.py
-```
-
-Then follow the prompts:
-- Enter starting location
-- Enter destination
-- Press Enter to advance through each waypoint
-
-### Command Line Arguments
-
-```bash
-# Specify start and end directly
-python main.py --start "Tel Aviv" --end "Jerusalem"
-
-# Set number of waypoints to process
-python main.py --start "Tel Aviv" --end "Jerusalem" --max-points 3
-
-# Enable verbose logging
-python main.py --start "Tel Aviv" --end "Jerusalem" --verbose
-```
+For detailed setup and usage instructions, see [docs/README.md](docs/README.md)
 
 ## Project Structure
 
 ```
 route-stories/
-├── main.py                 # Entry point
-├── config.py               # Configuration and settings
-├── requirements.txt        # Python dependencies
-├── .env.example           # Environment variables template
-├── agents/
-│   ├── __init__.py
-│   ├── base_agent.py      # Base agent class
-│   ├── video_agent.py     # YouTube video search agent
-│   ├── song_agent.py      # Music search agent
-│   ├── story_agent.py     # Historical story agent
-│   └── judge_agent.py     # Decision-making judge agent
-├── services/
-│   ├── __init__.py
-│   ├── google_maps.py     # Google Maps API integration
-│   ├── claude_client.py   # Claude API wrapper
-│   └── search_tools.py    # Search utilities (YouTube, etc.)
-├── core/
-│   ├── __init__.py
-│   ├── orchestrator.py    # Multi-threaded agent orchestration
-│   ├── scheduler.py       # Waypoint progression scheduler
-│   └── collector.py       # Results collection and storage
-├── ui/
-│   ├── __init__.py
-│   └── cli.py             # Command-line interface
-└── utils/
-    ├── __init__.py
-    ├── logger.py          # Logging configuration
-    └── queue_manager.py   # Queue management utilities
+├── src/                           # Source code
+│   ├── agents/                    # AI agent modules
+│   ├── services/                  # External API services
+│   ├── core/                      # Core orchestration logic
+│   ├── ui/                        # User interface
+│   ├── utils/                     # Helper utilities
+│   ├── config.py                  # Configuration management
+│   └── main.py                    # Application entry point
+├── tests/                         # Unit and integration tests
+├── docs/                          # Documentation
+│   ├── README.md                  # Detailed setup/usage guide
+│   ├── ARCHITECTURE.md            # System architecture
+│   ├── PRD.md                     # Product requirements
+│   └── ...                        # Additional documentation
+├── config/                        # Configuration files
+│   └── .env.example               # Environment template
+├── results/                       # Output and execution results
+├── analysis/                      # Research and analysis
+└── requirements.txt               # Python dependencies
 ```
-
-## Features
-
-### Current Features (v1.0)
-- ✅ Google Maps API integration for route planning
-- ✅ Multi-threaded agent execution
-- ✅ Queue-based inter-agent communication
-- ✅ Manual waypoint progression
-- ✅ Comprehensive logging
-- ✅ Claude-powered agent decisions
-- ✅ CLI interface
-
-### Future Enhancements
-- ⏳ Timer-based automatic progression
-- ⏳ Web UI
-- ⏳ Audio playback integration
-- ⏳ Route caching
-- ⏳ Export results to JSON/PDF
-
-## Development
-
-### Running Tests
-```bash
-# Run all tests
-pytest tests/
-
-# Run with coverage
-pytest --cov=. --cov-report=html tests/
-
-# See tests/README.md for detailed testing guide
-```
-
-### Logging
-Logs are written to `logs/route_stories.log` and console. Configure log level in `config.py`.
 
 ## Documentation
 
-Comprehensive documentation is available in multiple files:
+- **[Setup Guide](docs/README.md)** - Detailed installation and configuration
+- **[Architecture](docs/ARCHITECTURE.md)** - System design and components
+- **[Product Requirements](docs/PRD.md)** - Features and specifications
+- **[Prompt Engineering](docs/PROMPTS.md)** - Agent prompt design
+- **[Cost Analysis](docs/COSTS.md)** - API usage and cost breakdown
+- **[Testing Guide](docs/TESTING.md)** - Test coverage and methodology
+- **[Execution Log](docs/EXECUTION_LOG.md)** - Sample execution results
+- **[Parameter Analysis](docs/PARAMETER_ANALYSIS.md)** - Configuration research
 
-- **[PRD.md](PRD.md)** - Product Requirements Document with goals, features, and timeline
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Detailed system architecture and design decisions
-- **[PROMPTS.md](PROMPTS.md)** - Prompt engineering log documenting AI-assisted development
-- **[COSTS.md](COSTS.md)** - API cost analysis and optimization strategies
-- **[QUICKSTART.md](QUICKSTART.md)** - Quick setup and usage guide
-- **[tests/README.md](tests/README.md)** - Testing strategy and how to run tests
-- **[analysis/PARAMETER_ANALYSIS.md](analysis/PARAMETER_ANALYSIS.md)** - Parameter sensitivity research
+## Technology Stack
 
-## Project Metrics
+- **Language**: Python 3.9+
+- **AI Model**: Claude 4.5 Sonnet (Anthropic)
+- **APIs**: Google Maps Directions API, YouTube Search, Spotify, Web Search
+- **Concurrency**: ThreadPoolExecutor, Queue-based communication
+- **Testing**: pytest with comprehensive coverage
+- **Configuration**: pydantic-settings with environment variables
 
-- **Lines of Code**: ~2,000
-- **Test Coverage**: 70%+ (agents: 85%, core: 60%, services: 40%)
-- **API Cost**: ~$0.11 per route (5 waypoints)
-- **Processing Time**: ~15 seconds per waypoint (optimized with parallel execution)
-- **Success Rate**: 98% with 60-second timeouts
+## System Architecture
 
-## Research & Analysis
+Route Stories uses a sophisticated multi-agent architecture:
 
-See [analysis/PARAMETER_ANALYSIS.md](analysis/PARAMETER_ANALYSIS.md) for detailed parameter sensitivity analysis including:
-- Agent timeout optimization (optimal: 60s)
-- Claude temperature tuning (optimal: 0.3)
-- Search results count (optimal: 5)
-- Parallel vs sequential execution comparison
+1. **Google Maps Service**: Fetches route and extracts waypoints
+2. **Scheduler**: Manages progression through waypoints
+3. **Orchestrator**: Coordinates parallel agent execution
+4. **Content Agents** (Video, Song, Story): Search and retrieve content candidates
+5. **Judge Agent**: Evaluates and selects the best content for each location
+6. **Collector**: Aggregates results and generates output
+
+See [ARCHITECTURE.md](docs/ARCHITECTURE.md) for detailed system design.
+
+## Requirements
+
+- Python 3.9 or higher
+- Google Maps API key (with Directions API enabled)
+- Anthropic API key (for Claude)
+- Internet connection for API access
+
+## Development
+
+```bash
+# Run tests
+pytest
+
+# Run tests with coverage
+pytest --cov=src --cov-report=html
+
+# Run specific test
+pytest tests/agents/test_video_agent.py
+```
+
+## Output Format
+
+The system generates JSON output with:
+- Complete route information
+- All content candidates (video, song, story) for each waypoint
+- Judge's decision and reasoning
+- Performance statistics and metrics
+
+Example output is available in `results/demo_execution_*.json`
 
 ## License
 
-Educational project for LLM Agents course - Reichman University, 2025.
+Academic project for Reichman University - LLM Agents Course
+
+## Authors
+
+Assignment 4 - Route Stories
+Reichman University, 2025
+
+---
+
+For detailed documentation, please refer to the `docs/` directory.

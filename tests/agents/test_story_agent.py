@@ -4,7 +4,7 @@ Unit tests for Story Agent.
 
 import pytest
 from unittest.mock import Mock
-from agents.story_agent import StoryAgent
+from src.agents.story_agent import StoryAgent
 
 
 class TestStoryAgent:

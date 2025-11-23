@@ -4,7 +4,7 @@ Unit tests for Song Agent.
 
 import pytest
 from unittest.mock import Mock
-from agents.song_agent import SongAgent
+from src.agents.song_agent import SongAgent
 
 
 class TestSongAgent:

@@ -3,10 +3,10 @@ Story Agent - Searches for historical stories and facts about locations.
 """
 
 from typing import Dict, Any
-from agents.base_agent import BaseAgent, AgentTask
-from services.claude_client import ClaudeClient
-from services.search_tools import SearchTools
-from utils.queue_manager import AgentResult
+from src.agents.base_agent import BaseAgent, AgentTask
+from src.services.claude_client import ClaudeClient
+from src.services.search_tools import SearchTools
+from src.utils.queue_manager import AgentResult
 
 
 class StoryAgent(BaseAgent):
