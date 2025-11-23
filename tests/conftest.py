@@ -111,8 +111,8 @@ def mock_story_results():
 
 
 @pytest.fixture
-def mock_claude_client():
-    """Mock Claude API client."""
+def mock_gemini_client():
+    """Mock Gemini API client."""
     mock = Mock()
     mock.simple_query = Mock(return_value="CHOICE: 1\nREASONING: Best video for travelers")
     mock.structured_query = Mock(return_value={

@@ -9,7 +9,7 @@ from pathlib import Path
 from flask import Blueprint, render_template, request, jsonify, current_app
 from datetime import datetime
 
-from src.services import GoogleMapsService, ClaudeClient, SearchTools
+from src.services import GoogleMapsService, GeminiClient, SearchTools
 from src.agents import VideoAgent, SongAgent, StoryAgent, JudgeAgent
 from src.core import Orchestrator, Collector
 from src.utils import QueueManager
@@ -82,11 +82,11 @@ def process_route():
         settings = current_app.config['SETTINGS']
 
         google_maps = GoogleMapsService(settings.google_maps_api_key)
-        claude_client = ClaudeClient(
-            api_key=settings.anthropic_api_key,
-            model=settings.claude_model,
-            max_tokens=settings.claude_max_tokens,
-            temperature=settings.claude_temperature
+        gemini_client = GeminiClient(
+            api_key=settings.gemini_api_key,
+            model=settings.gemini_model,
+            max_tokens=settings.gemini_max_tokens,
+            temperature=settings.gemini_temperature
         )
         search_tools = SearchTools()
 
@@ -102,10 +102,10 @@ def process_route():
             return jsonify({'error': f'Failed to get route: {str(e)}'}), 500
 
         # Initialize agents
-        video_agent = VideoAgent(claude_client, search_tools)
-        song_agent = SongAgent(claude_client, search_tools)
-        story_agent = StoryAgent(claude_client, search_tools)
-        judge_agent = JudgeAgent(claude_client)
+        video_agent = VideoAgent(gemini_client, search_tools)
+        song_agent = SongAgent(gemini_client, search_tools)
+        story_agent = StoryAgent(gemini_client, search_tools)
+        judge_agent = JudgeAgent(gemini_client)
 
         # Initialize queue manager and orchestrator
         queue_manager = QueueManager()

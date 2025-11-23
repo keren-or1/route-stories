@@ -4,7 +4,7 @@ Story Agent - Searches for historical stories and facts about locations.
 
 from typing import Dict, Any
 from src.agents.base_agent import BaseAgent, AgentTask
-from src.services.claude_client import ClaudeClient
+from src.services.gemini_client import GeminiClient
 from src.services.search_tools import SearchTools
 from src.utils.queue_manager import AgentResult
 
@@ -12,19 +12,19 @@ from src.utils.queue_manager import AgentResult
 class StoryAgent(BaseAgent):
     """
     Agent responsible for finding historical stories and facts for locations.
-    Uses Claude to analyze search results and select the most interesting story.
+    Uses Gemini to analyze search results and select the most interesting story.
     """
 
-    def __init__(self, claude_client: ClaudeClient, search_tools: SearchTools):
+    def __init__(self, gemini_client: GeminiClient, search_tools: SearchTools):
         """
         Initialize Story Agent.
 
         Args:
-            claude_client: Claude API client
+            gemini_client: Gemini API client
             search_tools: Search utilities
         """
         super().__init__(name="StoryAgent", agent_type="story")
-        self.claude = claude_client
+        self.gemini = gemini_client
         self.search = search_tools
 
     def execute(self, task: AgentTask) -> AgentResult:
@@ -49,7 +49,7 @@ class StoryAgent(BaseAgent):
                 error="No stories found"
             )
 
-        # Step 2: Use Claude to analyze and select best story
+        # Step 2: Use Gemini to analyze and select best story
         selected_story = self._select_best_story(task.address, stories)
 
         # Step 3: Create result
@@ -69,7 +69,7 @@ class StoryAgent(BaseAgent):
         stories: list
     ) -> Dict[str, Any]:
         """
-        Use Claude to select the most interesting story.
+        Use Gemini to select the most interesting story.
 
         Args:
             location: Location name
@@ -78,7 +78,7 @@ class StoryAgent(BaseAgent):
         Returns:
             Selected story with reasoning
         """
-        # Build prompt for Claude
+        # Build prompt for Gemini
         stories_text = "\n\n".join([
             f"Story {i+1}:\n"
             f"Title: {s['title']}\n"
@@ -108,7 +108,7 @@ CHOICE: [number 1-{len(stories)}]
 REASONING: [brief explanation]"""
 
         try:
-            response = self.claude.simple_query(
+            response = self.gemini.simple_query(
                 prompt=user_prompt,
                 system=system_prompt,
                 temperature=0.3
@@ -124,13 +124,13 @@ REASONING: [brief explanation]"""
             return selected
 
         except Exception as e:
-            self.logger.warning(f"Claude selection failed, using first story: {e}")
+            self.logger.warning(f"Gemini selection failed, using first story: {e}")
             selected = stories[0].copy()
-            selected["reasoning"] = "Default selection (Claude unavailable)"
+            selected["reasoning"] = "Default selection (Gemini unavailable)"
             return selected
 
     def _parse_choice(self, response: str, max_options: int) -> int:
-        """Parse CHOICE from Claude response."""
+        """Parse CHOICE from Gemini response."""
         for line in response.split('\n'):
             if line.strip().startswith('CHOICE:'):
                 try:
@@ -141,7 +141,7 @@ REASONING: [brief explanation]"""
         return 0  # Default to first option
 
     def _parse_reasoning(self, response: str) -> str:
-        """Parse REASONING from Claude response."""
+        """Parse REASONING from Gemini response."""
         for line in response.split('\n'):
             if line.strip().startswith('REASONING:'):
                 return line.split(':', 1)[1].strip()

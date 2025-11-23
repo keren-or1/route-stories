@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.config import get_settings
 from src.utils import setup_logger, QueueManager
-from src.services import GoogleMapsService, ClaudeClient, SearchTools
+from src.services import GoogleMapsService, GeminiClient, SearchTools
 from src.agents import VideoAgent, SongAgent, StoryAgent, JudgeAgent
 from src.core import Orchestrator, Collector
 from src.ui import CLI
@@ -72,7 +72,7 @@ def main():
         print("\nPlease ensure you have:")
         print("1. Created a .env file (copy from .env.example)")
         print("2. Added your GOOGLE_MAPS_API_KEY")
-        print("3. Added your ANTHROPIC_API_KEY")
+        print("3. Added your GEMINI_API_KEY")
         sys.exit(1)
 
     # Set log level
@@ -94,20 +94,20 @@ def main():
         # Initialize services
         logger.info("Initializing services...")
         google_maps = GoogleMapsService(settings.google_maps_api_key)
-        claude_client = ClaudeClient(
-            api_key=settings.anthropic_api_key,
-            model=settings.claude_model,
-            max_tokens=settings.claude_max_tokens,
-            temperature=settings.claude_temperature
+        gemini_client = GeminiClient(
+            api_key=settings.gemini_api_key,
+            model=settings.gemini_model,
+            max_tokens=settings.gemini_max_tokens,
+            temperature=settings.gemini_temperature
         )
         search_tools = SearchTools()
 
         # Initialize agents
         logger.info("Initializing agents...")
-        video_agent = VideoAgent(claude_client, search_tools)
-        song_agent = SongAgent(claude_client, search_tools)
-        story_agent = StoryAgent(claude_client, search_tools)
-        judge_agent = JudgeAgent(claude_client)
+        video_agent = VideoAgent(gemini_client, search_tools)
+        song_agent = SongAgent(gemini_client, search_tools)
+        story_agent = StoryAgent(gemini_client, search_tools)
+        judge_agent = JudgeAgent(gemini_client)
 
         # Initialize queue manager
         queue_manager = QueueManager()

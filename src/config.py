@@ -14,7 +14,7 @@ class Settings(BaseSettings):
 
     # API Keys
     google_maps_api_key: str
-    anthropic_api_key: str
+    gemini_api_key: str
 
     # Application settings
     log_level: str = "INFO"
@@ -24,10 +24,10 @@ class Settings(BaseSettings):
     agent_timeout: int = 30  # seconds
     max_retries: int = 3
 
-    # Claude model configuration
-    claude_model: str = "claude-sonnet-4-5-20250929"
-    claude_max_tokens: int = 4096
-    claude_temperature: float = 0.7
+    # Gemini model configuration
+    gemini_model: str = "gemini-pro"
+    gemini_max_tokens: int = 4096
+    gemini_temperature: float = 0.7
 
     # Paths
     base_dir: Path = Path(__file__).parent.parent  # Project root

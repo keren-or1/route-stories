@@ -4,7 +4,7 @@ AI-powered journey content curator using multi-agent system architecture.
 
 ## Overview
 
-Route Stories transforms road trips into enriched experiences by intelligently selecting content (videos, music, and stories) for each location along your route. The system uses Google Maps API to plan your journey and employs a sophisticated multi-agent architecture powered by Claude AI to curate the perfect content for each waypoint.
+Route Stories transforms road trips into enriched experiences by intelligently selecting content (videos, music, and stories) for each location along your route. The system uses Google Maps API to plan your journey and employs a sophisticated multi-agent architecture powered by Google Gemini AI to curate the perfect content for each waypoint.
 
 ## Key Features
 
@@ -30,7 +30,7 @@ cp config/.env.example .env
 # Start the web server
 python src/web_main.py
 
-# Open browser to http://localhost:5000
+# Open browser to http://localhost:8080
 ```
 
 ### Command Line Interface
@@ -91,7 +91,7 @@ route-stories/
 
 - **Language**: Python 3.9+
 - **Web Framework**: Flask 3.0 (for web UI)
-- **AI Model**: Claude 4.5 Sonnet (Anthropic)
+- **AI Model**: Google Gemini Pro
 - **APIs**: Google Maps Directions API, YouTube Search, Spotify, Web Search
 - **Concurrency**: ThreadPoolExecutor, Queue-based communication
 - **Testing**: pytest with comprehensive coverage
@@ -114,7 +114,7 @@ See [ARCHITECTURE.md](docs/ARCHITECTURE.md) for detailed system design.
 
 - Python 3.9 or higher
 - Google Maps API key (with Directions API enabled)
-- Anthropic API key (for Claude)
+- Google Gemini API key
 - Internet connection for API access
 
 ## Development

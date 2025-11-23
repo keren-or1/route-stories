@@ -159,14 +159,14 @@ python -c "from src.web import create_app; create_app().run(debug=True)"
 
 Open your browser and navigate to:
 ```
-http://localhost:5000
+http://localhost:8080
 ```
 
 ## User Guide
 
 ### Creating a Route
 
-1. **Navigate to Home Page**: Open http://localhost:5000
+1. **Navigate to Home Page**: Open http://localhost:8080
 2. **Enter Route Details**:
    - Starting Location: e.g., "New York, NY"
    - Destination: e.g., "Boston, MA"
@@ -282,7 +282,7 @@ Click the "Export Results" button to download a JSON file containing:
 **1. Server won't start**
 - Check that Flask is installed: `pip install flask`
 - Verify `.env` file exists with API keys
-- Ensure port 5000 is not in use
+- Ensure port 8080 is not in use
 
 **2. Processing hangs**
 - Check API key validity
@@ -320,7 +320,7 @@ tail -f logs/route_stories.log
 Use Gunicorn for production:
 ```bash
 pip install gunicorn
-gunicorn -w 4 -b 0.0.0.0:5000 "src.web:create_app()"
+gunicorn -w 4 -b 0.0.0.0:8080 "src.web:create_app()"
 ```
 
 ### Environment Variables
@@ -336,7 +336,7 @@ server {
     server_name your-domain.com;
 
     location / {
-        proxy_pass http://127.0.0.1:5000;
+        proxy_pass http://127.0.0.1:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }

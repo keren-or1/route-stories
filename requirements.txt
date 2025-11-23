@@ -1,4 +1,4 @@
-anthropic==0.39.0
+google-generativeai
 google-maps-services-python==2.5.3
 python-dotenv==1.0.0
 requests==2.32.3

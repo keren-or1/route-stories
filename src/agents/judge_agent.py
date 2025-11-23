@@ -4,7 +4,7 @@ Judge Agent - Evaluates and selects the best content from all agents.
 
 from typing import Dict, Any, List
 from src.agents.base_agent import BaseAgent, AgentTask
-from src.services.claude_client import ClaudeClient
+from src.services.gemini_client import GeminiClient
 from src.utils.queue_manager import AgentResult
 
 
@@ -14,15 +14,15 @@ class JudgeAgent(BaseAgent):
     Receives results from Video, Song, and Story agents and makes final decision.
     """
 
-    def __init__(self, claude_client: ClaudeClient):
+    def __init__(self, gemini_client: GeminiClient):
         """
         Initialize Judge Agent.
 
         Args:
-            claude_client: Claude API client
+            gemini_client: Gemini API client
         """
         super().__init__(name="JudgeAgent", agent_type="judge")
-        self.claude = claude_client
+        self.gemini = gemini_client
 
     def execute(self, task: AgentTask) -> AgentResult:
         """
@@ -103,7 +103,7 @@ class JudgeAgent(BaseAgent):
         options: List[Dict[str, Any]]
     ) -> Dict[str, Any]:
         """
-        Use Claude to judge and select the best content option.
+        Use Gemini to judge and select the best content option.
 
         Args:
             location: Location name
@@ -162,7 +162,7 @@ SCORE: [confidence score 0-100]
 REASONING: [detailed explanation of why this is the best choice]"""
 
         try:
-            response = self.claude.simple_query(
+            response = self.gemini.simple_query(
                 prompt=user_prompt,
                 system=system_prompt,
                 temperature=0.4
@@ -183,16 +183,16 @@ REASONING: [detailed explanation of why this is the best choice]"""
             }
 
         except Exception as e:
-            self.logger.warning(f"Claude judgment failed, using first option: {e}")
+            self.logger.warning(f"Gemini judgment failed, using first option: {e}")
             return {
                 'type': options[0]['type'],
                 'data': options[0]['data'],
-                'reasoning': "Default selection (Claude unavailable)",
+                'reasoning': "Default selection (Gemini unavailable)",
                 'score': 50
             }
 
     def _parse_choice(self, response: str, max_options: int) -> int:
-        """Parse CHOICE from Claude response."""
+        """Parse CHOICE from Gemini response."""
         for line in response.split('\n'):
             if line.strip().startswith('CHOICE:'):
                 try:
@@ -203,7 +203,7 @@ REASONING: [detailed explanation of why this is the best choice]"""
         return 0
 
     def _parse_score(self, response: str) -> int:
-        """Parse SCORE from Claude response."""
+        """Parse SCORE from Gemini response."""
         for line in response.split('\n'):
             if line.strip().startswith('SCORE:'):
                 try:
@@ -214,7 +214,7 @@ REASONING: [detailed explanation of why this is the best choice]"""
         return 50
 
     def _parse_reasoning(self, response: str) -> str:
-        """Parse REASONING from Claude response."""
+        """Parse REASONING from Gemini response."""
         lines = response.split('\n')
         for i, line in enumerate(lines):
             if line.strip().startswith('REASONING:'):

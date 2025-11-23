@@ -22,7 +22,7 @@ def main():
     print("Route Stories - Web UI")
     print("=" * 80)
     print("\nStarting Flask web server...")
-    print("\nAccess the application at: http://localhost:5000")
+    print("\nAccess the application at: http://localhost:8080")
     print("\nPress CTRL+C to stop the server\n")
     print("=" * 80)
 
@@ -33,7 +33,7 @@ def main():
     # Note: In production, use a WSGI server like Gunicorn or uWSGI
     app.run(
         host='0.0.0.0',
-        port=5000,
+        port=8080,
         debug=True,
         threaded=True
     )

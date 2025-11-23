@@ -4,7 +4,7 @@ Song Agent - Searches for relevant music about locations.
 
 from typing import Dict, Any
 from src.agents.base_agent import BaseAgent, AgentTask
-from src.services.claude_client import ClaudeClient
+from src.services.gemini_client import GeminiClient
 from src.services.search_tools import SearchTools
 from src.utils.queue_manager import AgentResult
 
@@ -12,19 +12,19 @@ from src.utils.queue_manager import AgentResult
 class SongAgent(BaseAgent):
     """
     Agent responsible for finding relevant music/songs for locations.
-    Uses Claude to analyze search results and select the most appropriate song.
+    Uses Gemini to analyze search results and select the most appropriate song.
     """
 
-    def __init__(self, claude_client: ClaudeClient, search_tools: SearchTools):
+    def __init__(self, gemini_client: GeminiClient, search_tools: SearchTools):
         """
         Initialize Song Agent.
 
         Args:
-            claude_client: Claude API client
+            gemini_client: Gemini API client
             search_tools: Search utilities
         """
         super().__init__(name="SongAgent", agent_type="song")
-        self.claude = claude_client
+        self.gemini = gemini_client
         self.search = search_tools
 
     def execute(self, task: AgentTask) -> AgentResult:
@@ -49,7 +49,7 @@ class SongAgent(BaseAgent):
                 error="No music found"
             )
 
-        # Step 2: Use Claude to analyze and select best song
+        # Step 2: Use Gemini to analyze and select best song
         selected_song = self._select_best_song(task.address, songs)
 
         # Step 3: Create result
@@ -69,7 +69,7 @@ class SongAgent(BaseAgent):
         songs: list
     ) -> Dict[str, Any]:
         """
-        Use Claude to select the most relevant song.
+        Use Gemini to select the most relevant song.
 
         Args:
             location: Location name
@@ -107,7 +107,7 @@ CHOICE: [number 1-{len(songs)}]
 REASONING: [brief explanation]"""
 
         try:
-            response = self.claude.simple_query(
+            response = self.gemini.simple_query(
                 prompt=user_prompt,
                 system=system_prompt,
                 temperature=0.3
@@ -123,13 +123,13 @@ REASONING: [brief explanation]"""
             return selected
 
         except Exception as e:
-            self.logger.warning(f"Claude selection failed, using first song: {e}")
+            self.logger.warning(f"Gemini selection failed, using first song: {e}")
             selected = songs[0].copy()
-            selected["reasoning"] = "Default selection (Claude unavailable)"
+            selected["reasoning"] = "Default selection (Gemini unavailable)"
             return selected
 
     def _parse_choice(self, response: str, max_options: int) -> int:
-        """Parse CHOICE from Claude response."""
+        """Parse CHOICE from Gemini response."""
         for line in response.split('\n'):
             if line.strip().startswith('CHOICE:'):
                 try:
@@ -140,7 +140,7 @@ REASONING: [brief explanation]"""
         return 0  # Default to first option
 
     def _parse_reasoning(self, response: str) -> str:
-        """Parse REASONING from Claude response."""
+        """Parse REASONING from Gemini response."""
         for line in response.split('\n'):
             if line.strip().startswith('REASONING:'):
                 return line.split(':', 1)[1].strip()
