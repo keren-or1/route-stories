@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Route Stories{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">Create Your Journey Story</h1>
+        <p class="hero-description">
+            Transform your route into an enriched experience with AI-curated videos, songs, and stories
+            for each waypoint along your journey.
+        </p>
+    </div>
+</div>
+
+<div class="card form-card">
+    <div class="card-header">
+        <h2>Plan Your Route</h2>
+        <p>Enter your starting point and destination to begin</p>
+    </div>
+
+    <form id="route-form" class="route-form">
+        <div class="form-group">
+            <label for="start-location">
+                <span class="label-icon">📍</span>
+                Starting Location
+            </label>
+            <input
+                type="text"
+                id="start-location"
+                name="start"
+                class="form-input"
+                placeholder="e.g., New York, NY"
+                required
+            >
+            <small class="form-hint">City, address, or landmark</small>
+        </div>
+
+        <div class="form-group">
+            <label for="end-location">
+                <span class="label-icon">🎯</span>
+                Destination
+            </label>
+            <input
+                type="text"
+                id="end-location"
+                name="end"
+                class="form-input"
+                placeholder="e.g., Boston, MA"
+                required
+            >
+            <small class="form-hint">City, address, or landmark</small>
+        </div>
+
+        <div class="form-group">
+            <label for="max-points">
+                <span class="label-icon">🗺️</span>
+                Maximum Waypoints
+            </label>
+            <div class="slider-container">
+                <input
+                    type="range"
+                    id="max-points"
+                    name="max_points"
+                    class="form-slider"
+                    min="2"
+                    max="20"
+                    value="5"
+                    step="1"
+                >
+                <span class="slider-value" id="max-points-value">5</span>
+            </div>
+            <small class="form-hint">More waypoints = longer processing time</small>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submit-btn">
+                <span class="btn-text">Start Journey</span>
+                <span class="btn-loader" style="display: none;">
+                    <span class="spinner"></span>
+                    Processing...
+                </span>
+            </button>
+        </div>
+
+        <div id="error-message" class="error-message" style="display: none;"></div>
+    </form>
+</div>
+
+<div class="features-section">
+    <h2 class="section-title">How It Works</h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🗺️</div>
+            <h3>Route Planning</h3>
+            <p>We use Google Maps to calculate your route and extract interesting waypoints along the way.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>AI Agents</h3>
+            <p>Multiple specialized AI agents search for videos, songs, and stories relevant to each location.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚖️</div>
+            <h3>Smart Selection</h3>
+            <p>A judge agent evaluates all options and selects the best content for each waypoint.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Rich Results</h3>
+            <p>Get a comprehensive summary with all content options, scores, and reasoning for each location.</p>
+        </div>
+    </div>
+</div>
+
+<div class="info-section">
+    <div class="info-card">
+        <h3>Content Types</h3>
+        <div class="content-types">
+            <div class="content-type">
+                <span class="content-icon">🎥</span>
+                <div>
+                    <strong>Videos</strong>
+                    <p>YouTube videos about landmarks, history, or local culture</p>
+                </div>
+            </div>
+            <div class="content-type">
+                <span class="content-icon">🎵</span>
+                <div>
+                    <strong>Songs</strong>
+                    <p>Music inspired by or related to the location</p>
+                </div>
+            </div>
+            <div class="content-type">
+                <span class="content-icon">📖</span>
+                <div>
+                    <strong>Stories</strong>
+                    <p>Historical facts, local legends, and interesting narratives</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Update slider value display
+document.getElementById('max-points').addEventListener('input', function(e) {
+    document.getElementById('max-points-value').textContent = e.target.value;
+});
+</script>
+{% endblock %}

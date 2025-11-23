@@ -1,0 +1,318 @@
+{% extends "base.html" %}
+
+{% block title %}Results - Route Stories{% endblock %}
+
+{% block content %}
+<div class="results-container">
+    <div class="results-header">
+        <h1>Your Route Story</h1>
+        <p class="results-subtitle" id="results-subtitle">Loading results...</p>
+    </div>
+
+    <div class="results-actions">
+        <button class="btn btn-primary" onclick="exportResults()">
+            <span>📥</span> Export Results
+        </button>
+        <button class="btn btn-secondary" onclick="window.location.href='/'">
+            <span>🔄</span> New Route
+        </button>
+    </div>
+
+    <div id="statistics" class="card stats-card" style="display: none;">
+        <h2>Statistics</h2>
+        <div class="stats-grid" id="stats-grid"></div>
+    </div>
+
+    <div id="waypoints-container" class="waypoints-container">
+        <div class="loading-state">
+            <div class="spinner-large"></div>
+            <p>Loading results...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+const routeId = "{{ route_id }}";
+
+function loadResults() {
+    fetch(`/api/results/${routeId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load results');
+            }
+            return response.json();
+        })
+        .then(data => {
+            displayResults(data);
+        })
+        .catch(error => {
+            console.error('Error loading results:', error);
+            document.getElementById('waypoints-container').innerHTML = `
+                <div class="error-card">
+                    <h3>Error Loading Results</h3>
+                    <p>${error.message}</p>
+                    <button class="btn btn-primary" onclick="window.location.href='/'">
+                        Return Home
+                    </button>
+                </div>
+            `;
+        });
+}
+
+function displayResults(data) {
+    // Update subtitle
+    document.getElementById('results-subtitle').textContent =
+        `Route: ${data.waypoints[0]?.address || 'Start'} → ${data.waypoints[data.waypoints.length - 1]?.address || 'End'}`;
+
+    // Display statistics
+    displayStatistics(data.statistics);
+
+    // Display waypoints
+    const container = document.getElementById('waypoints-container');
+    container.innerHTML = '';
+
+    data.waypoints.forEach((waypoint, index) => {
+        const waypointCard = createWaypointCard(waypoint, index);
+        container.appendChild(waypointCard);
+    });
+}
+
+function displayStatistics(stats) {
+    const statsCard = document.getElementById('statistics');
+    const statsGrid = document.getElementById('stats-grid');
+
+    if (!stats) return;
+
+    statsCard.style.display = 'block';
+
+    const distribution = stats.content_type_distribution || {};
+    const avgScore = stats.average_judge_score || 0;
+
+    statsGrid.innerHTML = `
+        <div class="stat-item">
+            <div class="stat-icon">🗺️</div>
+            <div class="stat-details">
+                <span class="stat-value">${stats.total_waypoints || 0}</span>
+                <span class="stat-label">Total Waypoints</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon">🎥</div>
+            <div class="stat-details">
+                <span class="stat-value">${distribution.video || 0}</span>
+                <span class="stat-label">Videos Selected</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon">🎵</div>
+            <div class="stat-details">
+                <span class="stat-value">${distribution.song || 0}</span>
+                <span class="stat-label">Songs Selected</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon">📖</div>
+            <div class="stat-details">
+                <span class="stat-value">${distribution.story || 0}</span>
+                <span class="stat-label">Stories Selected</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-details">
+                <span class="stat-value">${avgScore.toFixed(1)}</span>
+                <span class="stat-label">Avg Score</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon">⚠️</div>
+            <div class="stat-details">
+                <span class="stat-value">${stats.total_errors || 0}</span>
+                <span class="stat-label">Errors</span>
+            </div>
+        </div>
+    `;
+}
+
+function createWaypointCard(waypoint, index) {
+    const card = document.createElement('div');
+    card.className = 'card waypoint-card';
+
+    const chosenType = waypoint.chosen_type;
+    const chosenContent = waypoint.chosen_content;
+
+    let contentHtml = '';
+
+    if (chosenType && chosenContent) {
+        const icon = chosenType === 'video' ? '🎥' : chosenType === 'song' ? '🎵' : '📖';
+
+        contentHtml = `
+            <div class="chosen-content">
+                <div class="chosen-header">
+                    <span class="chosen-badge">
+                        <span>${icon}</span>
+                        Selected: ${chosenType.toUpperCase()}
+                    </span>
+                    ${waypoint.judge_score ? `<span class="score-badge">${waypoint.judge_score}/100</span>` : ''}
+                </div>
+
+                <div class="content-details">
+                    ${formatContent(chosenType, chosenContent)}
+                </div>
+
+                ${waypoint.judge_reasoning ? `
+                    <div class="judge-reasoning">
+                        <strong>Judge's Reasoning:</strong>
+                        <p>${waypoint.judge_reasoning}</p>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+
+    // Show all candidate options
+    const candidatesHtml = `
+        <div class="candidates-section">
+            <h4>All Options</h4>
+            <div class="candidates-grid">
+                ${formatCandidate('video', '🎥', waypoint.video, chosenType === 'video')}
+                ${formatCandidate('song', '🎵', waypoint.song, chosenType === 'song')}
+                ${formatCandidate('story', '📖', waypoint.story, chosenType === 'story')}
+            </div>
+        </div>
+    `;
+
+    card.innerHTML = `
+        <div class="waypoint-header">
+            <div class="waypoint-number">${waypoint.point_id + 1}</div>
+            <div class="waypoint-info">
+                <h3>${waypoint.address}</h3>
+                <p class="waypoint-coords">
+                    ${waypoint.location.lat.toFixed(6)}, ${waypoint.location.lng.toFixed(6)}
+                </p>
+            </div>
+        </div>
+
+        ${contentHtml}
+        ${candidatesHtml}
+
+        ${waypoint.errors && waypoint.errors.length > 0 ? `
+            <div class="waypoint-errors">
+                <strong>Errors:</strong>
+                ${waypoint.errors.map(err => `<div class="error-item">${err}</div>`).join('')}
+            </div>
+        ` : ''}
+    `;
+
+    return card;
+}
+
+function formatContent(type, content) {
+    if (!content) return '<p>No content available</p>';
+
+    if (type === 'video') {
+        return `
+            <div class="content-item">
+                <strong>Title:</strong> ${content.title || 'N/A'}
+            </div>
+            <div class="content-item">
+                <strong>Channel:</strong> ${content.channel || 'N/A'}
+            </div>
+            <div class="content-item">
+                <strong>Duration:</strong> ${content.duration || 'N/A'}
+            </div>
+            ${content.url ? `
+                <div class="content-item">
+                    <a href="${content.url}" target="_blank" class="content-link">
+                        Watch Video →
+                    </a>
+                </div>
+            ` : ''}
+        `;
+    } else if (type === 'song') {
+        return `
+            <div class="content-item">
+                <strong>Title:</strong> ${content.title || 'N/A'}
+            </div>
+            <div class="content-item">
+                <strong>Artist:</strong> ${content.artist || 'N/A'}
+            </div>
+            <div class="content-item">
+                <strong>Genre:</strong> ${content.genre || 'N/A'}
+            </div>
+            ${content.url ? `
+                <div class="content-item">
+                    <a href="${content.url}" target="_blank" class="content-link">
+                        Listen →
+                    </a>
+                </div>
+            ` : ''}
+        `;
+    } else if (type === 'story') {
+        const storyContent = content.content || 'N/A';
+        const preview = storyContent.length > 200 ? storyContent.substring(0, 200) + '...' : storyContent;
+        return `
+            <div class="content-item">
+                <strong>Title:</strong> ${content.title || 'N/A'}
+            </div>
+            <div class="content-item">
+                <strong>Story:</strong>
+                <p class="story-content">${preview}</p>
+            </div>
+            ${content.source ? `
+                <div class="content-item">
+                    <strong>Source:</strong> ${content.source}
+                </div>
+            ` : ''}
+        `;
+    }
+
+    return '';
+}
+
+function formatCandidate(type, icon, content, isChosen) {
+    if (!content) {
+        return `
+            <div class="candidate-card candidate-empty">
+                <div class="candidate-icon">${icon}</div>
+                <div class="candidate-title">${type.toUpperCase()}</div>
+                <p class="candidate-status">Not available</p>
+            </div>
+        `;
+    }
+
+    const title = content.title || 'Untitled';
+    const chosenClass = isChosen ? 'candidate-chosen' : '';
+
+    return `
+        <div class="candidate-card ${chosenClass}">
+            <div class="candidate-icon">${icon}</div>
+            <div class="candidate-title">${type.toUpperCase()}</div>
+            ${isChosen ? '<div class="chosen-indicator">✓ Selected</div>' : ''}
+            <p class="candidate-name">${title}</p>
+        </div>
+    `;
+}
+
+function exportResults() {
+    fetch(`/api/results/${routeId}`)
+        .then(response => response.json())
+        .then(data => {
+            const dataStr = JSON.stringify(data, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `route_${routeId}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+        })
+        .catch(error => {
+            alert('Failed to export results: ' + error.message);
+        });
+}
+
+// Load results on page load
+loadResults();
+</script>
+{% endblock %}

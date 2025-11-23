@@ -17,6 +17,8 @@ Route Stories transforms road trips into enriched experiences by intelligently s
 
 ## Quick Start
 
+### Web UI (Recommended)
+
 ```bash
 # Install dependencies
 pip install -r requirements.txt
@@ -25,6 +27,15 @@ pip install -r requirements.txt
 cp config/.env.example .env
 # Edit .env with your API keys
 
+# Start the web server
+python src/web_main.py
+
+# Open browser to http://localhost:5000
+```
+
+### Command Line Interface
+
+```bash
 # Run the application
 python src/main.py
 
@@ -42,15 +53,20 @@ route-stories/
 │   ├── agents/                    # AI agent modules
 │   ├── services/                  # External API services
 │   ├── core/                      # Core orchestration logic
-│   ├── ui/                        # User interface
+│   ├── ui/                        # Command-line interface
+│   ├── web/                       # Flask web UI
+│   │   ├── static/                # CSS, JavaScript
+│   │   └── templates/             # HTML templates
 │   ├── utils/                     # Helper utilities
 │   ├── config.py                  # Configuration management
-│   └── main.py                    # Application entry point
+│   ├── main.py                    # CLI entry point
+│   └── web_main.py                # Web UI entry point
 ├── tests/                         # Unit and integration tests
 ├── docs/                          # Documentation
 │   ├── README.md                  # Detailed setup/usage guide
 │   ├── ARCHITECTURE.md            # System architecture
 │   ├── PRD.md                     # Product requirements
+│   ├── WEB_UI.md                  # Web UI documentation
 │   └── ...                        # Additional documentation
 ├── config/                        # Configuration files
 │   └── .env.example               # Environment template
@@ -62,6 +78,7 @@ route-stories/
 ## Documentation
 
 - **[Setup Guide](docs/README.md)** - Detailed installation and configuration
+- **[Web UI Guide](docs/WEB_UI.md)** - Web interface documentation and usage
 - **[Architecture](docs/ARCHITECTURE.md)** - System design and components
 - **[Product Requirements](docs/PRD.md)** - Features and specifications
 - **[Prompt Engineering](docs/PROMPTS.md)** - Agent prompt design
@@ -73,6 +90,7 @@ route-stories/
 ## Technology Stack
 
 - **Language**: Python 3.9+
+- **Web Framework**: Flask 3.0 (for web UI)
 - **AI Model**: Claude 4.5 Sonnet (Anthropic)
 - **APIs**: Google Maps Directions API, YouTube Search, Spotify, Web Search
 - **Concurrency**: ThreadPoolExecutor, Queue-based communication

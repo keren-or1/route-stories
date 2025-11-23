@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block title %}Processing - Route Stories{% endblock %}
+
+{% block content %}
+<div class="processing-container">
+    <div class="processing-header">
+        <h1>Processing Your Route</h1>
+        <p class="route-info" id="route-info">Loading route information...</p>
+    </div>
+
+    <div class="card processing-card">
+        <div class="progress-section">
+            <div class="progress-header">
+                <h2>Progress</h2>
+                <span class="progress-stats" id="progress-stats">0 / 0 waypoints</span>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar" style="width: 0%;">
+                    <span class="progress-text" id="progress-text">0%</span>
+                </div>
+            </div>
+
+            <div class="elapsed-time">
+                <span class="time-icon">⏱️</span>
+                <span id="elapsed-time">00:00</span>
+            </div>
+        </div>
+
+        <div class="waypoint-section">
+            <h3>Current Waypoint</h3>
+            <div class="current-waypoint" id="current-waypoint">
+                <div class="waypoint-placeholder">
+                    <div class="spinner-large"></div>
+                    <p>Starting processing...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="agents-section">
+            <h3>Agent Activity</h3>
+            <div class="agents-grid">
+                <div class="agent-status" id="video-agent-status">
+                    <div class="agent-icon">🎥</div>
+                    <div class="agent-info">
+                        <strong>Video Agent</strong>
+                        <span class="agent-state">Waiting...</span>
+                    </div>
+                    <div class="status-indicator status-pending"></div>
+                </div>
+
+                <div class="agent-status" id="song-agent-status">
+                    <div class="agent-icon">🎵</div>
+                    <div class="agent-info">
+                        <strong>Song Agent</strong>
+                        <span class="agent-state">Waiting...</span>
+                    </div>
+                    <div class="status-indicator status-pending"></div>
+                </div>
+
+                <div class="agent-status" id="story-agent-status">
+                    <div class="agent-icon">📖</div>
+                    <div class="agent-info">
+                        <strong>Story Agent</strong>
+                        <span class="agent-state">Waiting...</span>
+                    </div>
+                    <div class="status-indicator status-pending"></div>
+                </div>
+
+                <div class="agent-status" id="judge-agent-status">
+                    <div class="agent-icon">⚖️</div>
+                    <div class="agent-info">
+                        <strong>Judge Agent</strong>
+                        <span class="agent-state">Waiting...</span>
+                    </div>
+                    <div class="status-indicator status-pending"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="error-section" id="error-section" style="display: none;">
+            <h3>Errors</h3>
+            <div class="error-list" id="error-list"></div>
+        </div>
+    </div>
+
+    <div class="processing-actions">
+        <button class="btn btn-secondary" onclick="window.location.href='/'">
+            Cancel
+        </button>
+    </div>
+</div>
+
+<script>
+const routeId = "{{ route_id }}";
+let progressInterval;
+let startTime = Date.now();
+
+function updateElapsedTime() {
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const minutes = Math.floor(elapsed / 60);
+    const seconds = elapsed % 60;
+    document.getElementById('elapsed-time').textContent =
+        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+function updateProgress() {
+    fetch(`/api/progress/${routeId}`)
+        .then(response => response.json())
+        .then(data => {
+            // Update progress bar
+            const percentage = data.progress_percentage || 0;
+            document.getElementById('progress-bar').style.width = percentage + '%';
+            document.getElementById('progress-text').textContent = percentage + '%';
+
+            // Update stats
+            document.getElementById('progress-stats').textContent =
+                `${data.current_waypoint} / ${data.total_waypoints} waypoints`;
+
+            // Update current waypoint
+            if (data.current_waypoint_info) {
+                const waypointDiv = document.getElementById('current-waypoint');
+                waypointDiv.innerHTML = `
+                    <div class="waypoint-active">
+                        <div class="waypoint-number">${data.current_waypoint}</div>
+                        <div class="waypoint-details">
+                            <strong>${data.current_waypoint_info.address}</strong>
+                            <p>Processing agents...</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Update agent statuses
+            updateAgentStatuses(data.current_waypoint, data.total_waypoints);
+
+            // Show errors if any
+            if (data.errors && data.errors.length > 0) {
+                const errorSection = document.getElementById('error-section');
+                const errorList = document.getElementById('error-list');
+                errorSection.style.display = 'block';
+                errorList.innerHTML = data.errors.map(err =>
+                    `<div class="error-item">${err}</div>`
+                ).join('');
+            }
+
+            // Check if completed
+            if (data.status === 'completed') {
+                clearInterval(progressInterval);
+                window.location.href = `/results/${routeId}`;
+            } else if (data.status === 'error') {
+                clearInterval(progressInterval);
+                alert('An error occurred during processing. Please check the errors section.');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching progress:', error);
+        });
+}
+
+function updateAgentStatuses(current, total) {
+    const agents = ['video', 'song', 'story', 'judge'];
+
+    agents.forEach(agent => {
+        const statusDiv = document.getElementById(`${agent}-agent-status`);
+        const stateSpan = statusDiv.querySelector('.agent-state');
+        const indicator = statusDiv.querySelector('.status-indicator');
+
+        if (current > 0 && current <= total) {
+            stateSpan.textContent = 'Processing...';
+            indicator.className = 'status-indicator status-running';
+        } else if (current === 0) {
+            stateSpan.textContent = 'Waiting...';
+            indicator.className = 'status-indicator status-pending';
+        }
+    });
+}
+
+// Start polling for progress
+progressInterval = setInterval(updateProgress, 1000);
+setInterval(updateElapsedTime, 1000);
+
+// Initial update
+updateProgress();
+</script>
+{% endblock %}
