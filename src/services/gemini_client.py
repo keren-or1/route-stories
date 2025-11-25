@@ -20,7 +20,7 @@ class GeminiClient:
     def __init__(
         self,
         api_key: str,
-        model: str = "gemini-pro",
+        model: str = "gemini-1.5-flash",
         max_tokens: int = 4096,
         temperature: float = 0.7
     ):

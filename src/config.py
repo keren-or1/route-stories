@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     max_retries: int = 3
 
     # Gemini model configuration
-    gemini_model: str = "gemini-pro"
+    gemini_model: str = "gemini-1.5-flash"
     gemini_max_tokens: int = 4096
     gemini_temperature: float = 0.7
 

@@ -1,0 +1,257 @@
+{
+  "route_id": "196d0099-2390-423a-b07f-9db9348bde4a",
+  "total_waypoints": 5,
+  "waypoints": [
+    {
+      "point_id": 0,
+      "address": "Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.0852981,
+        "lng": 34.7817571
+      },
+      "video": {
+        "title": "Exploring Tel Aviv-Yafo, Israel - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Tel Aviv-Yafo, Israel, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "song": {
+        "title": "Streets of Tel Aviv-Yafo, Israel",
+        "artist": "Local Artists Collective",
+        "url": "https://spotify.com/track/mock_song_1",
+        "duration": "3:45",
+        "genre": "Folk",
+        "album": "Sounds of Tel Aviv-Yafo, Israel",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "story": {
+        "title": "The Founding of Tel Aviv-Yafo, Israel",
+        "content": "Tel Aviv-Yafo, Israel was established in the early centuries and has a rich history of cultural development. The area was known for its strategic importance and vibrant marketplace.",
+        "source": "Historical Archives",
+        "url": "https://wikipedia.org/wiki/Tel%20Aviv-Yafo%2C%20Israel",
+        "period": "Historical",
+        "category": "Founding Story",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Tel Aviv-Yafo, Israel - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Tel Aviv-Yafo, Israel, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "judge_reasoning": "Default selection (Gemini unavailable)",
+      "judge_score": 50,
+      "errors": []
+    },
+    {
+      "point_id": 1,
+      "address": "Head north on Shlomo Ibn Gabirol St",
+      "location": {
+        "lat": 32.0982206,
+        "lng": 34.7835762
+      },
+      "video": {
+        "title": "Exploring Head north on Shlomo Ibn Gabirol St - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Head north on Shlomo Ibn Gabirol St, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "song": {
+        "title": "Streets of Head north on Shlomo Ibn Gabirol St",
+        "artist": "Local Artists Collective",
+        "url": "https://spotify.com/track/mock_song_1",
+        "duration": "3:45",
+        "genre": "Folk",
+        "album": "Sounds of Head north on Shlomo Ibn Gabirol St",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "story": {
+        "title": "The Founding of Head north on Shlomo Ibn Gabirol St",
+        "content": "Head north on Shlomo Ibn Gabirol St was established in the early centuries and has a rich history of cultural development. The area was known for its strategic importance and vibrant marketplace.",
+        "source": "Historical Archives",
+        "url": "https://wikipedia.org/wiki/Head%20north%20on%20Shlomo%20Ibn%20Gabirol%20St",
+        "period": "Historical",
+        "category": "Founding Story",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Head north on Shlomo Ibn Gabirol St - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Head north on Shlomo Ibn Gabirol St, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "judge_reasoning": "Default selection (Gemini unavailable)",
+      "judge_score": 50,
+      "errors": []
+    },
+    {
+      "point_id": 2,
+      "address": "Merge onto Ayalon Hwy/Route 20",
+      "location": {
+        "lat": 32.0574901,
+        "lng": 34.7853104
+      },
+      "video": {
+        "title": "Exploring Merge onto Ayalon Hwy/Route 20 - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Merge onto Ayalon Hwy/Route 20, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "song": {
+        "title": "Streets of Merge onto Ayalon Hwy/Route 20",
+        "artist": "Local Artists Collective",
+        "url": "https://spotify.com/track/mock_song_1",
+        "duration": "3:45",
+        "genre": "Folk",
+        "album": "Sounds of Merge onto Ayalon Hwy/Route 20",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "story": {
+        "title": "The Founding of Merge onto Ayalon Hwy/Route 20",
+        "content": "Merge onto Ayalon Hwy/Route 20 was established in the early centuries and has a rich history of cultural development. The area was known for its strategic importance and vibrant marketplace.",
+        "source": "Historical Archives",
+        "url": "https://wikipedia.org/wiki/Merge%20onto%20Ayalon%20Hwy/Route%2020",
+        "period": "Historical",
+        "category": "Founding Story",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Merge onto Ayalon Hwy/Route 20 - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Merge onto Ayalon Hwy/Route 20, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "judge_reasoning": "Default selection (Gemini unavailable)",
+      "judge_score": 50,
+      "errors": []
+    },
+    {
+      "point_id": 3,
+      "address": "Continue straight to stay on Route 1",
+      "location": {
+        "lat": 31.8255081,
+        "lng": 35.00709190000001
+      },
+      "video": {
+        "title": "Exploring Continue straight to stay on Route 1 - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Continue straight to stay on Route 1, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "song": {
+        "title": "Streets of Continue straight to stay on Route 1",
+        "artist": "Local Artists Collective",
+        "url": "https://spotify.com/track/mock_song_1",
+        "duration": "3:45",
+        "genre": "Folk",
+        "album": "Sounds of Continue straight to stay on Route 1",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "story": {
+        "title": "The Founding of Continue straight to stay on Route 1",
+        "content": "Continue straight to stay on Route 1 was established in the early centuries and has a rich history of cultural development. The area was known for its strategic importance and vibrant marketplace.",
+        "source": "Historical Archives",
+        "url": "https://wikipedia.org/wiki/Continue%20straight%20to%20stay%20on%20Route%201",
+        "period": "Historical",
+        "category": "Founding Story",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Continue straight to stay on Route 1 - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Continue straight to stay on Route 1, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "judge_reasoning": "Default selection (Gemini unavailable)",
+      "judge_score": 50,
+      "errors": []
+    },
+    {
+      "point_id": 4,
+      "address": "Jerusalem, Israel",
+      "location": {
+        "lat": 31.776887,
+        "lng": 35.2224339
+      },
+      "video": {
+        "title": "Exploring Jerusalem, Israel - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Jerusalem, Israel, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "song": {
+        "title": "Streets of Jerusalem, Israel",
+        "artist": "Local Artists Collective",
+        "url": "https://spotify.com/track/mock_song_1",
+        "duration": "3:45",
+        "genre": "Folk",
+        "album": "Sounds of Jerusalem, Israel",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "story": {
+        "title": "The Founding of Jerusalem, Israel",
+        "content": "Jerusalem, Israel was established in the early centuries and has a rich history of cultural development. The area was known for its strategic importance and vibrant marketplace.",
+        "source": "Historical Archives",
+        "url": "https://wikipedia.org/wiki/Jerusalem%2C%20Israel",
+        "period": "Historical",
+        "category": "Founding Story",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Jerusalem, Israel - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Jerusalem, Israel, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Default selection (Gemini unavailable)"
+      },
+      "judge_reasoning": "Default selection (Gemini unavailable)",
+      "judge_score": 50,
+      "errors": []
+    }
+  ],
+  "statistics": {
+    "total_waypoints": 5,
+    "content_type_distribution": {
+      "video": 5,
+      "song": 0,
+      "story": 0,
+      "error": 0
+    },
+    "average_judge_score": 50.0,
+    "total_errors": 0
+  }
+}
