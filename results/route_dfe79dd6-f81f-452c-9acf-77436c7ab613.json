@@ -1,0 +1,123 @@
+{
+  "route_id": "dfe79dd6-f81f-452c-9acf-77436c7ab613",
+  "total_waypoints": 2,
+  "waypoints": [
+    {
+      "point_id": 0,
+      "address": "Rothschild Blvd, Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.0654326,
+        "lng": 34.7766433
+      },
+      "video": {
+        "title": "Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk | 🇮🇱🌇💙 #citywalk #israel #travel",
+        "url": "https://youtube.com/watch?v=9sG_Lgfi1Bg",
+        "description": "",
+        "duration": "58:24",
+        "views": "2K",
+        "channel": "walk'n'watch",
+        "reasoning": "Video 2, \"Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk,\" offers the most in-depth and relevant exploration of the area, combining a walk along Rothschild Blvd with the adjacent Neve Tzedek, providing a richer, more informative experience.",
+        "relevance_score": 90
+      },
+      "song": {
+        "title": "Walking through Rothschild Blvd  in Tel Aviv TEST",
+        "artist": "Enjoy TLV in 360",
+        "url": "https://youtube.com/watch?v=O2Xoq88qRCk",
+        "duration": "5:19",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "\"Walking through Rothschild Blvd in Tel Aviv\" directly references the location, creating an immediate and immersive experience for travelers.",
+        "relevance_score": 95
+      },
+      "story": {
+        "title": "Daftar 150 Orang Terkaya Indonesia - KASKUS",
+        "content": "Jun 12, 2013 · Majalah Globe Asia edisi Juni 2013 kembali merilis daftar 150 orang terkaya di Indonesia. Meski daftar tersebut sebagian besar masih ditempati muka-muka lama, namun …",
+        "source": "Web Search",
+        "url": "https://www.kaskus.co.id/post/51fb4600be29a0a76b000003",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are irrelevant to Rothschild Blvd, Tel Aviv-Yafo, Israel, focusing on Indonesian wealth and intelligence networks, not the history or culture of the location.",
+        "relevance_score": 0
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk | 🇮🇱🌇💙 #citywalk #israel #travel",
+        "url": "https://youtube.com/watch?v=9sG_Lgfi1Bg",
+        "description": "",
+        "duration": "58:24",
+        "views": "2K",
+        "channel": "walk'n'watch",
+        "reasoning": "Video 2, \"Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk,\" offers the most in-depth and relevant exploration of the area, combining a walk along Rothschild Blvd with the adjacent Neve Tzedek, providing a richer, more informative experience.",
+        "relevance_score": 90
+      },
+      "judge_reasoning": "Option 1, the video \"Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk,\" is the best choice for several reasons: *   **Engagement Value:** A video walk-through is highly engaging, especially for a location-specific experience. It visually immerses the traveler in the environment, showing them what they'll see and experience. The inclusion of hashtags like #citywalk, #israel, and #travel indicates the video is designed for travel enthusiasts and will likely feature interesting sights and commentary. *   **Relevance:** The video directly addresses the location, Rothschild Blvd, and also includes Neve Tzedek, a key area adjacent to Rothschild Blvd. This makes it highly relevant to the traveler's current location and planned route. *   **Educational Value:** A walking tour video typically provides context, history, and information about the buildings, landmarks, and culture along the route. It offers a virtual tour that can enhance the traveler's understanding of the area. *   **Emotional Impact:** The visual nature of the video, coupled with potentially scenic views and commentary, can evoke a sense of excitement and anticipation for the traveler. It can also provide a sense of connection to the place. *   **Practicality:** While the duration (58:24) is long, it's still consumable during a journey, especially if the traveler is walking the route. They can pause, rewind, and focus on specific parts. Option 2, the song \"Walking through Rothschild Blvd in Tel Aviv TEST,\" is less ideal. While music can be enjoyable, it's less directly relevant to the experience of *being there*. It might create a nice ambiance, but it doesn't offer the same level of visual and informational connection as a video. The duration is good. Option 3, the story about the richest Indonesians, is completely irrelevant to the location. It has no connection to Rothschild Blvd or Tel Aviv.",
+      "judge_score": 95,
+      "errors": []
+    },
+    {
+      "point_id": 1,
+      "address": "Nemal Tel Aviv St, Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.09724300000001,
+        "lng": 34.773854
+      },
+      "video": {
+        "title": "Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel",
+        "url": "https://youtube.com/watch?v=PM2_kMrd0Ms",
+        "description": "",
+        "duration": "22:50",
+        "views": "482K",
+        "channel": "Island Hopper TV",
+        "reasoning": "Video 4, \"Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel,\" provides the most comprehensive overview of Tel Aviv, likely including information relevant to Nemal Tel Aviv St, and its longer duration allows for more in-depth exploration and tips.",
+        "relevance_score": 85
+      },
+      "song": {
+        "title": "Beautiful songs every Monday evening, July, at the Tel Aviv Port,",
+        "artist": "atika k",
+        "url": "https://youtube.com/watch?v=6FpKcfdtd7A",
+        "duration": "1:16",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "While short, \"Beautiful songs every Monday evening, July, at the Tel Aviv Port\" directly references a nearby location, capturing the essence of the area's vibrant nightlife and musical scene.",
+        "relevance_score": 85
+      },
+      "story": {
+        "title": "سامانه کارسنج | شبکه مدارس برتر ایران",
+        "content": "سامانه کارسنج اولین ابزار طراحی شده ویژه مشاوران پایه است که در حال حاضر مدارس معتبری همچون دبیرستان انرژی اتمی ایران، مدارس علامه طباطبایی، مدارس سلام، مفید، تیزهوشان، نمونه دولتی و بسیاری دیگر از مدارس ممتاز کشور ...",
+        "source": "Web Search",
+        "url": "https://karsanj.net/",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are about an Iranian educational platform and have no relevance to Nemal Tel Aviv St, Tel Aviv-Yafo, Israel, making them unsuitable for enriching a traveler's experience.",
+        "relevance_score": 0
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel",
+        "url": "https://youtube.com/watch?v=PM2_kMrd0Ms",
+        "description": "",
+        "duration": "22:50",
+        "views": "482K",
+        "channel": "Island Hopper TV",
+        "reasoning": "Video 4, \"Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel,\" provides the most comprehensive overview of Tel Aviv, likely including information relevant to Nemal Tel Aviv St, and its longer duration allows for more in-depth exploration and tips.",
+        "relevance_score": 85
+      },
+      "judge_reasoning": "Option 1, the \"Tel Aviv Travel Guide\" video, is the best choice for this location. Here's why: *   **Engagement Value:** Travel guide videos are inherently engaging for travelers. They visually showcase the location, offering a preview of what to expect and inspiring exploration. The video format is easily digestible during a journey (e.g., on a phone while walking). *   **Relevance:** The video directly relates to Tel Aviv, the specified location. It promises to highlight \"Best Things To Do,\" which is highly relevant to a traveler. *   **Educational Value:** Travel guides typically provide information about attractions, cultural insights, practical tips (transportation, food), and potentially historical context, offering a good level of education. *   **Emotional Impact:** The video can build excitement and anticipation for the traveler's experience, showcasing the city's beauty and vibrancy. *   **Practicality:** A travel guide video is very practical. It can be watched on a phone or tablet while walking around, providing immediate information and inspiration. Option 2 (the song) is less suitable. While music can enhance the experience, it's not directly tied to the specific location \"Nemal Tel Aviv St.\" The song's connection is to the Tel Aviv Port, which may or may not be near the street. The duration is also very short. Option 3 (the story) is completely irrelevant. It is in a different language and appears to be about Iranian schools, having no connection to Tel Aviv or the traveler's experience.",
+      "judge_score": 95,
+      "errors": []
+    }
+  ],
+  "statistics": {
+    "total_waypoints": 2,
+    "content_type_distribution": {
+      "video": 2,
+      "song": 0,
+      "story": 0,
+      "error": 0
+    },
+    "average_judge_score": 95.0,
+    "total_errors": 0
+  }
+}

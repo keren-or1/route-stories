@@ -1,0 +1,123 @@
+{
+  "route_id": "c576a618-e044-4223-b228-142b6c40b50b",
+  "total_waypoints": 2,
+  "waypoints": [
+    {
+      "point_id": 0,
+      "address": "Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.0852981,
+        "lng": 34.7817571
+      },
+      "video": {
+        "title": "Tel Aviv (Israel) Beach Vacation Travel Video Guide",
+        "url": "https://youtube.com/watch?v=LRVOFp2cOPk",
+        "description": "",
+        "duration": "25:24",
+        "views": "147K",
+        "channel": "Expoza Travel",
+        "reasoning": "Video 2, \"Tel Aviv (Israel) Beach Vacation Travel Video Guide,\" is the most focused and relevant, offering a dedicated guide to Tel Aviv's attractions, likely including beaches, which aligns with a traveler's immediate interests.",
+        "relevance_score": 85
+      },
+      "song": {
+        "title": "Omer Adam feat. Arisa - Tel Aviv עומר אדם עם אריסה - תל אביב",
+        "artist": "עומר אדם - הערוץ הרשמי",
+        "url": "https://youtube.com/watch?v=nMQw29nfzpg",
+        "duration": "3:41",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "\"Tel Aviv\" by Omer Adam feat. Arisa is the best choice as it directly references the city, likely captures the vibrant local music scene, and offers a high production value suitable for a positive and engaging travel experience.",
+        "relevance_score": 95
+      },
+      "story": {
+        "title": "Etymology and origins",
+        "content": "Tel Aviv is the Hebrew title of Theodor Herzl's 1902 novel Altneuland (\"Old New Land\"), as translated from German by Nahum Sokolow. Sokolow had adopted the name of a Mesopotamian site near the city of Babylon mentioned in Ezekiel: \"Then I came to them of the captivity at Tel Abib [Tel Aviv], that lived by the river Chebar, and to where they lived; and I sat there overwhelmed among them seven days....",
+        "source": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Tel_Aviv#Etymology_and_origins",
+        "period": "Historical",
+        "category": "Etymology and origins",
+        "reasoning": "Understanding the origin of \"Tel Aviv\" as a Hebrew translation of Herzl's vision for a \"New Land\" provides a powerful insight into the city's foundational Zionist ideals and its aspirations for the future.",
+        "relevance_score": 95
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Tel Aviv (Israel) Beach Vacation Travel Video Guide",
+        "url": "https://youtube.com/watch?v=LRVOFp2cOPk",
+        "description": "",
+        "duration": "25:24",
+        "views": "147K",
+        "channel": "Expoza Travel",
+        "reasoning": "Video 2, \"Tel Aviv (Israel) Beach Vacation Travel Video Guide,\" is the most focused and relevant, offering a dedicated guide to Tel Aviv's attractions, likely including beaches, which aligns with a traveler's immediate interests.",
+        "relevance_score": 85
+      },
+      "judge_reasoning": "Option 1, the video \"Tel Aviv (Israel) Beach Vacation Travel Video Guide,\" is the best choice for several reasons: *   **Engagement Value:** Travel videos are inherently engaging, offering visual stimulation and a sense of immersion. The video format is easily consumable while traveling (on a phone, tablet, etc.). *   **Relevance:** The video focuses on a \"Beach Vacation\" which is highly relevant to Tel Aviv. Tel Aviv is known for its beautiful beaches and vibrant beach culture. *   **Educational Value:** Travel videos often provide practical information about the location, including things to do, places to see, and potentially even cultural insights. The video guide format suggests it will offer helpful tips for a traveler. *   **Emotional Impact:** The video format is likely to evoke positive emotions associated with travel, relaxation, and exploration, especially given the beach vacation theme. *   **Practicality:** The video is easily accessible on platforms like YouTube and can be watched during a journey, on the go. The length is also appropriate for a travel break. While Option 2 (the song) is enjoyable and relevant to Tel Aviv, it lacks the depth of information and visual context that a video provides. It primarily offers an auditory experience. Option 3 (the story on etymology) is interesting, but it's less directly relevant to the *experience* of being in Tel Aviv. It's also less engaging and practical for a traveler looking for immediate insights. The video strikes the best balance of engagement, relevance, educational value, and practicality for a traveler in Tel Aviv.",
+      "judge_score": 95,
+      "errors": []
+    },
+    {
+      "point_id": 1,
+      "address": "Metula, Israel",
+      "location": {
+        "lat": 33.2772299,
+        "lng": 35.5784237
+      },
+      "video": {
+        "title": "Southern Golan Heights | Tel Saki Ep.2",
+        "url": "https://youtube.com/watch?v=w9VvWL5Sye8",
+        "description": "",
+        "duration": "9:45",
+        "views": "1K",
+        "channel": "The Running Tour Guide",
+        "reasoning": "While not explicitly about Metula, Video 1, focusing on the Southern Golan Heights, provides the closest geographical proximity and potential insights into the region's landscape and historical context, offering a relevant starting point for a traveler.",
+        "relevance_score": 65
+      },
+      "song": {
+        "title": "Hymn of Golan Heights (Katsrin, Israel)",
+        "artist": "hirsch zilber",
+        "url": "https://youtube.com/watch?v=4YcplZzR-Yc",
+        "duration": "3:19",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "\"Hymn of Golan Heights\" directly references a region near Metula, offering a strong cultural connection and a sense of place, enhancing the traveler's experience with a relevant and engaging musical backdrop.",
+        "relevance_score": 95
+      },
+      "story": {
+        "title": "Microsoft - Official Home Page",
+        "content": "At Microsoft our mission and values are to help people and businesses throughout the world realize their full potential.",
+        "source": "Web Search",
+        "url": "https://www.microsoft.com/en-us/?msockid=2ce373f3f8f065a72dbe6540f9ff6406",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are all about Microsoft and have no relevance to the history, culture, or experience of visiting Metula, Israel.",
+        "relevance_score": 0
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Southern Golan Heights | Tel Saki Ep.2",
+        "url": "https://youtube.com/watch?v=w9VvWL5Sye8",
+        "description": "",
+        "duration": "9:45",
+        "views": "1K",
+        "channel": "The Running Tour Guide",
+        "reasoning": "While not explicitly about Metula, Video 1, focusing on the Southern Golan Heights, provides the closest geographical proximity and potential insights into the region's landscape and historical context, offering a relevant starting point for a traveler.",
+        "relevance_score": 65
+      },
+      "judge_reasoning": "Option 1, the video \"Southern Golan Heights | Tel Saki Ep.2\" by The Running Tour Guide, is the best choice for Metula, Israel, for several reasons: *   **Engagement Value:** Travel videos, especially those featuring a \"running tour guide,\" are inherently engaging. They offer visual stimulation and often incorporate a sense of adventure and discovery, which is highly captivating for travelers. The format is also easily digestible during a journey. *   **Relevance:** While Metula is not directly in the Southern Golan Heights, it is in the broader Golan Heights region. The video's focus on the Golan Heights is therefore relevant to the traveler's location. The video likely will feature the landscape, history, and possibly even the culture of the area. *   **Educational Value:** The video likely provides information about the history, geography, and possibly even the current events and significance of Tel Saki and the surrounding area. This offers a valuable learning experience for the traveler. *   **Emotional Impact:** Travel videos can evoke a sense of wonder, excitement, and connection to a place. The visual nature of the video will likely enhance the traveler's emotional connection to the Golan Heights. *   **Practicality:** The video's duration (9:45) is manageable for viewing during a travel break or downtime. It's easily accessible on a mobile device. Option 2, the song \"Hymn of Golan Heights,\" is a good option, but less effective. While music can be emotionally impactful and relevant, it lacks the visual component of a video. It's also less likely to provide specific location-based information. Option 3, the Microsoft story, is completely irrelevant to the location. It offers no connection to Metula or the Golan Heights and would not enhance the travel experience.",
+      "judge_score": 95,
+      "errors": []
+    }
+  ],
+  "statistics": {
+    "total_waypoints": 2,
+    "content_type_distribution": {
+      "video": 2,
+      "song": 0,
+      "story": 0,
+      "error": 0
+    },
+    "average_judge_score": 95.0,
+    "total_errors": 0
+  }
+}

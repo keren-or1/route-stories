@@ -207,7 +207,8 @@ class GoogleMapsService:
     def _get_step_address(self, step: Dict[str, Any]) -> str:
         """
         Extract meaningful address from a route step.
-        Filters out trivial turn-by-turn directions and focuses on meaningful locations.
+        Prioritizes location information from turn-by-turn directions,
+        falls back to reverse geocoding, then returns street names as last resort.
 
         Args:
             step: Step dictionary from Google Maps API
@@ -217,13 +218,13 @@ class GoogleMapsService:
         """
         import re
 
-        # List of trivial direction keywords to filter out
-        trivial_keywords = [
+        # Direction keywords that indicate turn-by-turn instructions
+        direction_keywords = [
             'head', 'turn', 'continue', 'bear', 'go', 'keep', 'merge',
             'enter', 'exit', 'take', 'make', 'slight', 'sharp', 'right', 'left'
         ]
 
-        # Try to extract from HTML instructions, but SKIP all turn-by-turn directions
+        # Try to extract from HTML instructions
         if 'html_instructions' in step:
             html = step['html_instructions']
             # Remove HTML tags
@@ -232,25 +233,33 @@ class GoogleMapsService:
 
             # Check if this is a trivial direction (starts with direction verb)
             starts_with_direction = any(
-                text_lower.startswith(keyword) for keyword in trivial_keywords
+                text_lower.startswith(keyword) for keyword in direction_keywords
             )
 
-            # Only use the instruction if it's NOT a direction and has meaningful length
+            # If it's NOT a direction, use the full instruction as-is
             if not starts_with_direction and len(text) > 3:
-                # Additional check: only use if it mentions actual places/landmarks
-                # (not just roads, highways, etc.)
                 return text
 
-        # For trivial directions or no instructions, use reverse geocoding to get actual location
+            # If it IS a direction, extract the street/location name that comes after the verb
+            # Pattern: "Head [left/right/straight] on [Street Name]" or "Turn [direction] onto [Street Name]"
+            if starts_with_direction:
+                # Extract everything after prepositions like "on", "onto", "to"
+                match = re.search(r'\b(?:on|onto|to|toward)\s+([A-Z][^,]+)', text)
+                if match:
+                    street_name = match.group(1).strip()
+                    # Only use if it looks like a real street name (has letters, reasonable length)
+                    if len(street_name) > 2 and street_name not in ['right', 'left', 'straight']:
+                        return street_name
+
+        # Try reverse geocoding for more detailed location information
         try:
             loc = step['end_location']
             address = self.reverse_geocode(loc['lat'], loc['lng'])
             if address:
                 # Extract just the main location (not full address)
                 parts = address.split(',')
-                # Prefer city/area name over street addresses
+                # Prefer first meaningful part (usually street or area name)
                 if len(parts) >= 2:
-                    # Try to get meaningful location (city, area, landmark)
                     return parts[0].strip() + ', ' + parts[1].strip()
                 if parts[0].strip():
                     return parts[0].strip()
@@ -258,8 +267,16 @@ class GoogleMapsService:
             logger.debug(f"Reverse geocoding failed: {e}")
             pass
 
-        # Fallback: If we can't get a meaningful location, return empty string
-        # (better to skip this waypoint than search for meaningless coordinates)
+        # Final fallback: try to extract any street name from the instruction
+        if 'html_instructions' in step:
+            html = step['html_instructions']
+            text = re.sub(r'<[^>]+>', '', html)
+            # Try to find a capitalized location/street name in the instruction
+            match = re.search(r'\b([A-Z][a-zA-Z\s]+(?:St|Road|Ave|Blvd|Street|Highway|Drive|Lane|Rd|Av)\.?)\b', text)
+            if match:
+                return match.group(1).strip()
+
+        # Only return empty string if absolutely no meaningful location found
         logger.debug(f"Could not extract meaningful address for step, skipping")
         return ""
 
