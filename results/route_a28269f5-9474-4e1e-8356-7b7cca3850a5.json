@@ -1,0 +1,257 @@
+{
+  "route_id": "a28269f5-9474-4e1e-8356-7b7cca3850a5",
+  "total_waypoints": 5,
+  "waypoints": [
+    {
+      "point_id": 0,
+      "address": "Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.0852981,
+        "lng": 34.7817571
+      },
+      "video": {
+        "title": "Exploring Tel Aviv-Yafo, Israel - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Tel Aviv-Yafo, Israel, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Video 1, \"Exploring Tel Aviv-Yafo, Israel - Travel Guide,\" is the most suitable choice. It directly caters to travelers with a comprehensive guide to attractions and hidden gems, which is highly relevant. The 10-minute duration is ideal for providing useful information without being overly long. The \"Travel Explorer\" channel suggests a focus on travel content, and the 125K views indicate decent popularity. While Video 3 has more views, its documentary format might be less immediately helpful for a traveler planning a trip. Video 2, while visually appealing, lacks the practical information a traveler needs."
+      },
+      "song": {
+        "title": "Tel Aviv-Yafo, Israel Nights",
+        "artist": "The Wanderers",
+        "url": "https://spotify.com/track/mock_song_2",
+        "duration": "4:12",
+        "genre": "Indie Rock",
+        "album": "City Stories",
+        "reasoning": "\"Tel Aviv-Yafo, Israel Nights\" by The Wanderers is likely the best choice. Indie rock often captures the vibrant, modern, and energetic atmosphere of a city like Tel Aviv. The title itself suggests a focus on the city's nightlife and contemporary culture, which is a key aspect of the Tel Aviv experience for many travelers. While the Folk song might be charming, and the Traditional song culturally authentic, the Indie Rock song is likely to best capture the mood and atmosphere that a modern traveler would expect to experience in Tel Aviv."
+      },
+      "story": {
+        "title": "Architectural Heritage of Tel Aviv-Yafo, Israel",
+        "content": "The architectural landscape of Tel Aviv-Yafo, Israel reflects centuries of cultural influences, from ancient structures to modern landmarks.",
+        "source": "Architecture Journal",
+        "url": "https://architecture.org/places/Tel%20Aviv-Yafo%2C%20Israel",
+        "period": "Multi-era",
+        "category": "Architecture",
+        "reasoning": "The Architectural Heritage story is the most engaging for a traveler. It directly relates to what they will *see* and experience in Tel Aviv-Yafo. It offers a tangible connection to history, allowing them to understand the city's evolution through its buildings. The story promises a multi-era perspective, which is inherently more interesting than a single-period founding story or a list of famous people. It has high relevance, educational value, and a strong fascination factor for those interested in urban landscapes and cultural history."
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Tel Aviv-Yafo, Israel - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Tel Aviv-Yafo, Israel, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Video 1, \"Exploring Tel Aviv-Yafo, Israel - Travel Guide,\" is the most suitable choice. It directly caters to travelers with a comprehensive guide to attractions and hidden gems, which is highly relevant. The 10-minute duration is ideal for providing useful information without being overly long. The \"Travel Explorer\" channel suggests a focus on travel content, and the 125K views indicate decent popularity. While Video 3 has more views, its documentary format might be less immediately helpful for a traveler planning a trip. Video 2, while visually appealing, lacks the practical information a traveler needs."
+      },
+      "judge_reasoning": "Option 1, the video \"Exploring Tel Aviv-Yafo, Israel - Travel Guide,\" is the most engaging and practical choice for a traveler. It directly addresses the traveler's needs by providing a comprehensive overview of the location. *   **Engagement Value:** A well-produced travel guide video is inherently engaging, using visuals and potentially dynamic editing to capture attention. The description promises \"best attractions and hidden gems,\" which is highly appealing to travelers. *   **Relevance:** The video's title and description explicitly mention Tel Aviv-Yafo, ensuring direct relevance to the location. *   **Educational Value:** The video format allows for the inclusion of historical context, cultural insights, and practical travel tips, enhancing the traveler's understanding of the city. *   **Emotional Impact:** The visuals and narration can evoke a sense of excitement and anticipation for the traveler's experience. *   **Practicality:** A video is easily consumable during a journey, whether viewed on a phone, tablet, or in a hotel room. The duration (10:24) is also manageable for a traveler's limited time. Option 2 (Song) is less practical. While the song might evoke a mood, it doesn't provide the same level of informational value or practical guidance. Option 3 (Story) is also less practical, as it is a text-based format. While informative, it doesn't offer the same level of engagement or visual appeal as the video. The video provides the best balance of engagement, relevance, education, emotional impact, and practicality for a traveler exploring Tel Aviv-Yafo.",
+      "judge_score": 95,
+      "errors": []
+    },
+    {
+      "point_id": 1,
+      "address": "Head north on Shlomo Ibn Gabirol St",
+      "location": {
+        "lat": 32.0982206,
+        "lng": 34.7835762
+      },
+      "video": {
+        "title": "Exploring Head north on Shlomo Ibn Gabirol St - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Head north on Shlomo Ibn Gabirol St, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Video 1, \"Exploring Head north on Shlomo Ibn Gabirol St - Travel Guide,\" is the most suitable. It directly caters to travelers with a comprehensive guide, offering practical information on attractions and hidden gems. The length is ideal for a travel guide, and the high view count suggests it's a popular and likely well-produced video. While the drone footage (Video 2) is visually appealing, it lacks the practical information a traveler needs. Video 3, while interesting, is too long and focuses on history, which might not be the primary interest of a traveler."
+      },
+      "song": {
+        "title": "Streets of Head north on Shlomo Ibn Gabirol St",
+        "artist": "Local Artists Collective",
+        "url": "https://spotify.com/track/mock_song_1",
+        "duration": "3:45",
+        "genre": "Folk",
+        "album": "Sounds of Head north on Shlomo Ibn Gabirol St",
+        "reasoning": "Song 1, \"Streets of Head north on Shlomo Ibn Gabirol St\" by the Local Artists Collective, is the most directly relevant. The title itself suggests it's about the location, and the folk genre often lends itself to storytelling and capturing the essence of a place. The album title \"Sounds of Head north on Shlomo Ibn Gabirol St\" further supports this."
+      },
+      "story": {
+        "title": "Architectural Heritage of Head north on Shlomo Ibn Gabirol St",
+        "content": "The architectural landscape of Head north on Shlomo Ibn Gabirol St reflects centuries of cultural influences, from ancient structures to modern landmarks.",
+        "source": "Architecture Journal",
+        "url": "https://architecture.org/places/Head%20north%20on%20Shlomo%20Ibn%20Gabirol%20St",
+        "period": "Multi-era",
+        "category": "Architecture",
+        "reasoning": "The \"Architectural Heritage\" story offers the most engaging narrative for a traveler. It directly relates to what they will see and experience while walking along Shlomo Ibn Gabirol St. It combines historical significance (reflecting cultural influences over centuries), relevance to modern travelers (they can see the buildings!), and a high fascination factor (exploring different architectural styles). While the other stories are interesting, they are less directly tied to the physical experience of being there."
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Head north on Shlomo Ibn Gabirol St - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Head north on Shlomo Ibn Gabirol St, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Video 1, \"Exploring Head north on Shlomo Ibn Gabirol St - Travel Guide,\" is the most suitable. It directly caters to travelers with a comprehensive guide, offering practical information on attractions and hidden gems. The length is ideal for a travel guide, and the high view count suggests it's a popular and likely well-produced video. While the drone footage (Video 2) is visually appealing, it lacks the practical information a traveler needs. Video 3, while interesting, is too long and focuses on history, which might not be the primary interest of a traveler."
+      },
+      "judge_reasoning": "Option 1, the video \"Exploring Head north on Shlomo Ibn Gabirol St - Travel Guide,\" is the best choice for several compelling reasons. *   **Engagement Value:** Videos are inherently engaging, especially travel guides. The visual format allows for showcasing attractions and hidden gems, which is immediately captivating for a traveler. The description promises a \"comprehensive\" guide, hinting at a high level of detail and interest. *   **Relevance:** The video's title directly addresses the location, making it highly relevant. A travel guide specifically for the street is the most relevant content available. *   **Educational Value:** A travel guide inherently provides educational value by highlighting attractions, providing background information, and potentially offering historical context. The \"comprehensive\" description suggests a good level of detail. *   **Emotional Impact:** A well-produced travel guide can evoke excitement and anticipation for the traveler, enhancing their experience. Seeing the street and its attractions visually can create a stronger emotional connection. *   **Practicality:** While 10 minutes is a bit long, it's still consumable during a journey, especially if the traveler is walking or taking public transport. The traveler can pause and resume as needed. Option 2 (the song) is less effective because it's less informative. While a song can be evocative, it doesn't provide the same level of practical information about the street's attractions. Option 3 (the story) is also less effective because it is less engaging and less practical.",
+      "judge_score": 95,
+      "errors": []
+    },
+    {
+      "point_id": 2,
+      "address": "Merge onto Ayalon Hwy/Route 20",
+      "location": {
+        "lat": 32.0574901,
+        "lng": 34.7853104
+      },
+      "video": {
+        "title": "Exploring Merge onto Ayalon Hwy/Route 20 - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Merge onto Ayalon Hwy/Route 20, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Video 1, \"Exploring Merge onto Ayalon Hwy/Route 20 - Travel Guide,\" is the most suitable for travelers. It directly addresses the location with a travel guide format, promising information about attractions and hidden gems. The duration is within the preferred range, and the views indicate a decent level of engagement. While Video 3 has more views, its historical focus is less relevant for a traveler seeking practical information. Video 2, while visually appealing, may not offer enough practical information for a traveler."
+      },
+      "song": {
+        "title": "Merge onto Ayalon Hwy/Route 20 Nights",
+        "artist": "The Wanderers",
+        "url": "https://spotify.com/track/mock_song_2",
+        "duration": "4:12",
+        "genre": "Indie Rock",
+        "album": "City Stories",
+        "reasoning": "\"Merge onto Ayalon Hwy/Route 20 Nights\" by The Wanderers is likely the best fit. While the other songs might be about the location, an indie rock song titled \"Nights\" suggests a mood and atmosphere that captures the experience of driving at night, which is a common experience on a highway. The genre also suggests a modern and relevant feel for a traveler."
+      },
+      "story": {
+        "title": "Architectural Heritage of Merge onto Ayalon Hwy/Route 20",
+        "content": "The architectural landscape of Merge onto Ayalon Hwy/Route 20 reflects centuries of cultural influences, from ancient structures to modern landmarks.",
+        "source": "Architecture Journal",
+        "url": "https://architecture.org/places/Merge%20onto%20Ayalon%20Hwy/Route%2020",
+        "period": "Multi-era",
+        "category": "Architecture",
+        "reasoning": "The Architectural Heritage story is the most engaging for travelers. It offers a tangible connection to the past, allowing visitors to physically experience history through the buildings and structures they see. It combines historical significance with visual appeal, is highly relevant to modern travelers interested in sightseeing, and offers a unique and fascinating perspective on the area's development. While the Founding Story provides context, and the Famous Figures story offers interesting personalities, the architecture story provides a more immediate and visually stimulating experience, making it the most compelling choice for a traveler."
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Merge onto Ayalon Hwy/Route 20 - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Merge onto Ayalon Hwy/Route 20, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Video 1, \"Exploring Merge onto Ayalon Hwy/Route 20 - Travel Guide,\" is the most suitable for travelers. It directly addresses the location with a travel guide format, promising information about attractions and hidden gems. The duration is within the preferred range, and the views indicate a decent level of engagement. While Video 3 has more views, its historical focus is less relevant for a traveler seeking practical information. Video 2, while visually appealing, may not offer enough practical information for a traveler."
+      },
+      "judge_reasoning": "Option 1, the video \"Exploring Merge onto Ayalon Hwy/Route 20 - Travel Guide,\" is the most suitable choice. While the other options offer potential, the video aligns best with the context of a traveler *merging onto* a highway. *   **Engagement Value:** Travel guide videos are designed to be engaging, visually stimulating, and informative, capturing the traveler's attention. *   **Relevance:** A travel guide specifically about the highway and surrounding area is directly relevant to the traveler's immediate location and journey. It can highlight key landmarks, potential points of interest, or even provide traffic updates. *   **Educational Value:** The video offers a comprehensive overview, potentially educating the traveler about the highway's history, significance, or nearby attractions. *   **Emotional Impact:** The video can create a sense of excitement and anticipation for the journey, and potentially inspire the traveler to explore the area further. *   **Practicality:** A video is easily consumable during a journey; the traveler can listen to the audio while driving or watch it during a break. Option 2, the song \"Merge onto Ayalon Hwy/Route 20 Nights,\" is less suitable. While music can enhance the travel experience, the song's relevance is indirect. It might set a mood, but it doesn't provide practical information or guidance about the highway itself. Option 3, \"Architectural Heritage of Merge onto Ayalon Hwy/Route 20,\" is also less ideal. While interesting, the story is not as immediately relevant to the act of merging onto the highway. The traveler is likely focused on the road and surroundings, not a deep dive into architectural history at that moment. The story is also less practical to consume while driving.",
+      "judge_score": 95,
+      "errors": []
+    },
+    {
+      "point_id": 3,
+      "address": "Continue straight to stay on Route 1",
+      "location": {
+        "lat": 31.8255081,
+        "lng": 35.00709190000001
+      },
+      "video": {
+        "title": "Exploring Continue straight to stay on Route 1 - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Continue straight to stay on Route 1, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Video 1, \"Exploring Continue straight to stay on Route 1 - Travel Guide,\" is the most suitable choice. It directly addresses the needs of a traveler by providing a comprehensive guide to attractions and hidden gems. The 10-minute duration is ideal for retaining viewer interest without being overly long. The high view count and channel reputation suggest good content quality. While the drone footage (Video 2) offers visual appeal, it lacks the practical information a traveler needs. The documentary (Video 3) is interesting, but may not be as immediately helpful for planning a trip."
+      },
+      "song": {
+        "title": "Streets of Continue straight to stay on Route 1",
+        "artist": "Local Artists Collective",
+        "url": "https://spotify.com/track/mock_song_1",
+        "duration": "3:45",
+        "genre": "Folk",
+        "album": "Sounds of Continue straight to stay on Route 1",
+        "reasoning": "Song 1, \"Streets of Continue straight to stay on Route 1\" by Local Artists Collective, is the most fitting. The title directly references the location, suggesting the lyrics will likely be about the place itself. Being a folk song by a local collective implies a potential for cultural authenticity and a mood that reflects the area."
+      },
+      "story": {
+        "title": "The Founding of Continue straight to stay on Route 1",
+        "content": "Continue straight to stay on Route 1 was established in the early centuries and has a rich history of cultural development. The area was known for its strategic importance and vibrant marketplace.",
+        "source": "Historical Archives",
+        "url": "https://wikipedia.org/wiki/Continue%20straight%20to%20stay%20on%20Route%201",
+        "period": "Historical",
+        "category": "Founding Story",
+        "reasoning": "Story 1, \"The Founding of Continue straight to stay on Route 1,\" offers the most compelling narrative for travelers. It establishes the area's origins, highlighting its strategic importance and vibrant marketplace. This provides a foundational understanding of the location's history, setting the stage for exploring its cultural development. It's a broad, foundational story that will likely be relevant to any traveler, offering a sense of place and historical context. The other stories, while interesting, are more specific and might not resonate as broadly."
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Continue straight to stay on Route 1 - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Continue straight to stay on Route 1, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Video 1, \"Exploring Continue straight to stay on Route 1 - Travel Guide,\" is the most suitable choice. It directly addresses the needs of a traveler by providing a comprehensive guide to attractions and hidden gems. The 10-minute duration is ideal for retaining viewer interest without being overly long. The high view count and channel reputation suggest good content quality. While the drone footage (Video 2) offers visual appeal, it lacks the practical information a traveler needs. The documentary (Video 3) is interesting, but may not be as immediately helpful for planning a trip."
+      },
+      "judge_reasoning": "Option 1, the video \"Exploring Continue straight to stay on Route 1 - Travel Guide,\" is the best choice for several reasons. First, it offers the most comprehensive and practical information for a traveler *while* they are traveling. A travel guide video, especially one showcasing attractions and hidden gems, directly addresses the traveler's needs at the moment. The duration (10:24) is manageable for consumption during a drive, offering a good balance of content without being overwhelming. The video format is also highly engaging, utilizing visuals to enhance the experience. The educational value is high, as it will likely provide context, history, and practical tips. The emotional impact will likely be positive, as it can build excitement and anticipation for the journey. While the location is vague, a travel guide is the most universally useful option. Options 2 and 3 are less practical for immediate use. The song is a nice-to-have, but less informative, and the story, while potentially interesting, might be better suited for a longer stop or read later.",
+      "judge_score": 95,
+      "errors": []
+    },
+    {
+      "point_id": 4,
+      "address": "Jerusalem, Israel",
+      "location": {
+        "lat": 31.776887,
+        "lng": 35.2224339
+      },
+      "video": {
+        "title": "Exploring Jerusalem, Israel - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Jerusalem, Israel, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Video 1, \"Exploring Jerusalem, Israel - Travel Guide,\" is the most suitable choice. It directly caters to travelers with a comprehensive guide to attractions and hidden gems, which is highly relevant. The video length is ideal (10:24), and the channel \"Travel Explorer\" suggests a focus on travel content. While Video 3 has more views, it's a documentary about history, which might be less immediately useful for planning a trip. Video 2, while visually appealing, lacks the practical information a traveler needs."
+      },
+      "song": {
+        "title": "Memories of Jerusalem, Israel",
+        "artist": "Traditional Ensemble",
+        "url": "https://spotify.com/track/mock_song_3",
+        "duration": "5:30",
+        "genre": "Traditional",
+        "album": "Heritage Collection",
+        "reasoning": "\"Memories of Jerusalem, Israel\" by the Traditional Ensemble is the most fitting choice. It likely offers the strongest cultural authenticity and lyrical relevance, given its genre (Traditional) and the title's direct reference to the location. The longer duration suggests a more immersive experience, and the genre is likely to evoke the historical and spiritual atmosphere of Jerusalem, making it ideal for a traveler seeking to connect with the city's heritage."
+      },
+      "story": {
+        "title": "Architectural Heritage of Jerusalem, Israel",
+        "content": "The architectural landscape of Jerusalem, Israel reflects centuries of cultural influences, from ancient structures to modern landmarks.",
+        "source": "Architecture Journal",
+        "url": "https://architecture.org/places/Jerusalem%2C%20Israel",
+        "period": "Multi-era",
+        "category": "Architecture",
+        "reasoning": "While all the stories offer interesting aspects of Jerusalem, \"Architectural Heritage of Jerusalem, Israel\" is the most engaging for a traveler. It directly relates to what a visitor will experience – the physical environment. The story promises a journey through time, showcasing the diverse cultural influences that have shaped the city's unique character. This offers a high level of relevance, educational value, and a strong \"wow\" factor as travelers explore the actual buildings and structures. The founding story is too broad, and the famous figures story, while interesting, is less directly tied to the immediate experience of being in Jerusalem."
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Jerusalem, Israel - Travel Guide",
+        "url": "https://youtube.com/watch?v=mock_video_1",
+        "description": "A comprehensive travel guide to Jerusalem, Israel, showcasing the best attractions and hidden gems.",
+        "duration": "10:24",
+        "views": "125K",
+        "channel": "Travel Explorer",
+        "reasoning": "Video 1, \"Exploring Jerusalem, Israel - Travel Guide,\" is the most suitable choice. It directly caters to travelers with a comprehensive guide to attractions and hidden gems, which is highly relevant. The video length is ideal (10:24), and the channel \"Travel Explorer\" suggests a focus on travel content. While Video 3 has more views, it's a documentary about history, which might be less immediately useful for planning a trip. Video 2, while visually appealing, lacks the practical information a traveler needs."
+      },
+      "judge_reasoning": " Option 1, the video \"Exploring Jerusalem, Israel - Travel Guide,\" is the most suitable choice for several compelling reasons: *   **Engagement Value:** Travel guide videos are inherently engaging for travelers. They visually showcase the location, offering a dynamic and captivating experience. The format allows for quick cuts, diverse visuals, and potentially interviews or voiceovers that keep the viewer interested. *   **Relevance:** The video's title and description directly address the location (\"Jerusalem, Israel\") and its purpose (\"Travel Guide\"). It promises to highlight attractions and hidden gems, which is exactly what a traveler needs to plan their exploration. *   **Educational Value:** A travel guide video inherently provides educational content. It will likely cover historical context, cultural insights, and practical information about the sites and experiences in Jerusalem. *   **Emotional Impact:** The video format can evoke a strong emotional connection. It can inspire excitement, anticipation, and a sense of wonder about the places to be visited. Visuals of the city, its people, and its culture can create a powerful emotional experience. *   **Practicality:** A 10-minute video is easily consumable during a journey. Travelers can watch it on their phones, tablets, or in their accommodation to plan their day or learn about a site before visiting. While the song (Option 2) could be evocative, it doesn't offer the same level of practical information or visual engagement. The story (Option 3) is informative, but it lacks the dynamic visual appeal and immediate relevance of a travel guide. The video strikes the best balance of engagement, relevance, education, emotional impact, and practicality for a traveler in Jerusalem.",
+      "judge_score": 95,
+      "errors": []
+    }
+  ],
+  "statistics": {
+    "total_waypoints": 5,
+    "content_type_distribution": {
+      "video": 5,
+      "song": 0,
+      "story": 0,
+      "error": 0
+    },
+    "average_judge_score": 95.0,
+    "total_errors": 0
+  }
+}

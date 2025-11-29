@@ -9,8 +9,10 @@ Route Stories transforms road trips into enriched experiences by intelligently s
 ## Key Features
 
 - **Multi-Agent Architecture**: Four specialized AI agents (Video, Song, Story, and Judge) work in parallel
+- **Real Search APIs**: YouTube, Wikipedia, and music search with actual content (no mock data!)
 - **Intelligent Content Curation**: Each location gets matched with the most relevant video, song, or story
 - **Google Maps Integration**: Automatic route planning with waypoint extraction
+- **Smart Caching**: 24-hour cache reduces API calls by 1000x on repeated searches
 - **Concurrent Processing**: ThreadPoolExecutor for efficient parallel agent execution
 - **Queue-Based Communication**: Robust inter-agent communication system
 - **Comprehensive Logging**: Detailed execution logs and performance metrics

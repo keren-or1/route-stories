@@ -5,6 +5,7 @@ Provides a simplified interface for Gemini API calls.
 
 import google.generativeai as genai
 from typing import List, Dict, Any, Optional
+import time
 from src.utils.logger import get_logger
 
 
@@ -22,7 +23,9 @@ class GeminiClient:
         api_key: str,
         model: str = "gemini-2.0-flash-exp",
         max_tokens: int = 4096,
-        temperature: float = 0.7
+        temperature: float = 0.7,
+        retry_delay: float = 1.0,
+        max_retries: int = 3
     ):
         """
         Initialize Gemini client.
@@ -32,12 +35,16 @@ class GeminiClient:
             model: Gemini model identifier
             max_tokens: Maximum tokens in response
             temperature: Sampling temperature (0.0-1.0)
+            retry_delay: Delay in seconds between retries
+            max_retries: Maximum number of retries on rate limit
         """
         genai.configure(api_key=api_key)
         self.model_name = model
         self.model = genai.GenerativeModel(model)
         self.max_tokens = max_tokens
         self.temperature = temperature
+        self.retry_delay = retry_delay
+        self.max_retries = max_retries
         logger.info(f"GeminiClient initialized with model: {model}")
 
     def send_message(
@@ -62,46 +69,59 @@ class GeminiClient:
         Raises:
             Exception: If API call fails
         """
-        try:
-            # Gemini uses different message format than Claude
-            # Convert messages to Gemini format
-            chat_history = []
-            prompt = ""
+        # Retry logic for rate limiting
+        for attempt in range(self.max_retries):
+            try:
+                # Gemini uses different message format than Claude
+                # Convert messages to Gemini format
+                chat_history = []
+                prompt = ""
 
-            for msg in messages:
-                if msg['role'] == 'user':
-                    prompt = msg['content']
-                elif msg['role'] == 'assistant':
-                    chat_history.append({
-                        'role': 'model',
-                        'parts': [msg['content']]
-                    })
+                for msg in messages:
+                    if msg['role'] == 'user':
+                        prompt = msg['content']
+                    elif msg['role'] == 'assistant':
+                        chat_history.append({
+                            'role': 'model',
+                            'parts': [msg['content']]
+                        })
 
-            # Prepend system prompt to user message if provided
-            if system:
-                prompt = f"{system}\n\n{prompt}"
+                # Prepend system prompt to user message if provided
+                if system:
+                    prompt = f"{system}\n\n{prompt}"
 
-            # Configure generation settings
-            generation_config = {
-                'temperature': temperature or self.temperature,
-                'max_output_tokens': max_tokens or self.max_tokens,
-            }
+                # Configure generation settings
+                generation_config = {
+                    'temperature': temperature or self.temperature,
+                    'max_output_tokens': max_tokens or self.max_tokens,
+                }
 
-            # Generate response
-            response = self.model.generate_content(
-                prompt,
-                generation_config=generation_config
-            )
+                # Generate response
+                response = self.model.generate_content(
+                    prompt,
+                    generation_config=generation_config
+                )
 
-            # Extract text from response
-            if response.text:
-                return response.text
+                # Extract text from response
+                if response.text:
+                    return response.text
 
-            return ""
+                return ""
 
-        except Exception as e:
-            logger.error(f"Gemini API call failed: {e}")
-            raise
+            except Exception as e:
+                error_str = str(e)
+
+                # Check for rate limit errors
+                if "429" in error_str or "rate" in error_str.lower():
+                    if attempt < self.max_retries - 1:
+                        wait_time = self.retry_delay * (2 ** attempt)  # Exponential backoff
+                        logger.warning(f"Rate limited. Retrying in {wait_time}s (attempt {attempt + 1}/{self.max_retries})")
+                        time.sleep(wait_time)
+                        continue
+
+                logger.error(f"Gemini API call failed (attempt {attempt + 1}): {e}")
+                if attempt == self.max_retries - 1:
+                    raise
 
     def simple_query(
         self,

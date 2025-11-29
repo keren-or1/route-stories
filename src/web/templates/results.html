@@ -153,7 +153,10 @@ function createWaypointCard(waypoint, index) {
                         <span>${icon}</span>
                         Selected: ${chosenType.toUpperCase()}
                     </span>
-                    ${waypoint.judge_score ? `<span class="score-badge">${waypoint.judge_score}/100</span>` : ''}
+                    <div style="display: flex; gap: 0.5rem;">
+                        ${chosenContent.relevance_score ? `<span class="relevance-badge">Relevance: ${chosenContent.relevance_score}%</span>` : ''}
+                        ${waypoint.judge_score ? `<span class="score-badge">Judge: ${waypoint.judge_score}/100</span>` : ''}
+                    </div>
                 </div>
 
                 <div class="content-details">

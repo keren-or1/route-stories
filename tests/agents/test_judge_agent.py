@@ -18,123 +18,190 @@ class TestJudgeAgent:
         assert agent.agent_type == "judge"
         assert agent.gemini == mock_gemini_client
 
-    def test_execute_with_all_options(self, mock_gemini_client, sample_agent_task, sample_agent_result):
+    def test_execute_with_all_options(self, mock_gemini_client, sample_agent_task):
         """Test judge evaluation with all three content types."""
-        # Mock three content options
-        video_result = sample_agent_result
-        video_result.agent_type = 'video'
-        video_result.content = {'selected': {'title': 'Test Video'}}
+        from src.utils.queue_manager import AgentResult
+        from datetime import datetime
 
-        song_result = sample_agent_result
-        song_result.agent_type = 'song'
-        song_result.content = {'selected': {'title': 'Test Song'}}
+        # Create three content results
+        video_result = AgentResult(
+            route_id=sample_agent_task.route_id,
+            point_id=sample_agent_task.point_id,
+            agent_type='video',
+            content={'selected': {'title': 'Test Video', 'duration': '10:00', 'channel': 'Test'}},
+            timestamp=datetime.now(),
+            error=None
+        )
 
-        story_result = sample_agent_result
-        story_result.agent_type = 'story'
-        story_result.content = {'selected': {'title': 'Test Story'}}
+        song_result = AgentResult(
+            route_id=sample_agent_task.route_id,
+            point_id=sample_agent_task.point_id,
+            agent_type='song',
+            content={'selected': {'title': 'Test Song', 'artist': 'Test', 'genre': 'Pop'}},
+            timestamp=datetime.now(),
+            error=None
+        )
 
-        results = [video_result, song_result, story_result]
+        story_result = AgentResult(
+            route_id=sample_agent_task.route_id,
+            point_id=sample_agent_task.point_id,
+            agent_type='story',
+            content={'selected': {'title': 'Test Story', 'content': 'Story text', 'period': 'Modern'}},
+            timestamp=datetime.now(),
+            error=None
+        )
 
-        mock_gemini_client.structured_query.return_value = {
-            'selected': 'video',
-            'reasoning': 'Most visually engaging',
-            'scores': {'video': 9.0, 'song': 7.5, 'story': 8.0},
-            'confidence': 85
-        }
+        # Mock Gemini response
+        mock_gemini_client.simple_query.return_value = "CHOICE: 1\nSCORE: 85\nREASONING: Most visually engaging"
 
         agent = JudgeAgent(mock_gemini_client)
 
         # Create task with context containing results
         task = sample_agent_task
-        task.context = {'agent_results': results}
+        task.context = {'content_results': {
+            'video': video_result,
+            'song': song_result,
+            'story': story_result
+        }}
 
         result = agent.execute(task)
 
         # Verify Gemini was called
-        mock_gemini_client.structured_query.assert_called_once()
+        mock_gemini_client.simple_query.assert_called_once()
 
         # Verify result structure
         assert result.agent_type == "judge"
         assert result.error is None
-        assert 'decision' in result.content
-        assert result.content['decision']['selected'] == 'video'
-        assert 'reasoning' in result.content['decision']
-        assert 'scores' in result.content['decision']
+        assert 'chosen_type' in result.content
+        assert result.content['chosen_type'] == 'video'
+        assert 'reasoning' in result.content
+        assert 'score' in result.content
 
-    def test_execute_missing_content_option(self, mock_gemini_client, sample_agent_task, sample_agent_result):
+    def test_execute_missing_content_option(self, mock_gemini_client, sample_agent_task):
         """Test judge handling when one content type is missing."""
+        from src.utils.queue_manager import AgentResult
+        from datetime import datetime
+
         # Only provide video and song, no story
-        video_result = sample_agent_result
-        video_result.agent_type = 'video'
+        video_result = AgentResult(
+            route_id=sample_agent_task.route_id,
+            point_id=sample_agent_task.point_id,
+            agent_type='video',
+            content={'selected': {'title': 'Test Video'}},
+            timestamp=datetime.now(),
+            error=None
+        )
 
-        song_result = sample_agent_result
-        song_result.agent_type = 'song'
+        song_result = AgentResult(
+            route_id=sample_agent_task.route_id,
+            point_id=sample_agent_task.point_id,
+            agent_type='song',
+            content={'selected': {'title': 'Test Song'}},
+            timestamp=datetime.now(),
+            error=None
+        )
 
-        results = [video_result, song_result]
-
-        mock_gemini_client.structured_query.return_value = {
-            'selected': 'video',
-            'reasoning': 'Best of available options',
-            'scores': {'video': 8.0, 'song': 7.0},
-            'confidence': 75
-        }
+        mock_gemini_client.simple_query.return_value = "CHOICE: 1\nSCORE: 75\nREASONING: Best of available options"
 
         agent = JudgeAgent(mock_gemini_client)
 
         task = sample_agent_task
-        task.context = {'agent_results': results}
+        task.context = {'content_results': {
+            'video': video_result,
+            'song': song_result
+        }}
 
         result = agent.execute(task)
 
         # Should still work with partial results
         assert result.error is None
-        assert 'decision' in result.content
+        assert 'chosen_type' in result.content
 
-    def test_execute_with_error_results(self, mock_gemini_client, sample_agent_task, sample_error_result):
+    def test_execute_with_error_results(self, mock_gemini_client, sample_agent_task):
         """Test judge handling error results from content agents."""
+        from src.utils.queue_manager import AgentResult
+        from datetime import datetime
+
         # All agents returned errors
-        video_error = sample_error_result
-        video_error.agent_type = 'video'
+        video_error = AgentResult(
+            route_id=sample_agent_task.route_id,
+            point_id=sample_agent_task.point_id,
+            agent_type='video',
+            content={},
+            timestamp=datetime.now(),
+            error='Video search failed'
+        )
 
-        song_error = sample_error_result
-        song_error.agent_type = 'song'
+        song_error = AgentResult(
+            route_id=sample_agent_task.route_id,
+            point_id=sample_agent_task.point_id,
+            agent_type='song',
+            content={},
+            timestamp=datetime.now(),
+            error='Song search failed'
+        )
 
-        story_error = sample_error_result
-        story_error.agent_type = 'story'
-
-        results = [video_error, song_error, story_error]
+        story_error = AgentResult(
+            route_id=sample_agent_task.route_id,
+            point_id=sample_agent_task.point_id,
+            agent_type='story',
+            content={},
+            timestamp=datetime.now(),
+            error='Story search failed'
+        )
 
         agent = JudgeAgent(mock_gemini_client)
 
         task = sample_agent_task
-        task.context = {'agent_results': results}
+        task.context = {'content_results': {
+            'video': video_error,
+            'song': song_error,
+            'story': story_error
+        }}
 
         result = agent.execute(task)
 
         # Should return error when no valid content available
         assert result.error is not None
-        assert "No valid content" in result.error or "all agents failed" in result.error.lower()
+        assert "No valid options" in result.error or "No valid content" in result.error
 
-    def test_execute_claude_failure(self, mock_gemini_client, sample_agent_task, sample_agent_result):
+    def test_execute_claude_failure(self, mock_gemini_client, sample_agent_task):
         """Test fallback when Gemini API fails."""
-        video_result = sample_agent_result
-        video_result.agent_type = 'video'
+        from src.utils.queue_manager import AgentResult
+        from datetime import datetime
 
-        song_result = sample_agent_result
-        song_result.agent_type = 'song'
+        video_result = AgentResult(
+            route_id=sample_agent_task.route_id,
+            point_id=sample_agent_task.point_id,
+            agent_type='video',
+            content={'selected': {'title': 'Test Video'}},
+            timestamp=datetime.now(),
+            error=None
+        )
 
-        results = [video_result, song_result]
+        song_result = AgentResult(
+            route_id=sample_agent_task.route_id,
+            point_id=sample_agent_task.point_id,
+            agent_type='song',
+            content={'selected': {'title': 'Test Song'}},
+            timestamp=datetime.now(),
+            error=None
+        )
 
         # Simulate Gemini failure
-        mock_gemini_client.structured_query.side_effect = Exception("API Error")
+        mock_gemini_client.simple_query.side_effect = Exception("API Error")
 
         agent = JudgeAgent(mock_gemini_client)
 
         task = sample_agent_task
-        task.context = {'agent_results': results}
+        task.context = {'content_results': {
+            'video': video_result,
+            'song': song_result
+        }}
 
         result = agent.execute(task)
 
-        # Should return error result
-        assert result.error is not None
-        assert "API Error" in result.error or "failed" in result.error.lower()
+        # Should still return a result with fallback logic
+        assert result.error is None  # Fallback should make it succeed
+        assert 'chosen_type' in result.content
+        assert result.content['reasoning'] == "Default selection (Gemini unavailable)"

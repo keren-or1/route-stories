@@ -202,26 +202,59 @@ class GoogleMapsService:
     def _get_step_address(self, step: Dict[str, Any]) -> str:
         """
         Extract meaningful address from a route step.
+        Filters out trivial turn-by-turn directions and focuses on landmarks.
 
         Args:
             step: Step dictionary from Google Maps API
 
         Returns:
-            Address string or HTML instructions stripped
+            Address string or meaningful location name
         """
+        import re
+
+        # List of trivial direction keywords to filter out
+        trivial_keywords = [
+            'head', 'turn', 'continue', 'bear', 'go', 'keep', 'merge',
+            'enter', 'exit', 'take', 'make', 'slight', 'sharp', 'right', 'left'
+        ]
+
         # Try to extract from HTML instructions
         if 'html_instructions' in step:
-            import re
             html = step['html_instructions']
             # Remove HTML tags
             text = re.sub(r'<[^>]+>', '', html)
-            # Extract street names or landmarks
-            if 'onto' in text or 'on' in text:
-                return text
 
-        # Fallback: use coordinates
+            # Check if this is a trivial direction (starts with direction verb)
+            text_lower = text.lower().strip()
+            starts_with_direction = False
+            for keyword in trivial_keywords:
+                if text_lower.startswith(keyword):
+                    starts_with_direction = True
+                    break
+
+            # If it's NOT a trivial direction, it might be useful
+            if not starts_with_direction and len(text) > 3:
+                # Extract meaningful parts (e.g., street/location names)
+                if any(marker in text for marker in ['onto', 'at', 'via', 'towards']):
+                    return text
+
+        # For trivial directions, try reverse geocoding to get proper location name
+        try:
+            loc = step['end_location']
+            address = self.reverse_geocode(loc['lat'], loc['lng'])
+            if address:
+                # Extract just the main location (not full address)
+                parts = address.split(',')
+                # Return a meaningful part (usually not the full address)
+                if len(parts) >= 2:
+                    return parts[0] + ', ' + parts[1]  # e.g., "Street Name, City"
+                return parts[0]
+        except:
+            pass
+
+        # Fallback: use coordinates with city/area info if available
         loc = step['end_location']
-        return f"{loc['lat']:.6f}, {loc['lng']:.6f}"
+        return f"Location ({loc['lat']:.4f}, {loc['lng']:.4f})"
 
     def geocode_address(self, address: str) -> Optional[Tuple[float, float]]:
         """
