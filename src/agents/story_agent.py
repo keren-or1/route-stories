@@ -181,20 +181,45 @@ REASONING: [one sentence on why this story deepens understanding of the location
                 'how to turn off',
                 'google maps help',
                 'google support',
+                'google account help',
                 'android settings',
                 'iphone settings',
                 'app settings',
                 'technical support',
                 'troubleshoot',
+                'manage location permissions',
+                'manage permissions',
+                'enable location',
+                'disable location',
+                'location services',
+                'privacy settings',
+                'app permissions',
             ]
 
             is_irrelevant_help = any(pattern in content for pattern in irrelevant_help_patterns)
+
+            # Also reject if it's clearly a help/settings article based on title patterns
+            help_title_patterns = [
+                'google',
+                'how to',
+                'manage',
+                'settings',
+                'permissions',
+                'enable',
+                'disable',
+                'turn',
+                'stop',
+            ]
+            is_help_title = all(pattern in title for pattern in ['google', 'help']) or \
+                           any(pattern in title for pattern in help_title_patterns) and \
+                           location_lower not in title
+
             is_about_google_product_not_location = (
-                any(keyword in content for keyword in ['google maps', 'google help', 'app feature', 'phone settings']) and
+                any(keyword in content for keyword in ['google maps', 'google help', 'app feature', 'phone settings', 'google account']) and
                 location_lower not in content[:300]
             )
 
-            if is_irrelevant_help or is_about_google_product_not_location:
+            if is_irrelevant_help or is_about_google_product_not_location or is_help_title:
                 self.logger.debug(f"Filtering out irrelevant article: {title[:50]}")
                 continue  # Skip this story entirely
 
