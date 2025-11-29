@@ -202,7 +202,7 @@ class GoogleMapsService:
     def _get_step_address(self, step: Dict[str, Any]) -> str:
         """
         Extract meaningful address from a route step.
-        Filters out trivial turn-by-turn directions and focuses on landmarks.
+        Filters out trivial turn-by-turn directions and focuses on meaningful locations.
 
         Args:
             step: Step dictionary from Google Maps API
@@ -218,41 +218,42 @@ class GoogleMapsService:
             'enter', 'exit', 'take', 'make', 'slight', 'sharp', 'right', 'left'
         ]
 
-        # Try to extract from HTML instructions
+        # Try to extract from HTML instructions, but SKIP all turn-by-turn directions
         if 'html_instructions' in step:
             html = step['html_instructions']
             # Remove HTML tags
             text = re.sub(r'<[^>]+>', '', html)
+            text_lower = text.lower().strip()
 
             # Check if this is a trivial direction (starts with direction verb)
-            text_lower = text.lower().strip()
-            starts_with_direction = False
-            for keyword in trivial_keywords:
-                if text_lower.startswith(keyword):
-                    starts_with_direction = True
-                    break
+            starts_with_direction = any(
+                text_lower.startswith(keyword) for keyword in trivial_keywords
+            )
 
-            # If it's NOT a trivial direction, it might be useful
+            # Only use the instruction if it's NOT a direction and has meaningful length
             if not starts_with_direction and len(text) > 3:
-                # Extract meaningful parts (e.g., street/location names)
-                if any(marker in text for marker in ['onto', 'at', 'via', 'towards']):
-                    return text
+                # Additional check: only use if it mentions actual places/landmarks
+                # (not just roads, highways, etc.)
+                return text
 
-        # For trivial directions, try reverse geocoding to get proper location name
+        # For trivial directions or no instructions, use reverse geocoding to get actual location
         try:
             loc = step['end_location']
             address = self.reverse_geocode(loc['lat'], loc['lng'])
             if address:
                 # Extract just the main location (not full address)
                 parts = address.split(',')
-                # Return a meaningful part (usually not the full address)
+                # Prefer city/area name over street addresses
                 if len(parts) >= 2:
-                    return parts[0] + ', ' + parts[1]  # e.g., "Street Name, City"
-                return parts[0]
-        except:
+                    # Try to get meaningful location (city, area, landmark)
+                    return parts[0].strip() + ', ' + parts[1].strip()
+                if parts[0].strip():
+                    return parts[0].strip()
+        except Exception as e:
+            self.logger.debug(f"Reverse geocoding failed: {e}")
             pass
 
-        # Fallback: use coordinates with city/area info if available
+        # Fallback: use coordinates (better than bogus instructions)
         loc = step['end_location']
         return f"Location ({loc['lat']:.4f}, {loc['lng']:.4f})"
 
