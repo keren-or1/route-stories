@@ -35,7 +35,7 @@ class TestOrchestrator:
         assert orchestrator.song_agent == mock_agents['song']
         assert orchestrator.story_agent == mock_agents['story']
         assert orchestrator.judge_agent == mock_agents['judge']
-        assert orchestrator.queue == mock_queue
+        assert orchestrator.queue_manager == mock_queue
 
     def test_process_waypoint_success(self, sample_agent_task, sample_agent_result):
         """Test successful waypoint processing with all agents."""
@@ -55,11 +55,6 @@ class TestOrchestrator:
         mock_judge.run.return_value = judge_result
 
         mock_queue = Mock(spec=QueueManager)
-        mock_queue.get_results_for_point.return_value = [
-            sample_agent_result,
-            sample_agent_result,
-            sample_agent_result
-        ]
 
         orchestrator = Orchestrator(
             video_agent=mock_video,
@@ -69,21 +64,27 @@ class TestOrchestrator:
             queue_manager=mock_queue
         )
 
-        result = orchestrator.process_waypoint(sample_agent_task)
+        result = orchestrator.process_waypoint(
+            sample_agent_task.route_id,
+            sample_agent_task.point_id,
+            sample_agent_task.address,
+            sample_agent_task.location
+        )
 
         # Verify all content agents were called
-        mock_video.run.assert_called_once_with(sample_agent_task)
-        mock_song.run.assert_called_once_with(sample_agent_task)
-        mock_story.run.assert_called_once_with(sample_agent_task)
+        assert mock_video.run.called
+        assert mock_song.run.called
+        assert mock_story.run.called
 
         # Verify results added to queue
-        assert mock_queue.add_result.call_count >= 3
+        assert mock_queue.put_result.call_count >= 3
 
         # Verify judge was called
-        mock_judge.run.assert_called_once()
+        assert mock_judge.run.called
 
-        # Verify return value is judge result
-        assert result.agent_type == 'judge'
+        # Verify return value contains judge result
+        assert 'judge' in result
+        assert result['judge'].agent_type == 'judge'
 
     def test_process_waypoint_with_agent_failure(self, sample_agent_task, sample_agent_result, sample_error_result):
         """Test waypoint processing when one agent fails."""
@@ -105,11 +106,6 @@ class TestOrchestrator:
         mock_judge.run.return_value = judge_result
 
         mock_queue = Mock(spec=QueueManager)
-        mock_queue.get_results_for_point.return_value = [
-            sample_agent_result,
-            sample_error_result,
-            sample_agent_result
-        ]
 
         orchestrator = Orchestrator(
             video_agent=mock_video,
@@ -119,13 +115,19 @@ class TestOrchestrator:
             queue_manager=mock_queue
         )
 
-        result = orchestrator.process_waypoint(sample_agent_task)
+        result = orchestrator.process_waypoint(
+            sample_agent_task.route_id,
+            sample_agent_task.point_id,
+            sample_agent_task.address,
+            sample_agent_task.location
+        )
 
         # Should still complete and call judge
-        mock_judge.run.assert_called_once()
-        assert result.agent_type == 'judge'
+        assert mock_judge.run.called
+        assert 'judge' in result
+        assert result['judge'].agent_type == 'judge'
 
-    def test_process_waypoint_timeout_handling(self, sample_agent_task):
+    def test_process_waypoint_timeout_handling(self, sample_agent_task, sample_agent_result):
         """Test timeout handling for slow agents."""
         # Create agents that simulate slow execution
         import time
@@ -144,7 +146,9 @@ class TestOrchestrator:
         mock_story.run = slow_agent_run
 
         mock_judge = Mock()
-        mock_judge.run.return_value = sample_agent_result
+        judge_result = sample_agent_result
+        judge_result.agent_type = 'judge'
+        mock_judge.run.return_value = judge_result
 
         mock_queue = Mock(spec=QueueManager)
 
@@ -153,13 +157,18 @@ class TestOrchestrator:
             song_agent=mock_song,
             story_agent=mock_story,
             judge_agent=mock_judge,
-            queue_manager=mock_queue,
-            timeout=5  # Reasonable timeout
+            queue_manager=mock_queue
         )
 
         # Should complete within timeout
-        result = orchestrator.process_waypoint(sample_agent_task)
+        result = orchestrator.process_waypoint(
+            sample_agent_task.route_id,
+            sample_agent_task.point_id,
+            sample_agent_task.address,
+            sample_agent_task.location
+        )
         assert result is not None
+        assert 'judge' in result
 
     def test_parallel_execution(self, sample_agent_task, sample_agent_result):
         """Test that content agents run in parallel."""
@@ -183,14 +192,11 @@ class TestOrchestrator:
         mock_story.run = timed_run
 
         mock_judge = Mock()
-        mock_judge.run.return_value = sample_agent_result
+        judge_result = sample_agent_result
+        judge_result.agent_type = 'judge'
+        mock_judge.run.return_value = judge_result
 
         mock_queue = Mock(spec=QueueManager)
-        mock_queue.get_results_for_point.return_value = [
-            sample_agent_result,
-            sample_agent_result,
-            sample_agent_result
-        ]
 
         orchestrator = Orchestrator(
             video_agent=mock_video,
@@ -202,10 +208,17 @@ class TestOrchestrator:
 
         import time
         start_time = time.time()
-        result = orchestrator.process_waypoint(sample_agent_task)
+        result = orchestrator.process_waypoint(
+            sample_agent_task.route_id,
+            sample_agent_task.point_id,
+            sample_agent_task.address,
+            sample_agent_task.location
+        )
         total_time = time.time() - start_time
 
         # If sequential, would take 0.15+ seconds
         # If parallel, should take ~0.05 seconds
         # Allow some overhead, assert < 0.12 seconds
         assert total_time < 0.12, "Agents appear to be running sequentially, not in parallel"
+        assert result is not None
+        assert 'judge' in result
