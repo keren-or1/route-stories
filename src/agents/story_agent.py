@@ -175,6 +175,29 @@ REASONING: [one sentence on why this story deepens understanding of the location
             period = story.get('period', '')
             category = story.get('category', '').lower()
 
+            # Filter: Reject Google/tech product help articles (not location-relevant)
+            irrelevant_help_patterns = [
+                'how to stop sharing',
+                'how to turn off',
+                'google maps help',
+                'google support',
+                'android settings',
+                'iphone settings',
+                'app settings',
+                'technical support',
+                'troubleshoot',
+            ]
+
+            is_irrelevant_help = any(pattern in content for pattern in irrelevant_help_patterns)
+            is_about_google_product_not_location = (
+                any(keyword in content for keyword in ['google maps', 'google help', 'app feature', 'phone settings']) and
+                location_lower not in content[:300]
+            )
+
+            if is_irrelevant_help or is_about_google_product_not_location:
+                self.logger.debug(f"Filtering out irrelevant article: {title[:50]}")
+                continue  # Skip this story entirely
+
             # Initialize score
             score = 50  # Base score
 
