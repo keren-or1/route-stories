@@ -66,25 +66,9 @@ Longer timeouts increase success rate but may waste time on failing requests.
 | 90 | 98% | 27.1s | 2% | Minimal improvement |
 | 120 | 99% | 28.4s | 1% | Diminishing returns |
 
-### 2.4 Visualization (ASCII Chart)
+### 2.4 Visualization
 
-```
-Success Rate vs Timeout
-100% │                     ┌──────┬──────
- 95% │               ┌─────┘
- 90% │         ┌─────┘
- 85% │         │
- 80% │         │
- 75% │    ┌────┘
- 70% │    │
- 65% │    │
- 60% │    │
- 55% │    │
- 50% │   ─┘
- 45% │  ─┘
-     └────┴────┴────┴────┴────┴────────
-       15  30  45  60  90  120 (seconds)
-```
+![Timeout Analysis](../analysis/timeout_analysis.png)
 
 ### 2.5 Analysis
 
@@ -127,22 +111,7 @@ Lower temperature increases decision consistency but may reduce creativity.
 
 ### 3.4 Visualization
 
-```
-Decision Consistency vs Temperature
-100% │  ■
- 95% │  │  ■
- 90% │  │  │  ■
- 85% │  │  │  │
- 80% │  │  │  │  ■
- 75% │  │  │  │  │  ■
- 70% │  │  │  │  │  │
- 65% │  │  │  │  │  │  ■
- 60% │  │  │  │  │  │  │
- 55% │  │  │  │  │  │  │
- 50% │  │  │  │  │  │  │  ■
-     └──┴──┴──┴──┴──┴──┴──────
-      0.0 0.2 0.4 0.6 0.8 1.0
-```
+![Temperature Analysis](../analysis/temperature_analysis.png)
 
 ### 3.5 Analysis
 
@@ -186,28 +155,7 @@ More search results give better choices but increase processing time and cost.
 
 ### 4.4 Visualization
 
-```
-Quality vs Number of Search Results
- 10 │
-  9 │              ┌────────────────
-  8 │         ┌────┘
-  7 │    ┌────┘
-  6 │   ─┘
-  5 │
-  4 │
-     └────┴────┴────┴────┴────────
-       1   3   5   7   10 (results)
-
-Time vs Number of Search Results (seconds)
- 32 │                        ┌──
- 28 │                   ┌────┘
- 24 │              ┌────┘
- 20 │         ┌────┘
- 16 │   ┌─────┘
- 12 │
-     └────┴────┴────┴────┴────────
-       1   3   5   7   10 (results)
-```
+![Search Results Analysis](../analysis/search_results_analysis.png)
 
 ### 4.5 Analysis
 
@@ -247,25 +195,7 @@ Parallel execution significantly reduces total processing time.
 
 ### 5.4 Visualization
 
-```
-Time Comparison: Sequential vs Parallel
-
-Sequential (42.3s per waypoint)
-Video  │████████████│ 12s
-Song   │████████████│ 11s
-Story  │█████████████████│ 15s
-Judge  │█████│ 4s
-       └──────────────────────────
-       0s                        42s
-
-Parallel (14.8s per waypoint)
-Video  │████████████│
-Song   │████████████│  } Parallel
-Story  │█████████████████│         (15s)
-Judge         │█████│ 4s
-       └──────────────────────────
-       0s                        20s
-```
+![Execution Mode Comparison](../analysis/execution_mode_comparison.png)
 
 ### 5.5 Analysis
 
@@ -378,6 +308,16 @@ Parameters ranked by impact on system performance:
 3. **Max Search Results**: Moderate impact on quality and cost
 4. **Claude Temperature**: Low impact on consistency
 5. **Judge Criteria Weights**: Low impact on distribution
+
+### 7.4 Visualizations
+
+**Performance Radar Chart:**
+
+![Performance Radar](../analysis/performance_radar.png)
+
+**Parameter Sensitivity Heatmap:**
+
+![Sensitivity Heatmap](../analysis/sensitivity_heatmap.png)
 
 ---
 
