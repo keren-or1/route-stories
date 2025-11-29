@@ -1,0 +1,244 @@
+{
+  "route_id": "c1c58356-b4f2-44a9-b27a-04f7251b2725",
+  "total_waypoints": 5,
+  "waypoints": [
+    {
+      "point_id": 0,
+      "address": "Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.0852981,
+        "lng": 34.7817571
+      },
+      "video": {
+        "title": "Tel Aviv (Israel) Beach Vacation Travel Video Guide",
+        "url": "https://youtube.com/watch?v=LRVOFp2cOPk",
+        "description": "",
+        "duration": "25:24",
+        "views": "147K",
+        "channel": "Expoza Travel",
+        "reasoning": "Video 2, \"Tel Aviv (Israel) Beach Vacation Travel Video Guide,\" is the most relevant because it focuses specifically on Tel Aviv, offering valuable information for a visitor, and its length is appropriate for a travel guide.",
+        "relevance_score": 85
+      },
+      "song": {
+        "title": "Omer Adam feat. Arisa - Tel Aviv עומר אדם עם אריסה - תל אביב",
+        "artist": "עומר אדם - הערוץ הרשמי",
+        "url": "https://youtube.com/watch?v=nMQw29nfzpg",
+        "duration": "3:41",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "\"Tel Aviv\" by Omer Adam feat. Arisa is the most fitting choice as it directly references the city, likely captures the local sound, and offers a mainstream appeal, enhancing the traveler's immersion in the Tel Aviv experience.",
+        "relevance_score": 95
+      },
+      "story": {
+        "title": "Etymology and origins",
+        "content": "Tel Aviv is the Hebrew title of Theodor Herzl's 1902 novel Altneuland (\"Old New Land\"), as translated from German by Nahum Sokolow. Sokolow had adopted the name of a Mesopotamian site near the city of Babylon mentioned in Ezekiel: \"Then I came to them of the captivity at Tel Abib [Tel Aviv], that lived by the river Chebar, and to where they lived; and I sat there overwhelmed among them seven days....",
+        "source": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Tel_Aviv#Etymology_and_origins",
+        "period": "Historical",
+        "category": "Etymology and origins",
+        "reasoning": "Understanding the etymology of \"Tel Aviv\" and its connection to Herzl's vision provides a powerful insight into the city's foundational ideals and its aspirations for a \"New Land.\"",
+        "relevance_score": 95
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Tel Aviv (Israel) Beach Vacation Travel Video Guide",
+        "url": "https://youtube.com/watch?v=LRVOFp2cOPk",
+        "description": "",
+        "duration": "25:24",
+        "views": "147K",
+        "channel": "Expoza Travel",
+        "reasoning": "Video 2, \"Tel Aviv (Israel) Beach Vacation Travel Video Guide,\" is the most relevant because it focuses specifically on Tel Aviv, offering valuable information for a visitor, and its length is appropriate for a travel guide.",
+        "relevance_score": 85
+      },
+      "judge_reasoning": "Option 1, the video \"Tel Aviv (Israel) Beach Vacation Travel Video Guide,\" is the best choice for several reasons: *   **Engagement Value:** Travel videos are inherently engaging. They offer a visual and auditory experience, showcasing the sights and sounds of Tel Aviv. The video format is easily digestible while traveling. *   **Relevance:** The video's title directly addresses the location (Tel Aviv) and a key aspect of the city's appeal: its beaches. This ensures high relevance to the traveler's experience. *   **Educational Value:** Travel videos often provide information about attractions, activities, and local culture, offering insights into the city. While the specific educational content is unknown without viewing the video, the format allows for easy integration of such information. *   **Emotional Impact:** Videos can evoke a strong emotional response by showcasing the beauty and vibrancy of a place. The beach vacation theme likely aims to create a sense of excitement and relaxation. *   **Practicality:** The video format is highly practical for travelers. It can be watched on a phone or tablet while on the go, during downtime, or as inspiration for planning activities. The other options are less suitable: *   **Option 2 (Song):** While the song might be catchy and represent the city's vibe, it offers limited information about Tel Aviv itself. It's a less comprehensive experience and might not be as relevant for a first-time visitor. *   **Option 3 (Story):** The etymology story is interesting but very specific. While it provides historical context, it's not as broadly appealing or representative of the overall Tel Aviv experience as a beach vacation video. It also might be less engaging for a traveler looking for immediate impressions of the city. The story is also less practical to consume while traveling compared to a video.",
+      "judge_score": 95,
+      "errors": []
+    },
+    {
+      "point_id": 1,
+      "address": "Location (32.0982, 34.7836)",
+      "location": {
+        "lat": 32.0982206,
+        "lng": 34.7835762
+      },
+      "video": null,
+      "song": null,
+      "story": {
+        "title": "Share your real-time location with others in Google Maps",
+        "content": "Stop sharing your location in Google Maps On your Android phone or tablet, open the Google Maps app . Tap your profile picture or initial Location sharing. Tap the profile of the person you …",
+        "source": "Web Search",
+        "url": "https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform=Android",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are about Google Maps functionality and do not relate to the history, culture, or any meaningful aspect of the location (32.0982, 34.7836), which is Tel Aviv, Israel.",
+        "relevance_score": 0
+      },
+      "chosen_type": "story",
+      "chosen_content": {
+        "title": "Share your real-time location with others in Google Maps",
+        "content": "Stop sharing your location in Google Maps On your Android phone or tablet, open the Google Maps app . Tap your profile picture or initial Location sharing. Tap the profile of the person you …",
+        "source": "Web Search",
+        "url": "https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform=Android",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are about Google Maps functionality and do not relate to the history, culture, or any meaningful aspect of the location (32.0982, 34.7836), which is Tel Aviv, Israel.",
+        "relevance_score": 0
+      },
+      "judge_reasoning": "Option 1, the story about sharing your location in Google Maps, is completely irrelevant to a geographical location. It's a generic instruction on using a Google Maps feature. It has no engagement value, no relevance to the location (32.0982, 34.7836), no educational value about the place, and no emotional impact. It's also not particularly practical in the context of a travel experience. Therefore, it's a very poor choice.",
+      "judge_score": 10,
+      "errors": [
+        "video: No videos found",
+        "song: No music found"
+      ]
+    },
+    {
+      "point_id": 2,
+      "address": "Location (32.1016, 34.8016)",
+      "location": {
+        "lat": 32.101568,
+        "lng": 34.8016382
+      },
+      "video": {
+        "title": "F1 23 Las Vegas *World Record* 1:29.796 | Lucas Blakeley",
+        "url": "https://youtube.com/watch?v=8P6eQ4a_13E",
+        "description": "",
+        "duration": "1:32",
+        "views": "286K",
+        "channel": "Lucas Blakeley",
+        "reasoning": "The provided video is about a Formula 1 racing game in Las Vegas and is completely irrelevant to the specified location (32.1016, 34.8016), which is in Israel.",
+        "relevance_score": 0
+      },
+      "song": {
+        "title": "Los Cambios",
+        "artist": "Los Deltonos",
+        "url": "https://youtube.com/watch?v=FuAFiJCl_ps",
+        "duration": "2:55",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "Neither song has a direct connection to the location, and the available information is insufficient to determine cultural relevance or suitability.",
+        "relevance_score": 0
+      },
+      "story": null,
+      "chosen_type": "song",
+      "chosen_content": {
+        "title": "Los Cambios",
+        "artist": "Los Deltonos",
+        "url": "https://youtube.com/watch?v=FuAFiJCl_ps",
+        "duration": "2:55",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "Neither song has a direct connection to the location, and the available information is insufficient to determine cultural relevance or suitability.",
+        "relevance_score": 0
+      },
+      "judge_reasoning": "The provided location (32.1016, 34.8016) is in Israel, specifically in the Tel Aviv area. Option 1, the F1 23 Las Vegas video, is completely irrelevant. It features a video game and a location (Las Vegas) that is thousands of miles away. This has zero relevance, educational value, or emotional impact for someone in Tel Aviv. The practicality is also low, as it's not tied to the location. Option 2, the song \"Los Cambios\" by Los Deltonos, is a better choice, although the connection is not immediately obvious. The song's genre is listed as \"Various,\" suggesting it may have a broader appeal and potentially be more culturally relevant than a video game clip. While the direct connection to Tel Aviv is not explicit, music can evoke emotions and provide a soundtrack to the journey. The duration is also appropriate for listening during travel. The lack of specific information about the song's themes or origin makes it difficult to assess its relevance fully, but it is significantly better than the completely unrelated video game content. Therefore, it is the best choice given the options, even if the connection is indirect.",
+      "judge_score": 95,
+      "errors": [
+        "story: No stories found"
+      ]
+    },
+    {
+      "point_id": 3,
+      "address": "Location (31.5886, 34.5633)",
+      "location": {
+        "lat": 31.588577,
+        "lng": 34.563325
+      },
+      "video": null,
+      "song": null,
+      "story": {
+        "title": "Share your real-time location with others in Google Maps",
+        "content": "Stop sharing your location in Google Maps On your Android phone or tablet, open the Google Maps app . Tap your profile picture or initial Location sharing. Tap the profile of the person you don’t …",
+        "source": "Web Search",
+        "url": "https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform=Android",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are all about using Google Maps and do not offer any historical or cultural insights relevant to the specified location.",
+        "relevance_score": 0
+      },
+      "chosen_type": "story",
+      "chosen_content": {
+        "title": "Share your real-time location with others in Google Maps",
+        "content": "Stop sharing your location in Google Maps On your Android phone or tablet, open the Google Maps app . Tap your profile picture or initial Location sharing. Tap the profile of the person you don’t …",
+        "source": "Web Search",
+        "url": "https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform=Android",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are all about using Google Maps and do not offer any historical or cultural insights relevant to the specified location.",
+        "relevance_score": 0
+      },
+      "judge_reasoning": "Option 1, the story about sharing your location in Google Maps, is completely irrelevant to the provided location coordinates (31.5886, 34.5633). It is a generic instruction on using a Google Maps feature and has no connection to any specific place, historical event, or cultural significance. This option offers no engagement value, educational value, emotional impact, or practical relevance to the traveler's journey at this location. It is a poor choice.",
+      "judge_score": 10,
+      "errors": [
+        "video: No videos found",
+        "song: No music found"
+      ]
+    },
+    {
+      "point_id": 4,
+      "address": "Yated, Israel",
+      "location": {
+        "lat": 31.2070836,
+        "lng": 34.3263001
+      },
+      "video": {
+        "title": "ISRAEL & GAZA: Two Worlds, One Holy Land | 4K Travel Documentary",
+        "url": "https://youtube.com/watch?v=MRw6omUv_EI",
+        "description": "",
+        "duration": "40:56",
+        "views": "50K",
+        "channel": "TRUE GLOBE",
+        "reasoning": "While none of the videos directly focus on Yated, Video 2, a travel documentary about Israel, offers the best chance of providing general context and insights relevant to a traveler, even if Yated isn't specifically mentioned.",
+        "relevance_score": 65
+      },
+      "song": {
+        "title": "This is the Music that Hamas Uses to Incite Violence",
+        "artist": "Israel Defense Forces",
+        "url": "https://youtube.com/watch?v=B4CD-fRCDxY",
+        "duration": "0:33",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "None of the provided songs are suitable as they are all politically charged news reports or propaganda, lacking artistic merit, cultural relevance to Yated, or the ability to enhance a travel experience.",
+        "relevance_score": 0
+      },
+      "story": {
+        "title": "History",
+        "content": "The moshav was founded in 1982 by a Gar'in who intended to settle in Sinai. \nWhen the moshav was established, there were 96 agricultural plots, but in practice, not all of them were inhabited. In March 1999, the District Committee for Planning and Construction in the Southern District approved for deposit a new plan for the residential complex of the moshav, after it was also approved by the Commi...",
+        "source": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Yated,_Israel#History",
+        "period": "Historical",
+        "category": "History",
+        "reasoning": "This story about Yated's founding by a group initially destined for Sinai offers a poignant glimpse into the resilience and adaptability of Israeli pioneers, enriching the traveler's understanding of the moshav's unique origins and the broader context of Israeli settlement.",
+        "relevance_score": 95
+      },
+      "chosen_type": "story",
+      "chosen_content": {
+        "title": "History",
+        "content": "The moshav was founded in 1982 by a Gar'in who intended to settle in Sinai. \nWhen the moshav was established, there were 96 agricultural plots, but in practice, not all of them were inhabited. In March 1999, the District Committee for Planning and Construction in the Southern District approved for deposit a new plan for the residential complex of the moshav, after it was also approved by the Commi...",
+        "source": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Yated,_Israel#History",
+        "period": "Historical",
+        "category": "History",
+        "reasoning": "This story about Yated's founding by a group initially destined for Sinai offers a poignant glimpse into the resilience and adaptability of Israeli pioneers, enriching the traveler's understanding of the moshav's unique origins and the broader context of Israeli settlement.",
+        "relevance_score": 95
+      },
+      "judge_reasoning": "Option 3, the \"History\" story, is the best choice for Yated, Israel. Here's why: *   **Relevance:** The provided story directly relates to Yated's founding and development, making it highly relevant to the traveler's location. This is crucial for creating a sense of place and understanding the local context. *   **Educational Value:** The story offers specific historical information about the moshav's origins, the initial plans, and the evolution of the residential complex. This provides valuable insights into the community's history and development. *   **Practicality:** A short story is easily consumable during a journey. It can be read quickly while at the location or shortly before/after. *   **Engagement Value:** While not as immediately engaging as a video, the story provides a focused narrative that can pique interest and encourage further exploration of Yated's history. *   **Emotional Impact:** The story can create a connection to the community's past and the people who built it. Why the other options are less suitable: *   **Option 1 (Video):** While the documentary might be interesting, its broad scope (\"ISRAEL & GAZA\") is not specific to Yated. The 40-minute duration is also less practical for a quick on-site experience. The video's focus on the broader Israeli-Palestinian conflict, while potentially relevant to the region, is not directly tied to the moshav itself. *   **Option 2 (Song):** This option is highly problematic. The song's subject matter is extremely sensitive and politically charged. The context of Hamas and incitement to violence is not appropriate for a general travel experience, and the song's focus is not relevant to the moshav of Yated. It is also likely to be emotionally distressing for many travelers.",
+      "judge_score": 90,
+      "errors": []
+    }
+  ],
+  "statistics": {
+    "total_waypoints": 5,
+    "content_type_distribution": {
+      "video": 1,
+      "song": 1,
+      "story": 3,
+      "error": 0
+    },
+    "average_judge_score": 60.0,
+    "total_errors": 5
+  }
+}

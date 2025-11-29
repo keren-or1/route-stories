@@ -179,6 +179,9 @@ REASONING: [one sentence on why this story deepens understanding of the location
             irrelevant_help_patterns = [
                 'how to stop sharing',
                 'how to turn off',
+                'how to share',
+                'share your real-time location',
+                'share location',
                 'google maps help',
                 'google support',
                 'google account help',
@@ -194,6 +197,10 @@ REASONING: [one sentence on why this story deepens understanding of the location
                 'location services',
                 'privacy settings',
                 'app permissions',
+                'turn on location',
+                'turn off location',
+                'location sharing',
+                'real-time location',
             ]
 
             is_irrelevant_help = any(pattern in content for pattern in irrelevant_help_patterns)
@@ -209,10 +216,15 @@ REASONING: [one sentence on why this story deepens understanding of the location
                 'disable',
                 'turn',
                 'stop',
+                'share',
             ]
-            is_help_title = all(pattern in title for pattern in ['google', 'help']) or \
-                           any(pattern in title for pattern in help_title_patterns) and \
-                           location_lower not in title
+
+            # Detect help articles by title
+            is_help_title = (
+                (all(pattern in title for pattern in ['google', 'help'])) or  # "Google ... Help"
+                (all(pattern in title for pattern in ['google', 'maps']) and location_lower not in title) or  # "Google Maps ..." without location
+                (any(pattern in title for pattern in help_title_patterns) and location_lower not in title)  # Help keywords without location
+            )
 
             is_about_google_product_not_location = (
                 any(keyword in content for keyword in ['google maps', 'google help', 'app feature', 'phone settings', 'google account']) and

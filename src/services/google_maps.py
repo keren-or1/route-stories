@@ -171,6 +171,11 @@ class GoogleMapsService:
                     # Try to get a meaningful address for the waypoint
                     address = self._get_step_address(step)
 
+                    # Skip waypoints with empty addresses (couldn't get meaningful location)
+                    if not address or not address.strip():
+                        logger.debug("Skipping waypoint with empty address")
+                        continue
+
                     waypoints.append(Waypoint(
                         point_id=point_id,
                         address=address,
@@ -250,12 +255,13 @@ class GoogleMapsService:
                 if parts[0].strip():
                     return parts[0].strip()
         except Exception as e:
-            self.logger.debug(f"Reverse geocoding failed: {e}")
+            logger.debug(f"Reverse geocoding failed: {e}")
             pass
 
-        # Fallback: use coordinates (better than bogus instructions)
-        loc = step['end_location']
-        return f"Location ({loc['lat']:.4f}, {loc['lng']:.4f})"
+        # Fallback: If we can't get a meaningful location, return empty string
+        # (better to skip this waypoint than search for meaningless coordinates)
+        logger.debug(f"Could not extract meaningful address for step, skipping")
+        return ""
 
     def geocode_address(self, address: str) -> Optional[Tuple[float, float]]:
         """

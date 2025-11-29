@@ -1,0 +1,234 @@
+{
+  "route_id": "cefbfdbe-9ebc-456c-a59b-a3bb78cb9108",
+  "total_waypoints": 5,
+  "waypoints": [
+    {
+      "point_id": 0,
+      "address": "Rothschild Blvd, Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.0654326,
+        "lng": 34.7766433
+      },
+      "video": {
+        "title": "Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk | 🇮🇱🌇💙 #citywalk #israel #travel",
+        "url": "https://youtube.com/watch?v=9sG_Lgfi1Bg",
+        "description": "",
+        "duration": "58:24",
+        "views": "2K",
+        "channel": "walk'n'watch",
+        "reasoning": "Video 2, \"Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk,\" offers a dedicated walking tour of the area, promising in-depth exploration and likely providing more detailed insights into Rothschild Blvd than the shorter videos.",
+        "relevance_score": 90
+      },
+      "song": {
+        "title": "Walking through Rothschild Blvd  in Tel Aviv TEST",
+        "artist": "Enjoy TLV in 360",
+        "url": "https://youtube.com/watch?v=O2Xoq88qRCk",
+        "duration": "5:19",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "\"Walking through Rothschild Blvd in Tel Aviv\" directly references the location, creating an immediate and immersive experience for travelers.",
+        "relevance_score": 95
+      },
+      "story": {
+        "title": "Daftar 150 Orang Terkaya Indonesia - KASKUS",
+        "content": "Jun 12, 2013 · Majalah Globe Asia edisi Juni 2013 kembali merilis daftar 150 orang terkaya di Indonesia. Meski daftar tersebut sebagian besar masih ditempati muka-muka lama, namun …",
+        "source": "Web Search",
+        "url": "https://www.kaskus.co.id/post/51fb4600be29a0a76b000003",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories focus on Indonesian wealth and intelligence networks, which are completely unrelated to Rothschild Blvd in Tel Aviv-Yafo, Israel, and therefore fail to enrich the traveler's experience.",
+        "relevance_score": 0
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk | 🇮🇱🌇💙 #citywalk #israel #travel",
+        "url": "https://youtube.com/watch?v=9sG_Lgfi1Bg",
+        "description": "",
+        "duration": "58:24",
+        "views": "2K",
+        "channel": "walk'n'watch",
+        "reasoning": "Video 2, \"Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk,\" offers a dedicated walking tour of the area, promising in-depth exploration and likely providing more detailed insights into Rothschild Blvd than the shorter videos.",
+        "relevance_score": 90
+      },
+      "judge_reasoning": "Option 1, the video \"Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk,\" is the best choice for several reasons: *   **Engagement Value:** A walking tour video is highly engaging. It visually presents the location, allowing the traveler to \"virtually\" experience Rothschild Blvd and the adjacent Neve Tzedek. The length (58 minutes) is substantial, offering a deep dive into the area. *   **Relevance:** The video directly addresses the location, focusing on Rothschild Blvd and its surroundings. This is the most relevant content available. *   **Educational Value:** The video likely provides context about the history, architecture, and current culture of the area. A walking tour often includes commentary on significant buildings, landmarks, and the overall atmosphere. *   **Emotional Impact:** The video format allows for a strong emotional connection. The visuals and potential background music can evoke a sense of place and excitement. *   **Practicality:** While the length might be a concern, the traveler can consume the video in segments, pausing and resuming as needed. It's also easily accessible on a mobile device. Option 2, the song \"Walking through Rothschild Blvd in Tel Aviv,\" is less ideal. While music can enhance the experience, a 5-minute song provides a much less immersive and informative experience than a walking tour video. The relevance is present, but the depth is missing. Option 3, the \"Daftar 150 Orang Terkaya Indonesia - KASKUS\" story is completely irrelevant to the location. It has no connection to Tel Aviv or Rothschild Blvd and is therefore an unsuitable choice.",
+      "judge_score": 95,
+      "errors": []
+    },
+    {
+      "point_id": 1,
+      "address": "Location (32.0656, 34.7759)",
+      "location": {
+        "lat": 32.06564,
+        "lng": 34.77591
+      },
+      "video": null,
+      "song": null,
+      "story": {
+        "title": "Share your real-time location with others in Google Maps",
+        "content": "Stop sharing your location in Google Maps On your Android phone or tablet, open the Google Maps app . Tap your profile picture or initial Location sharing. Tap the profile of the person you don’t …",
+        "source": "Web Search",
+        "url": "https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform=Android",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are all about using Google Maps and do not offer any historical, cultural, or relevant information about the location (32.0656, 34.7759), which is Tel Aviv, Israel.",
+        "relevance_score": 0
+      },
+      "chosen_type": "story",
+      "chosen_content": {
+        "title": "Share your real-time location with others in Google Maps",
+        "content": "Stop sharing your location in Google Maps On your Android phone or tablet, open the Google Maps app . Tap your profile picture or initial Location sharing. Tap the profile of the person you don’t …",
+        "source": "Web Search",
+        "url": "https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform=Android",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are all about using Google Maps and do not offer any historical, cultural, or relevant information about the location (32.0656, 34.7759), which is Tel Aviv, Israel.",
+        "relevance_score": 0
+      },
+      "judge_reasoning": "Option 1, the story about sharing your real-time location in Google Maps, is completely irrelevant to the provided location coordinates (32.0656, 34.7759). These coordinates pinpoint a specific geographic location, and the story focuses on a Google Maps feature, not the place itself. It offers no engagement value related to the location, no educational value about the area, and no emotional impact on the travel experience. It's purely a technical how-to guide, and a very basic one at that. Therefore, it's a poor choice for enhancing a travel experience at this location.",
+      "judge_score": 10,
+      "errors": [
+        "video: No videos found",
+        "song: No music found"
+      ]
+    },
+    {
+      "point_id": 2,
+      "address": "Location (32.0634, 34.7765)",
+      "location": {
+        "lat": 32.0634227,
+        "lng": 34.7764964
+      },
+      "video": null,
+      "song": null,
+      "story": {
+        "title": "Share your real-time location with others in Google Maps",
+        "content": "Stop sharing your location in Google Maps On your Android phone or tablet, open the Google Maps app . Tap your profile picture or initial Location sharing. Tap the profile of the person you don’t want to share …",
+        "source": "Web Search",
+        "url": "https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform=Android",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are all about using Google Maps and do not offer any historical, cultural, or relevant information about the location (32.0634, 34.7765).",
+        "relevance_score": 0
+      },
+      "chosen_type": "story",
+      "chosen_content": {
+        "title": "Share your real-time location with others in Google Maps",
+        "content": "Stop sharing your location in Google Maps On your Android phone or tablet, open the Google Maps app . Tap your profile picture or initial Location sharing. Tap the profile of the person you don’t want to share …",
+        "source": "Web Search",
+        "url": "https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform=Android",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are all about using Google Maps and do not offer any historical, cultural, or relevant information about the location (32.0634, 34.7765).",
+        "relevance_score": 0
+      },
+      "judge_reasoning": "Option 1, while technically related to location, is completely irrelevant to the actual physical location specified (32.0634, 34.7765). It describes a feature of Google Maps and how to use it, not anything about the place itself. It has no engagement value, educational value, or emotional impact related to the location. It's also not particularly practical for enhancing a travel experience in any meaningful way. It's a generic instruction, not a travel experience.",
+      "judge_score": 10,
+      "errors": [
+        "video: No videos found",
+        "song: No music found"
+      ]
+    },
+    {
+      "point_id": 3,
+      "address": "Location (32.0951, 34.8020)",
+      "location": {
+        "lat": 32.0951119,
+        "lng": 34.8020453
+      },
+      "video": null,
+      "song": null,
+      "story": {
+        "title": "Share your real-time location with others in Google Maps",
+        "content": "Stop sharing your location in Google Maps On your Android phone or tablet, open the Google Maps app . Tap your profile picture or initial Location sharing. Tap the profile of the person you don’t want to …",
+        "source": "Web Search",
+        "url": "https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform=Android",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are all about using Google Maps and do not offer any historical, cultural, or relevant information about a specific location.",
+        "relevance_score": 0
+      },
+      "chosen_type": "story",
+      "chosen_content": {
+        "title": "Share your real-time location with others in Google Maps",
+        "content": "Stop sharing your location in Google Maps On your Android phone or tablet, open the Google Maps app . Tap your profile picture or initial Location sharing. Tap the profile of the person you don’t want to …",
+        "source": "Web Search",
+        "url": "https://support.google.com/maps/answer/15437054?hl=en&co=GENIE.Platform=Android",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are all about using Google Maps and do not offer any historical, cultural, or relevant information about a specific location.",
+        "relevance_score": 0
+      },
+      "judge_reasoning": "This option is entirely irrelevant to a physical location. It's a guide on how to use a feature within Google Maps, which is a digital tool, not a place. It offers no engagement value in the context of a travel experience at the given GPS coordinates. It has zero relevance, educational value, emotional impact, or practicality for someone standing at that location. The content is purely functional and unrelated to the place itself.",
+      "judge_score": 10,
+      "errors": [
+        "video: No videos found",
+        "song: No music found"
+      ]
+    },
+    {
+      "point_id": 4,
+      "address": "Nemal Tel Aviv St, Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.09724300000001,
+        "lng": 34.773854
+      },
+      "video": {
+        "title": "Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel",
+        "url": "https://youtube.com/watch?v=PM2_kMrd0Ms",
+        "description": "",
+        "duration": "22:50",
+        "views": "482K",
+        "channel": "Island Hopper TV",
+        "reasoning": "Video 4, \"Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel,\" is the best choice because it offers the most comprehensive overview of Tel Aviv, likely including information relevant to Nemal Tel Aviv St, and has a high view count suggesting quality content.",
+        "relevance_score": 85
+      },
+      "song": {
+        "title": "Beautiful songs every Monday evening, July, at the Tel Aviv Port,",
+        "artist": "atika k",
+        "url": "https://youtube.com/watch?v=6FpKcfdtd7A",
+        "duration": "1:16",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "\"Beautiful songs every Monday evening, July, at the Tel Aviv Port\" directly references the Tel Aviv Port, providing an immediate and relevant connection to the location.",
+        "relevance_score": 85
+      },
+      "story": {
+        "title": "سامانه کارسنج | شبکه مدارس برتر ایران",
+        "content": "سامانه کارسنج اولین ابزار طراحی شده ویژه مشاوران پایه است که در حال حاضر مدارس معتبری همچون دبیرستان انرژی اتمی ایران، مدارس علامه طباطبایی، مدارس سلام، مفید، تیزهوشان، نمونه دولتی و بسیاری دیگر از مدارس ممتاز کشور ...",
+        "source": "Web Search",
+        "url": "https://karsanj.net/",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are irrelevant, focusing on an Iranian educational platform and having no connection to Nemal Tel Aviv St, Tel Aviv-Yafo, Israel.",
+        "relevance_score": 0
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel",
+        "url": "https://youtube.com/watch?v=PM2_kMrd0Ms",
+        "description": "",
+        "duration": "22:50",
+        "views": "482K",
+        "channel": "Island Hopper TV",
+        "reasoning": "Video 4, \"Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel,\" is the best choice because it offers the most comprehensive overview of Tel Aviv, likely including information relevant to Nemal Tel Aviv St, and has a high view count suggesting quality content.",
+        "relevance_score": 85
+      },
+      "judge_reasoning": "Option 1, the \"Tel Aviv Travel Guide\" video, is the most suitable choice for several reasons: *   **Engagement Value:** A travel guide video is inherently engaging. It uses visuals, music, and a presenter to hold the viewer's attention. The format is designed for easy consumption while traveling. *   **Relevance:** The video directly addresses the location, Tel Aviv, providing information about things to do. This is highly relevant to a traveler in the city. *   **Educational Value:** A travel guide offers practical information about attractions, activities, and potentially even cultural insights, thereby educating the traveler. *   **Emotional Impact:** The video can inspire excitement and anticipation for the traveler's experiences, enhancing their overall enjoyment. *   **Practicality:** Videos are easily accessible on smartphones and tablets, making them convenient for consumption during a journey. The duration is a bit long, but it can be watched in parts or while commuting. Option 2, the song, is less suitable. While music can enhance the travel experience, the provided information is very limited. The song's connection to the specific location (Nemal Tel Aviv St) is weak, and the genre is not specified. Option 3, the story in Farsi, is completely unsuitable. It's in a language the traveler likely doesn't understand, and the content appears to be unrelated to Tel Aviv or tourism. The category is also unclear.",
+      "judge_score": 95,
+      "errors": []
+    }
+  ],
+  "statistics": {
+    "total_waypoints": 5,
+    "content_type_distribution": {
+      "video": 2,
+      "song": 0,
+      "story": 3,
+      "error": 0
+    },
+    "average_judge_score": 44.0,
+    "total_errors": 6
+  }
+}

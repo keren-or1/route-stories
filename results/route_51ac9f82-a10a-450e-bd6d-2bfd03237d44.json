@@ -1,0 +1,234 @@
+{
+  "route_id": "51ac9f82-a10a-450e-bd6d-2bfd03237d44",
+  "total_waypoints": 5,
+  "waypoints": [
+    {
+      "point_id": 0,
+      "address": "Rothschild Blvd, Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.0654326,
+        "lng": 34.7766433
+      },
+      "video": {
+        "title": "Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk | 🇮🇱🌇💙 #citywalk #israel #travel",
+        "url": "https://youtube.com/watch?v=9sG_Lgfi1Bg",
+        "description": "",
+        "duration": "58:24",
+        "views": "2K",
+        "channel": "walk'n'watch",
+        "reasoning": "Video 2, \"Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk,\" offers the most in-depth and relevant content, focusing directly on Rothschild Blvd and its surrounding area, with a reasonable length and a higher view count suggesting better engagement.",
+        "relevance_score": 90
+      },
+      "song": {
+        "title": "Walking through Rothschild Blvd  in Tel Aviv TEST",
+        "artist": "Enjoy TLV in 360",
+        "url": "https://youtube.com/watch?v=O2Xoq88qRCk",
+        "duration": "5:19",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "\"Walking through Rothschild Blvd in Tel Aviv\" directly references the location, providing an immersive experience for the traveler.",
+        "relevance_score": 95
+      },
+      "story": {
+        "title": "Daftar 150 Orang Terkaya Indonesia - KASKUS",
+        "content": "Jun 12, 2013 · Majalah Globe Asia edisi Juni 2013 kembali merilis daftar 150 orang terkaya di Indonesia. Meski daftar tersebut sebagian besar masih ditempati muka-muka lama, namun …",
+        "source": "Web Search",
+        "url": "https://www.kaskus.co.id/post/51fb4600be29a0a76b000003",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories focus on Indonesian wealth and intelligence networks, which are completely unrelated to Rothschild Blvd in Tel Aviv-Yafo, Israel.",
+        "relevance_score": 0
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk | 🇮🇱🌇💙 #citywalk #israel #travel",
+        "url": "https://youtube.com/watch?v=9sG_Lgfi1Bg",
+        "description": "",
+        "duration": "58:24",
+        "views": "2K",
+        "channel": "walk'n'watch",
+        "reasoning": "Video 2, \"Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk,\" offers the most in-depth and relevant content, focusing directly on Rothschild Blvd and its surrounding area, with a reasonable length and a higher view count suggesting better engagement.",
+        "relevance_score": 90
+      },
+      "judge_reasoning": "Option 1, the video \"Exploring Tel Aviv’s Heart: Neve Tzedek & Rothschild Blvd Walk,\" is the best choice for several reasons: *   **Engagement Value:** A walking tour video is inherently engaging. It allows the traveler to visually experience the location in real-time, providing a sense of presence and immersion. The inclusion of hashtags like #citywalk, #israel, and #travel suggests the video is optimized for travel enthusiasts and is likely to be visually appealing. *   **Relevance:** The video directly addresses the location, Rothschild Blvd, and includes the adjacent Neve Tzedek neighborhood, which is highly relevant to the area's history and cultural significance. *   **Educational Value:** A walking tour often provides historical context, architectural insights, and information about local businesses and points of interest. This content is likely to educate the traveler about the area's history, culture, and current offerings. *   **Emotional Impact:** Seeing the sights and sounds of Rothschild Blvd through a video can evoke feelings of excitement, anticipation, and a sense of connection to the place. It can inspire the traveler to explore the area further. *   **Practicality:** The video is easily consumable during a journey. The traveler can watch it while walking along Rothschild Blvd, allowing them to compare the video's content with their immediate surroundings. While the duration is long (58:24), the traveler can choose to watch segments or use it as background audio while exploring. Option 2, the song \"Walking through Rothschild Blvd in Tel Aviv TEST,\" is less ideal. While music can be enjoyable, it provides a less comprehensive experience than a video. The song's connection to the location is limited to the title, and it lacks the visual and informational richness of the video. Option 3, the story about the richest Indonesians, is completely irrelevant to Rothschild Blvd and Tel Aviv. It offers no value to the traveler in this context.",
+      "judge_score": 95,
+      "errors": []
+    },
+    {
+      "point_id": 1,
+      "address": "Location (32.0656, 34.7759)",
+      "location": {
+        "lat": 32.06564,
+        "lng": 34.77591
+      },
+      "video": null,
+      "song": null,
+      "story": {
+        "title": "Manage location permissions for apps - Google Account Help",
+        "content": "Manage location permissions for apps You can let apps use your device's location to take action for you or give you information. For example, apps can use your device's location to display …",
+        "source": "Web Search",
+        "url": "https://support.google.com/accounts/answer/6179507?hl=en",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided story is about managing app permissions and has no relevance to the location's history or culture, making it unsuitable for enhancing a traveler's experience.",
+        "relevance_score": 0
+      },
+      "chosen_type": "story",
+      "chosen_content": {
+        "title": "Manage location permissions for apps - Google Account Help",
+        "content": "Manage location permissions for apps You can let apps use your device's location to take action for you or give you information. For example, apps can use your device's location to display …",
+        "source": "Web Search",
+        "url": "https://support.google.com/accounts/answer/6179507?hl=en",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided story is about managing app permissions and has no relevance to the location's history or culture, making it unsuitable for enhancing a traveler's experience.",
+        "relevance_score": 0
+      },
+      "judge_reasoning": "Option 1, the story about managing location permissions, is completely irrelevant to the geographical coordinates provided (32.0656, 34.7759). These coordinates pinpoint a physical location, likely in Tel Aviv, Israel. The content focuses on a technical aspect of a Google Account and has no connection to the history, culture, or any other aspect of the location. It offers no engagement, educational value, emotional impact, or relevance to the traveler's experience at the specified location. This is a very poor choice.",
+      "judge_score": 10,
+      "errors": [
+        "video: No videos found",
+        "song: No music found"
+      ]
+    },
+    {
+      "point_id": 2,
+      "address": "Location (32.0634, 34.7765)",
+      "location": {
+        "lat": 32.0634227,
+        "lng": 34.7764964
+      },
+      "video": null,
+      "song": null,
+      "story": {
+        "title": "Manage location permissions for apps - Google Account Help",
+        "content": "Manage location permissions for apps You can let apps use your device's location to take action for you or give you information. For example, apps can use your device's location to display commute traffic or …",
+        "source": "Web Search",
+        "url": "https://support.google.com/accounts/answer/6179507?hl=en",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided story is not relevant to the location and offers no historical or cultural insight, making it unsuitable for enhancing a traveler's experience.",
+        "relevance_score": 0
+      },
+      "chosen_type": "story",
+      "chosen_content": {
+        "title": "Manage location permissions for apps - Google Account Help",
+        "content": "Manage location permissions for apps You can let apps use your device's location to take action for you or give you information. For example, apps can use your device's location to display commute traffic or …",
+        "source": "Web Search",
+        "url": "https://support.google.com/accounts/answer/6179507?hl=en",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided story is not relevant to the location and offers no historical or cultural insight, making it unsuitable for enhancing a traveler's experience.",
+        "relevance_score": 0
+      },
+      "judge_reasoning": "Option 1, the story about managing location permissions for apps, is completely irrelevant to the provided geographical coordinates (32.0634, 34.7765), which is a location in Tel Aviv, Israel. The content is about app functionality and has no connection to the history, culture, or any other aspect of the location. It fails on all criteria: engagement, relevance, educational value, emotional impact, and practicality. Therefore, it is a very poor choice.",
+      "judge_score": 10,
+      "errors": [
+        "video: No videos found",
+        "song: No music found"
+      ]
+    },
+    {
+      "point_id": 3,
+      "address": "Location (32.0951, 34.8020)",
+      "location": {
+        "lat": 32.0951119,
+        "lng": 34.8020453
+      },
+      "video": null,
+      "song": null,
+      "story": {
+        "title": "Manage location permissions for apps - Google Account Help",
+        "content": "Manage location permissions for apps You can let apps use your device's location to take action for you or give you information. For example, apps can use your device's location to display commute traffic …",
+        "source": "Web Search",
+        "url": "https://support.google.com/accounts/answer/6179507?hl=en",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided story about managing app location permissions is completely irrelevant to the historical or cultural context of a physical location and offers no value to a traveler.",
+        "relevance_score": 0
+      },
+      "chosen_type": "story",
+      "chosen_content": {
+        "title": "Manage location permissions for apps - Google Account Help",
+        "content": "Manage location permissions for apps You can let apps use your device's location to take action for you or give you information. For example, apps can use your device's location to display commute traffic …",
+        "source": "Web Search",
+        "url": "https://support.google.com/accounts/answer/6179507?hl=en",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided story about managing app location permissions is completely irrelevant to the historical or cultural context of a physical location and offers no value to a traveler.",
+        "relevance_score": 0
+      },
+      "judge_reasoning": "Option 1, the story about \"Manage location permissions for apps,\" is completely irrelevant to the provided location coordinates (32.0951, 34.8020). This content is about a technical setting on a phone and has no connection to any geographical location or the experience of being there. It fails on all criteria: engagement, relevance, educational value, emotional impact, and practicality. It's a non-starter.",
+      "judge_score": 10,
+      "errors": [
+        "video: No videos found",
+        "song: No music found"
+      ]
+    },
+    {
+      "point_id": 4,
+      "address": "Nemal Tel Aviv St, Tel Aviv-Yafo, Israel",
+      "location": {
+        "lat": 32.09724300000001,
+        "lng": 34.773854
+      },
+      "video": {
+        "title": "Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel",
+        "url": "https://youtube.com/watch?v=PM2_kMrd0Ms",
+        "description": "",
+        "duration": "22:50",
+        "views": "482K",
+        "channel": "Island Hopper TV",
+        "reasoning": "Video 4, \"Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel,\" is the best choice because it offers a comprehensive overview of Tel Aviv, likely including information relevant to the Nemal Tel Aviv St area, with a high view count suggesting popularity and a longer duration allowing for more in-depth exploration.",
+        "relevance_score": 85
+      },
+      "song": {
+        "title": "Beautiful songs every Monday evening, July, at the Tel Aviv Port,",
+        "artist": "atika k",
+        "url": "https://youtube.com/watch?v=6FpKcfdtd7A",
+        "duration": "1:16",
+        "album": "YouTube Music",
+        "genre": "Various",
+        "source": "YouTube",
+        "reasoning": "\"Beautiful songs every Monday evening, July, at the Tel Aviv Port\" directly references the Tel Aviv Port, which is near Nemal Tel Aviv St, and evokes a sense of local culture and atmosphere.",
+        "relevance_score": 85
+      },
+      "story": {
+        "title": "سامانه کارسنج | شبکه مدارس برتر ایران",
+        "content": "سامانه کارسنج اولین ابزار طراحی شده ویژه مشاوران پایه است که در حال حاضر مدارس معتبری همچون دبیرستان انرژی اتمی ایران، مدارس علامه طباطبایی، مدارس سلام، مفید، تیزهوشان، نمونه دولتی و بسیاری دیگر از مدارس ممتاز کشور ...",
+        "source": "Web Search",
+        "url": "https://karsanj.net/",
+        "period": "Various",
+        "category": "Historical Information",
+        "reasoning": "The provided stories are irrelevant to Nemal Tel Aviv St, Tel Aviv-Yafo, Israel, as they discuss an Iranian educational platform, failing to offer any connection to the location's history, culture, or relevance to a traveler's experience.",
+        "relevance_score": 0
+      },
+      "chosen_type": "video",
+      "chosen_content": {
+        "title": "Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel",
+        "url": "https://youtube.com/watch?v=PM2_kMrd0Ms",
+        "description": "",
+        "duration": "22:50",
+        "views": "482K",
+        "channel": "Island Hopper TV",
+        "reasoning": "Video 4, \"Tel Aviv Travel Guide: Best Things To Do In Tel Aviv Israel,\" is the best choice because it offers a comprehensive overview of Tel Aviv, likely including information relevant to the Nemal Tel Aviv St area, with a high view count suggesting popularity and a longer duration allowing for more in-depth exploration.",
+        "relevance_score": 85
+      },
+      "judge_reasoning": "Option 1, the \"Tel Aviv Travel Guide\" video, is the clear winner for this location (Nemal Tel Aviv St, Tel Aviv-Yafo, Israel). Here's why: *   **Engagement Value:** Travel guides, especially video guides, are inherently engaging for travelers. They visually showcase the location and offer ideas for activities. *   **Relevance:** The video is directly about Tel Aviv, making it highly relevant to the traveler's current location. It will likely feature landmarks, attractions, and potentially even Nemal Tel Aviv St or the surrounding area. *   **Educational Value:** Travel guides provide information about things to do, see, and experience, educating the traveler about the city. *   **Emotional Impact:** Seeing a well-produced travel guide can build excitement and anticipation for the traveler's experience. It can also provide a sense of comfort and direction. *   **Practicality:** A video guide is easily consumable on a mobile device while traveling. The length (22:50) is reasonable for a traveler to watch in segments or while moving between locations. Option 2, the song, is less suitable. While music can enhance a travel experience, a song about a specific event at the Tel Aviv Port is not as broadly relevant to the general location (Nemal Tel Aviv St). The traveler might not even be near the port. Option 3, the story, is completely irrelevant. It appears to be in a different language (likely Farsi) and discusses a school system in Iran. It has no connection to Tel Aviv or the traveler's experience.",
+      "judge_score": 95,
+      "errors": []
+    }
+  ],
+  "statistics": {
+    "total_waypoints": 5,
+    "content_type_distribution": {
+      "video": 2,
+      "song": 0,
+      "story": 3,
+      "error": 0
+    },
+    "average_judge_score": 44.0,
+    "total_errors": 6
+  }
+}
