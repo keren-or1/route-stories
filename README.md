@@ -17,6 +17,20 @@ Route Stories transforms road trips into enriched experiences by intelligently s
 - **Queue-Based Communication**: Robust inter-agent communication system
 - **Comprehensive Logging**: Detailed execution logs and performance metrics
 
+## Screenshots
+
+### Web Interface
+
+**Create Your Journey Story**
+![Create Your Journey Story](screenshots/Create%20Your%20Journey%20Story.png)
+
+**Processing Your Route**
+![Processing Your Route](screenshots/Processing%20Your%20Journey%20Story.png)
+
+**Example Results**
+![Example 1](screenshots/example1.png)
+![Example 2](screenshots/example2.png)
+
 ## Quick Start
 
 ### Web UI (Recommended)
@@ -51,31 +65,94 @@ For detailed setup and usage instructions, see [docs/README.md](docs/README.md)
 
 ```
 route-stories/
-├── src/                           # Source code
-│   ├── agents/                    # AI agent modules
-│   ├── services/                  # External API services
-│   ├── core/                      # Core orchestration logic
-│   ├── ui/                        # Command-line interface
-│   ├── web/                       # Flask web UI
-│   │   ├── static/                # CSS, JavaScript
-│   │   └── templates/             # HTML templates
-│   ├── utils/                     # Helper utilities
-│   ├── config.py                  # Configuration management
-│   ├── main.py                    # CLI entry point
-│   └── web_main.py                # Web UI entry point
-├── tests/                         # Unit and integration tests
-├── docs/                          # Documentation
-│   ├── README.md                  # Detailed setup/usage guide
-│   ├── ARCHITECTURE.md            # System architecture
-│   ├── PRD.md                     # Product requirements
-│   ├── WEB_UI.md                  # Web UI documentation
-│   └── ...                        # Additional documentation
-├── config/                        # Configuration files
-│   └── .env.example               # Environment template
-├── results/                       # Output and execution results
-├── analysis/                      # Research and analysis
-└── requirements.txt               # Python dependencies
+├── src/                          # Production source code
+│   ├── agents/                   # Multi-agent system
+│   │   ├── base_agent.py         # Abstract base class
+│   │   ├── video_agent.py        # YouTube video search
+│   │   ├── song_agent.py         # Music search
+│   │   ├── story_agent.py        # Historical content search
+│   │   └── judge_agent.py        # Content selection judge
+│   ├── services/                 # External API integrations
+│   │   ├── gemini_client.py      # Google Gemini AI
+│   │   ├── search_tools.py       # YouTube, Wikipedia, Music APIs
+│   │   ├── google_maps.py        # Google Maps integration
+│   │   └── claude_client.py      # Claude API (alternative)
+│   ├── core/                     # System orchestration
+│   │   ├── orchestrator.py       # Parallel agent execution
+│   │   ├── collector.py          # Result aggregation
+│   │   └── scheduler.py          # Waypoint progression
+│   ├── ui/                       # User interface
+│   │   └── cli.py                # Command-line interface
+│   ├── web/                      # Web application
+│   │   ├── app.py                # Flask application
+│   │   ├── routes.py             # API endpoints
+│   │   └── templates/            # HTML templates
+│   ├── utils/                    # Utilities
+│   │   ├── logger.py             # Structured logging
+│   │   └── queue_manager.py      # Thread-safe result queue
+│   └── config.py                 # Configuration management
+│
+├── tests/                        # Formal pytest test suite (34 tests)
+│   ├── conftest.py               # Pytest fixtures and configuration
+│   ├── agents/                   # Agent unit tests
+│   │   ├── test_judge_agent.py   # 5 tests
+│   │   ├── test_video_agent.py   # 9 tests
+│   │   ├── test_song_agent.py    # 4 tests
+│   │   └── test_story_agent.py   # 4 tests
+│   ├── core/                     # Core system tests
+│   │   └── test_orchestrator.py  # 5 tests
+│   └── integration/              # Integration tests
+│       └── test_end_to_end.py    # 6 tests
+│
+├── scripts/                      # Development and deployment scripts
+│   └── manual_tests/             # Exploratory test scripts (not pytest)
+│       ├── test_agents_search.py
+│       ├── test_e2e_real_apis.py
+│       ├── test_rate_limit_handling.py
+│       ├── test_retry_logic.py
+│       ├── test_search_apis.py
+│       ├── test_setup.py
+│       ├── test_waypoint_extraction.py
+│       ├── test_web_app.py
+│       └── README.md
+│
+├── docs/                         # Documentation
+│   ├── PRD.md                    # Product Requirements Document
+│   ├── ARCHITECTURE.md           # System architecture
+│   ├── README.md                 # Quick start guide
+│   ├── API.md                    # API documentation
+│   ├── PROMPTS.md                # Prompt engineering
+│   ├── PARAMETER_ANALYSIS.md     # Sensitivity analysis
+│   ├── COSTS.md                  # Cost analysis
+│   ├── WEB_UI.md                 # Web interface guide
+│   ├── AI_MODEL_SELECTION.md     # AI model justification
+│   └── TESTING.md                # Testing documentation
+│
+├── analysis/                     # Analysis and research
+│   └── parameter_sensitivity_analysis.ipynb  # Jupyter notebook with visualizations
+│
+├── config/                       # Configuration files
+│   ├── .env.example              # Environment template
+│   └── settings.py               # Application settings
+│
+├── results/                      # Generated results and outputs
+├── logs/                         # Application logs
+├── requirements.txt              # Python dependencies
+├── pytest.ini                    # Pytest configuration
+└── README.md                     # Project README
 ```
+
+### Directory Organization
+
+The project follows Python packaging standards with a clear separation of concerns:
+
+- **`src/`**: Production source code organized by functionality (agents, services, core orchestration)
+- **`tests/`**: Formal pytest test suite with 34 tests organized by component
+- **`docs/`**: Comprehensive documentation covering architecture, setup, and usage
+- **`scripts/`**: Development scripts including manual integration tests
+- **`analysis/`**: Research materials and analytical notebooks
+- **`config/`**: Configuration templates and settings
+- **`results/`**: Output and execution results directory
 
 ## Documentation
 
