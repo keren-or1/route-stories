@@ -71,22 +71,28 @@ def mock_song_results():
             'title': 'Empire State of Mind',
             'artist': 'Jay-Z feat. Alicia Keys',
             'album': 'The Blueprint 3',
+            'genre': 'Hip-Hop',
             'url': 'https://spotify.com/track/123',
-            'duration': '4:36'
+            'duration': '4:36',
+            'year': 2009
         },
         {
             'title': 'New York, New York',
             'artist': 'Frank Sinatra',
             'album': 'Trilogy: Past Present Future',
+            'genre': 'Jazz',
             'url': 'https://spotify.com/track/456',
-            'duration': '3:26'
+            'duration': '3:26',
+            'year': 1980
         },
         {
             'title': 'Welcome to New York',
             'artist': 'Taylor Swift',
             'album': '1989',
+            'genre': 'Pop',
             'url': 'https://spotify.com/track/789',
-            'duration': '3:32'
+            'duration': '3:32',
+            'year': 2014
         }
     ]
 

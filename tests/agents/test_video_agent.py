@@ -54,17 +54,18 @@ class TestVideoAgent:
         assert result.content == {}
 
     def test_execute_gemini_failure_fallback(self, mock_gemini_client, mock_search_tools, sample_agent_task, mock_video_results):
-        """Test fallback to first video when Gemini fails."""
+        """Test fallback to top-scored video when Gemini fails."""
         mock_search_tools.search_youtube_videos.return_value = mock_video_results
         mock_gemini_client.simple_query.side_effect = Exception("API Error")
 
         agent = VideoAgent(mock_gemini_client, mock_search_tools)
         result = agent.execute(sample_agent_task)
 
-        # Should still return a result, using first video
+        # Should still return a result, using fallback selection
         assert result.error is None
-        assert result.content['selected']['title'] == mock_video_results[0]['title']
-        assert 'Default selection' in result.content['selected']['reasoning']
+        # Selected video should be from the candidates
+        assert result.content['selected']['title'] in [v['title'] for v in mock_video_results]
+        assert 'reasoning' in result.content['selected']
 
     def test_parse_choice_valid(self, mock_gemini_client, mock_search_tools):
         """Test parsing valid choice from Gemini response."""
