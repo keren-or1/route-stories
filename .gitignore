@@ -50,4 +50,4 @@ htmlcov/
 Thumbs.db
 
 # Cache
-.cache
+.cache/
