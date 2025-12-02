@@ -6,6 +6,7 @@ import pytest
 from unittest.mock import Mock, patch
 from src.agents.video_agent import VideoAgent
 from src.agents.base_agent import AgentTask
+from src.agents.response_parser import parse_choice, parse_reasoning
 
 
 class TestVideoAgent:
@@ -69,46 +70,36 @@ class TestVideoAgent:
 
     def test_parse_choice_valid(self, mock_gemini_client, mock_search_tools):
         """Test parsing valid choice from Gemini response."""
-        agent = VideoAgent(mock_gemini_client, mock_search_tools)
-
         response = "CHOICE: 2\nREASONING: Best option"
-        choice = agent._parse_choice(response, max_options=3)
+        choice = parse_choice(response, max_options=3)
 
         assert choice == 1  # 2 - 1 = index 1
 
     def test_parse_choice_out_of_bounds(self, mock_gemini_client, mock_search_tools):
         """Test parsing choice that exceeds max options."""
-        agent = VideoAgent(mock_gemini_client, mock_search_tools)
-
         response = "CHOICE: 10\nREASONING: Something"
-        choice = agent._parse_choice(response, max_options=3)
+        choice = parse_choice(response, max_options=3)
 
         assert choice == 2  # Capped at max_options - 1
 
     def test_parse_choice_invalid_format(self, mock_gemini_client, mock_search_tools):
         """Test parsing invalid choice format."""
-        agent = VideoAgent(mock_gemini_client, mock_search_tools)
-
         response = "CHOICE: invalid\nREASONING: Something"
-        choice = agent._parse_choice(response, max_options=3)
+        choice = parse_choice(response, max_options=3)
 
         assert choice == 0  # Default to first option
 
     def test_parse_reasoning_valid(self, mock_gemini_client, mock_search_tools):
         """Test parsing reasoning from response."""
-        agent = VideoAgent(mock_gemini_client, mock_search_tools)
-
         response = "CHOICE: 1\nREASONING: This is the best video because..."
-        reasoning = agent._parse_reasoning(response)
+        reasoning = parse_reasoning(response)
 
         assert reasoning == "This is the best video because..."
 
     def test_parse_reasoning_missing(self, mock_gemini_client, mock_search_tools):
         """Test parsing when reasoning is missing."""
-        agent = VideoAgent(mock_gemini_client, mock_search_tools)
-
         response = "CHOICE: 1"
-        reasoning = agent._parse_reasoning(response)
+        reasoning = parse_reasoning(response)
 
         assert reasoning == "No reasoning provided"
 

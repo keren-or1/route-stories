@@ -1,13 +1,11 @@
-"""
-Orchestrator - Manages multi-threaded execution of agents.
-"""
+"""Orchestrator - Manages multi-threaded execution of agents."""
 
-import threading
 from typing import Dict, Any
-from concurrent.futures import ThreadPoolExecutor, Future
+from concurrent.futures import Future
 from src.agents import VideoAgent, SongAgent, StoryAgent, JudgeAgent, AgentTask
 from src.utils.queue_manager import QueueManager, AgentResult
 from src.utils.logger import get_logger
+from src.core.executor_config import create_executor
 
 
 logger = get_logger("orchestrator")
@@ -44,8 +42,7 @@ class Orchestrator:
         self.story_agent = story_agent
         self.judge_agent = judge_agent
         self.queue_manager = queue_manager
-        self.max_workers = max_workers
-        self.executor = ThreadPoolExecutor(max_workers=max_workers)
+        self.executor = create_executor(max_workers)
         logger.info(f"Orchestrator initialized with {max_workers} workers")
 
     def process_waypoint(

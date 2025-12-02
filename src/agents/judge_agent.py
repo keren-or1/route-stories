@@ -6,6 +6,9 @@ from typing import Dict, Any, List
 from src.agents.base_agent import BaseAgent, AgentTask
 from src.services.gemini_client import GeminiClient
 from src.utils.queue_manager import AgentResult
+from src.agents.agent_prompts import JudgePrompts
+from src.agents.response_parser import parse_choice, parse_score, parse_multiline_reasoning
+from src.agents.judge_formatter import format_option_description
 
 
 class JudgeAgent(BaseAgent):
@@ -46,31 +49,7 @@ class JudgeAgent(BaseAgent):
         self.logger.info(f"Judging content for: {task.address}")
 
         # Extract the selected items from each agent
-        options = []
-
-        if 'video' in content_results and not content_results['video'].error:
-            video_content = content_results['video'].content
-            if 'selected' in video_content:
-                options.append({
-                    'type': 'video',
-                    'data': video_content['selected']
-                })
-
-        if 'song' in content_results and not content_results['song'].error:
-            song_content = content_results['song'].content
-            if 'selected' in song_content:
-                options.append({
-                    'type': 'song',
-                    'data': song_content['selected']
-                })
-
-        if 'story' in content_results and not content_results['story'].error:
-            story_content = content_results['story'].content
-            if 'selected' in story_content:
-                options.append({
-                    'type': 'story',
-                    'data': story_content['selected']
-                })
+        options = self._extract_options(content_results)
 
         if not options:
             return self._create_result(
@@ -97,6 +76,21 @@ class JudgeAgent(BaseAgent):
 
         return self._create_result(task=task, content=content)
 
+    def _extract_options(self, content_results: Dict[str, AgentResult]) -> List[Dict[str, Any]]:
+        """Extract valid content options from agent results."""
+        options = []
+
+        for agent_type in ['video', 'song', 'story']:
+            if agent_type in content_results and not content_results[agent_type].error:
+                content = content_results[agent_type].content
+                if 'selected' in content:
+                    options.append({
+                        'type': agent_type,
+                        'data': content['selected']
+                    })
+
+        return options
+
     def _make_judgment(
         self,
         location: str,
@@ -115,51 +109,14 @@ class JudgeAgent(BaseAgent):
         # Build options description
         options_text = []
         for i, opt in enumerate(options):
-            opt_type = opt['type']
-            data = opt['data']
-
-            if opt_type == 'video':
-                desc = f"Video: \"{data.get('title', 'N/A')}\"\n"
-                desc += f"  Description: {data.get('description', 'N/A')}\n"
-                desc += f"  Duration: {data.get('duration', 'N/A')}\n"
-                desc += f"  Channel: {data.get('channel', 'N/A')}"
-
-            elif opt_type == 'song':
-                desc = f"Song: \"{data.get('title', 'N/A')}\" by {data.get('artist', 'N/A')}\n"
-                desc += f"  Genre: {data.get('genre', 'N/A')}\n"
-                desc += f"  Duration: {data.get('duration', 'N/A')}\n"
-                desc += f"  Album: {data.get('album', 'N/A')}"
-
-            else:  # story
-                desc = f"Story: \"{data.get('title', 'N/A')}\"\n"
-                desc += f"  Content: {data.get('content', 'N/A')}\n"
-                desc += f"  Category: {data.get('category', 'N/A')}\n"
-                desc += f"  Period: {data.get('period', 'N/A')}"
-
-            options_text.append(f"Option {i+1} ({opt_type.upper()}):\n{desc}")
+            desc = format_option_description(opt['type'], opt['data'])
+            options_text.append(f"Option {i+1} ({opt['type'].upper()}):\n{desc}")
 
         options_str = "\n\n".join(options_text)
 
-        system_prompt = """You are an expert travel experience designer. Your task is to select the most engaging and appropriate content for a specific location on a traveler's route.
-
-Consider:
-- Engagement value: How captivating is the content?
-- Relevance: How well does it represent the location?
-- Educational value: What will the traveler learn?
-- Emotional impact: Will it enhance the travel experience?
-- Practicality: Is it consumable during a journey?"""
-
-        user_prompt = f"""Location: {location}
-
-Available content options:
-{options_str}
-
-Select the BEST option for this location.
-
-Respond with:
-CHOICE: [number 1-{len(options)}]
-SCORE: [confidence score 0-100]
-REASONING: [detailed explanation of why this is the best choice]"""
+        # Get prompts
+        system_prompt = JudgePrompts.SYSTEM
+        user_prompt = JudgePrompts.user_prompt(location, options_str, len(options))
 
         try:
             response = self.gemini.simple_query(
@@ -169,9 +126,9 @@ REASONING: [detailed explanation of why this is the best choice]"""
             )
 
             # Parse response
-            choice_idx = self._parse_choice(response, len(options))
-            score = self._parse_score(response)
-            reasoning = self._parse_reasoning(response)
+            choice_idx = parse_choice(response, len(options))
+            score = parse_score(response)
+            reasoning = parse_multiline_reasoning(response)
 
             chosen_option = options[choice_idx]
 
@@ -190,41 +147,3 @@ REASONING: [detailed explanation of why this is the best choice]"""
                 'reasoning': "Default selection (Gemini unavailable)",
                 'score': 50
             }
-
-    def _parse_choice(self, response: str, max_options: int) -> int:
-        """Parse CHOICE from Gemini response."""
-        for line in response.split('\n'):
-            if line.strip().startswith('CHOICE:'):
-                try:
-                    num = int(line.split(':')[1].strip())
-                    return max(0, min(num - 1, max_options - 1))
-                except ValueError:
-                    pass
-        return 0
-
-    def _parse_score(self, response: str) -> int:
-        """Parse SCORE from Gemini response."""
-        for line in response.split('\n'):
-            if line.strip().startswith('SCORE:'):
-                try:
-                    score = int(line.split(':')[1].strip())
-                    return max(0, min(score, 100))
-                except ValueError:
-                    pass
-        return 50
-
-    def _parse_reasoning(self, response: str) -> str:
-        """Parse REASONING from Gemini response."""
-        lines = response.split('\n')
-        for i, line in enumerate(lines):
-            if line.strip().startswith('REASONING:'):
-                # Get the reasoning (may span multiple lines)
-                reasoning_parts = [line.split(':', 1)[1].strip()]
-                # Collect subsequent lines that are part of reasoning
-                for j in range(i + 1, len(lines)):
-                    if lines[j].strip() and not lines[j].strip().startswith(('CHOICE:', 'SCORE:')):
-                        reasoning_parts.append(lines[j].strip())
-                    elif lines[j].strip().startswith(('CHOICE:', 'SCORE:')):
-                        break
-                return ' '.join(reasoning_parts)
-        return "No reasoning provided"

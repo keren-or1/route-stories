@@ -9,6 +9,7 @@ from typing import Dict, Any, Optional, List
 from dataclasses import dataclass, field
 from datetime import datetime
 from src.utils.logger import get_logger
+from src.utils.queue_waiter import wait_for_results as wait_helper
 
 
 logger = get_logger("queue_manager")
@@ -19,7 +20,7 @@ class AgentResult:
     """Data structure for agent results."""
     route_id: str
     point_id: int
-    agent_type: str  # 'video', 'song', 'story', 'judge'
+    agent_type: str
     content: Dict[str, Any]
     timestamp: datetime = field(default_factory=datetime.now)
     error: Optional[str] = None
@@ -30,10 +31,7 @@ class AgentResult:
 
 
 class QueueManager:
-    """
-    Manages queues for agent communication and result collection.
-    Thread-safe implementation for multi-threaded agent execution.
-    """
+    """Manages queues for agent communication and result collection."""
 
     def __init__(self):
         """Initialize queue manager with result queues."""
@@ -43,12 +41,7 @@ class QueueManager:
         logger.info("QueueManager initialized")
 
     def put_result(self, result: AgentResult) -> None:
-        """
-        Add an agent result to the queue.
-
-        Args:
-            result: AgentResult object containing agent output
-        """
+        """Add an agent result to the queue."""
         self.results_queue.put(result)
 
         with self._lock:
@@ -64,15 +57,7 @@ class QueueManager:
         logger.debug(f"Added result: {result}")
 
     def get_result(self, timeout: Optional[float] = None) -> Optional[AgentResult]:
-        """
-        Retrieve a result from the queue.
-
-        Args:
-            timeout: Optional timeout in seconds
-
-        Returns:
-            AgentResult or None if timeout
-        """
+        """Retrieve a result from the queue."""
         try:
             return self.results_queue.get(timeout=timeout)
         except queue.Empty:
@@ -83,16 +68,7 @@ class QueueManager:
         route_id: str,
         point_id: int
     ) -> Dict[str, AgentResult]:
-        """
-        Get all results for a specific point.
-
-        Args:
-            route_id: Route identifier
-            point_id: Point identifier
-
-        Returns:
-            Dictionary mapping agent_type to AgentResult
-        """
+        """Get all results for a specific point."""
         with self._lock:
             return self._results_by_point.get(route_id, {}).get(point_id, {}).copy()
 
@@ -101,40 +77,18 @@ class QueueManager:
         route_id: str,
         point_id: int
     ) -> bool:
-        """
-        Check if all three content agents (video, song, story) have submitted results.
-
-        Args:
-            route_id: Route identifier
-            point_id: Point identifier
-
-        Returns:
-            True if all content agents have results
-        """
+        """Check if all three content agents have submitted results."""
         results = self.get_point_results(route_id, point_id)
         required_agents = {'video', 'song', 'story'}
         return required_agents.issubset(results.keys())
 
     def get_all_results_for_route(self, route_id: str) -> Dict[int, Dict[str, AgentResult]]:
-        """
-        Get all results for an entire route.
-
-        Args:
-            route_id: Route identifier
-
-        Returns:
-            Dictionary mapping point_id to agent results
-        """
+        """Get all results for an entire route."""
         with self._lock:
             return self._results_by_point.get(route_id, {}).copy()
 
     def clear_route_results(self, route_id: str) -> None:
-        """
-        Clear all results for a specific route.
-
-        Args:
-            route_id: Route identifier
-        """
+        """Clear all results for a specific route."""
         with self._lock:
             if route_id in self._results_by_point:
                 del self._results_by_point[route_id]
@@ -152,32 +106,5 @@ class QueueManager:
         timeout: float = 30.0,
         poll_interval: float = 0.1
     ) -> bool:
-        """
-        Wait for specific agent results with timeout.
-
-        Args:
-            route_id: Route identifier
-            point_id: Point identifier
-            agent_types: List of agent types to wait for
-            timeout: Maximum wait time in seconds
-            poll_interval: How often to check for results
-
-        Returns:
-            True if all results arrived, False on timeout
-        """
-        import time
-        elapsed = 0.0
-
-        while elapsed < timeout:
-            results = self.get_point_results(route_id, point_id)
-            if all(agent_type in results for agent_type in agent_types):
-                return True
-
-            time.sleep(poll_interval)
-            elapsed += poll_interval
-
-        logger.warning(
-            f"Timeout waiting for results: route={route_id}, point={point_id}, "
-            f"agents={agent_types}"
-        )
-        return False
+        """Wait for specific agent results with timeout."""
+        return wait_helper(self, route_id, point_id, agent_types, timeout, poll_interval)

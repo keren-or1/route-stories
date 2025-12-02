@@ -8,7 +8,8 @@ import json
 import time
 from unittest.mock import Mock, MagicMock, patch
 from flask import Flask
-from src.web.routes import main_bp, RouteSession, active_sessions, session_lock
+from src.web.routes import main_bp, session_manager
+from src.web.route_session import RouteSession
 from src.services.google_maps import Route, Waypoint
 
 
@@ -84,24 +85,24 @@ class TestIndexRoute:
 class TestProcessRouteAPI:
     """Tests for /api/process-route endpoint."""
 
-    @patch('src.web.routes.GoogleMapsService')
-    @patch('src.web.routes.GeminiClient')
-    @patch('src.web.routes.SearchTools')
-    @patch('src.web.routes.VideoAgent')
-    @patch('src.web.routes.SongAgent')
-    @patch('src.web.routes.StoryAgent')
-    @patch('src.web.routes.JudgeAgent')
+    @patch('src.web.routes.create_services')
     @patch('src.web.routes.threading.Thread')
     def test_process_route_success(
-        self, mock_thread, mock_judge, mock_story, mock_song,
-        mock_video, mock_search, mock_gemini, mock_maps,
+        self, mock_thread, mock_create_services,
         client, sample_route
     ):
         """Test successful route processing initiation."""
         # Setup mocks
-        mock_maps_instance = Mock()
-        mock_maps_instance.get_route.return_value = sample_route
-        mock_maps.return_value = mock_maps_instance
+        mock_google_maps = Mock()
+        mock_google_maps.get_route.return_value = sample_route
+        mock_orchestrator = Mock()
+        mock_queue_manager = Mock()
+
+        mock_create_services.return_value = {
+            'google_maps': mock_google_maps,
+            'orchestrator': mock_orchestrator,
+            'queue_manager': mock_queue_manager
+        }
 
         # Make request
         response = client.post('/api/process-route',
@@ -191,12 +192,17 @@ class TestProcessRouteAPI:
         assert 'error' in data
         assert 'Invalid' in data['error']
 
-    @patch('src.web.routes.GoogleMapsService')
-    def test_process_route_maps_failure(self, mock_maps, client):
+    @patch('src.web.routes.create_services')
+    def test_process_route_maps_failure(self, mock_create_services, client):
         """Test error when Google Maps fails."""
-        mock_maps_instance = Mock()
-        mock_maps_instance.get_route.side_effect = Exception("Maps API error")
-        mock_maps.return_value = mock_maps_instance
+        mock_google_maps = Mock()
+        mock_google_maps.get_route.side_effect = Exception("Maps API error")
+
+        mock_create_services.return_value = {
+            'google_maps': mock_google_maps,
+            'orchestrator': Mock(),
+            'queue_manager': Mock()
+        }
 
         response = client.post('/api/process-route',
             json={'start': 'New York, NY', 'end': 'Philadelphia, PA', 'max_points': 5}
@@ -206,33 +212,31 @@ class TestProcessRouteAPI:
         assert 'error' in data
         assert 'Failed to get route' in data['error']
 
-    def test_process_route_default_max_points(self, client):
+    @patch('src.web.routes.create_services')
+    def test_process_route_default_max_points(self, mock_create_services, client):
         """Test that max_points defaults to 5."""
-        with patch('src.web.routes.GoogleMapsService') as mock_maps:
-            mock_maps_instance = Mock()
-            mock_route = Mock()
-            mock_route.route_id = "test-123"
-            mock_route.origin = "New York"
-            mock_route.destination = "Philly"
-            mock_route.waypoints = [Mock(), Mock()]
-            mock_maps_instance.get_route.return_value = mock_route
-            mock_maps.return_value = mock_maps_instance
+        mock_google_maps = Mock()
+        mock_route = Mock()
+        mock_route.route_id = "test-123"
+        mock_route.origin = "New York"
+        mock_route.destination = "Philly"
+        mock_route.waypoints = [Mock(), Mock()]
+        mock_google_maps.get_route.return_value = mock_route
 
-            with patch('src.web.routes.GeminiClient'), \
-                 patch('src.web.routes.SearchTools'), \
-                 patch('src.web.routes.VideoAgent'), \
-                 patch('src.web.routes.SongAgent'), \
-                 patch('src.web.routes.StoryAgent'), \
-                 patch('src.web.routes.JudgeAgent'), \
-                 patch('src.web.routes.threading.Thread'):
+        mock_create_services.return_value = {
+            'google_maps': mock_google_maps,
+            'orchestrator': Mock(),
+            'queue_manager': Mock()
+        }
 
-                response = client.post('/api/process-route',
-                    json={'start': 'New York, NY', 'end': 'Philadelphia, PA'}
-                )
+        with patch('src.web.routes.threading.Thread'):
+            response = client.post('/api/process-route',
+                json={'start': 'New York, NY', 'end': 'Philadelphia, PA'}
+            )
 
-                # Check that max_waypoints was called with default value
-                call_args = mock_maps_instance.get_route.call_args
-                assert call_args.kwargs['max_waypoints'] == 5
+            # Check that max_waypoints was called with default value
+            call_args = mock_google_maps.get_route.call_args
+            assert call_args.kwargs['max_waypoints'] == 5
 
 
 class TestProgressAPI:
@@ -261,8 +265,7 @@ class TestProgressAPI:
         session.status = 'processing'
 
         # Add to active sessions
-        with session_lock:
-            active_sessions[sample_route.route_id] = session
+        session_manager.add_session(sample_route.route_id, session)
 
         try:
             # Get progress
@@ -279,8 +282,7 @@ class TestProgressAPI:
             assert 'errors' in data
         finally:
             # Cleanup
-            with session_lock:
-                active_sessions.pop(sample_route.route_id, None)
+            session_manager.remove_session(sample_route.route_id)
 
     def test_get_progress_with_waypoint_info(self, client, sample_route):
         """Test progress includes current waypoint info."""
@@ -294,8 +296,7 @@ class TestProgressAPI:
         )
         session.current_waypoint = 1
 
-        with session_lock:
-            active_sessions[sample_route.route_id] = session
+        session_manager.add_session(sample_route.route_id, session)
 
         try:
             response = client.get(f'/api/progress/{sample_route.route_id}')
@@ -306,8 +307,7 @@ class TestProgressAPI:
             assert 'point_id' in data['current_waypoint_info']
             assert 'address' in data['current_waypoint_info']
         finally:
-            with session_lock:
-                active_sessions.pop(sample_route.route_id, None)
+            session_manager.remove_session(sample_route.route_id)
 
 
 class TestResultsAPI:
@@ -332,8 +332,7 @@ class TestResultsAPI:
         )
         session.status = 'processing'
 
-        with session_lock:
-            active_sessions[sample_route.route_id] = session
+        session_manager.add_session(sample_route.route_id, session)
 
         try:
             response = client.get(f'/api/results/{sample_route.route_id}')
@@ -342,8 +341,7 @@ class TestResultsAPI:
             assert 'error' in data
             assert 'not completed' in data['error'].lower()
         finally:
-            with session_lock:
-                active_sessions.pop(sample_route.route_id, None)
+            session_manager.remove_session(sample_route.route_id)
 
     def test_get_results_success(self, client, sample_route):
         """Test successful results retrieval."""
@@ -362,8 +360,7 @@ class TestResultsAPI:
         )
         session.status = 'completed'
 
-        with session_lock:
-            active_sessions[sample_route.route_id] = session
+        session_manager.add_session(sample_route.route_id, session)
 
         try:
             response = client.get(f'/api/results/{sample_route.route_id}')
@@ -372,8 +369,7 @@ class TestResultsAPI:
             assert 'route_id' in data
             mock_collector.get_route_summary.assert_called_once()
         finally:
-            with session_lock:
-                active_sessions.pop(sample_route.route_id, None)
+            session_manager.remove_session(sample_route.route_id)
 
 
 class TestShowResultsPage:
@@ -398,8 +394,7 @@ class TestShowResultsPage:
             collector=mock_collector
         )
 
-        with session_lock:
-            active_sessions[sample_route.route_id] = session
+        session_manager.add_session(sample_route.route_id, session)
 
         try:
             with patch('src.web.routes.render_template') as mock_render:
@@ -408,8 +403,7 @@ class TestShowResultsPage:
                 assert response.status_code == 200
                 mock_render.assert_called_once_with('results.html', route_id=sample_route.route_id)
         finally:
-            with session_lock:
-                active_sessions.pop(sample_route.route_id, None)
+            session_manager.remove_session(sample_route.route_id)
 
 
 class TestShowProcessingPage:
@@ -434,8 +428,7 @@ class TestShowProcessingPage:
             collector=mock_collector
         )
 
-        with session_lock:
-            active_sessions[sample_route.route_id] = session
+        session_manager.add_session(sample_route.route_id, session)
 
         try:
             with patch('src.web.routes.render_template') as mock_render:
@@ -444,8 +437,7 @@ class TestShowProcessingPage:
                 assert response.status_code == 200
                 mock_render.assert_called_once_with('processing.html', route_id=sample_route.route_id)
         finally:
-            with session_lock:
-                active_sessions.pop(sample_route.route_id, None)
+            session_manager.remove_session(sample_route.route_id)
 
 
 class TestRouteSession:
@@ -478,10 +470,10 @@ class TestRouteSession:
 class TestBackgroundProcessing:
     """Tests for background route processing."""
 
-    @patch('src.web.routes.Path')
+    @patch('src.web.route_processor.Path')
     def test_process_route_background_success(self, mock_path, sample_route):
         """Test successful background processing."""
-        from src.web.routes import _process_route_background
+        from src.web.route_processor import process_route_background
 
         # Setup mocks
         mock_orchestrator = Mock()
@@ -505,7 +497,7 @@ class TestBackgroundProcessing:
         )
 
         # Run background processing
-        _process_route_background(session)
+        process_route_background(session)
 
         # Verify processing occurred
         assert session.status == 'completed'
@@ -515,7 +507,7 @@ class TestBackgroundProcessing:
 
     def test_process_route_background_error(self, app, sample_route):
         """Test error handling in background processing."""
-        from src.web.routes import _process_route_background
+        from src.web.route_processor import process_route_background
 
         # Setup mocks to raise error
         mock_orchestrator = Mock()
@@ -531,8 +523,8 @@ class TestBackgroundProcessing:
 
         # Run background processing within app context
         with app.app_context(), \
-             patch('src.web.routes.Path'):
-            _process_route_background(session)
+             patch('src.web.route_processor.Path'):
+            process_route_background(session)
 
         # Verify error was handled
         assert session.status == 'error'

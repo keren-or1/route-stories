@@ -92,7 +92,7 @@ route-stories/
 │   │   └── queue_manager.py      # Thread-safe result queue
 │   └── config.py                 # Configuration management
 │
-├── tests/                        # Unit and integration tests (316 tests, 79% coverage)
+├── tests/                        # Unit and integration tests (316 tests, 77% coverage)
 │   ├── conftest.py               # Pytest fixtures and configuration
 │   ├── agents/                   # Agent unit tests (29 tests)
 │   │   ├── test_judge_agent.py   # 5 tests
@@ -222,11 +222,11 @@ pytest --cov=src --cov-report=html
 pytest tests/agents/test_video_agent.py
 ```
 
-**Test Coverage**: Achieved **79% coverage** with **316 comprehensive tests** across all components:
+**Test Coverage**: Achieved **77% coverage** with **316 comprehensive tests** across all components:
 - **Unit tests**: 280+ tests for agents, services, core modules, and utilities
 - **Integration tests**: 30+ tests for end-to-end workflows
 - **All tests passing**: 0 failures, 100% success rate
-- Coverage exceeds the 70% requirement by 9 percentage points
+- Coverage exceeds the 70% requirement by 7 percentage points
 
 Test distribution:
 - Agents: 29 tests (judge, video, song, story)
