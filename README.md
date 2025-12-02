@@ -66,53 +66,106 @@ For detailed setup and usage instructions, see [docs/README.md](docs/README.md)
 ```
 route-stories/
 ├── src/                          # Production source code
+│   ├── main.py                   # CLI entry point
+│   ├── main_init.py              # Initialization module
+│   ├── main_runner.py            # Runner module
+│   ├── web_main.py               # Web app entry point
+│   ├── config.py                 # Configuration management
+│   │
 │   ├── agents/                   # Multi-agent system
 │   │   ├── base_agent.py         # Abstract base class
-│   │   ├── video_agent.py        # YouTube video search
-│   │   ├── song_agent.py         # Music search
-│   │   ├── story_agent.py        # Historical content search
-│   │   └── judge_agent.py        # Content selection judge
+│   │   ├── agent_prompts.py      # Agent prompt templates
+│   │   ├── response_parser.py    # Response parsing utilities
+│   │   ├── video_agent.py        # YouTube video search agent
+│   │   ├── video_filter.py       # Video filtering logic
+│   │   ├── song_agent.py         # Music search agent
+│   │   ├── song_filter.py        # Music filtering logic
+│   │   ├── story_agent.py        # Historical content search agent
+│   │   ├── story_filter.py       # Story filtering logic
+│   │   ├── judge_agent.py        # Content selection judge
+│   │   └── judge_formatter.py    # Judge output formatting
+│   │
 │   ├── services/                 # External API integrations
-│   │   ├── gemini_client.py      # Google Gemini AI
-│   │   ├── search_tools.py       # YouTube, Wikipedia, Music APIs
-│   │   ├── google_maps.py        # Google Maps integration
-│   │   └── claude_client.py      # Claude API (alternative)
+│   │   ├── gemini_client.py      # Google Gemini AI client
+│   │   ├── gemini_parser.py      # Gemini response parsing
+│   │   ├── gemini_prompts.py     # Gemini prompt templates
+│   │   ├── gemini_retry.py       # Retry logic for Gemini
+│   │   ├── claude_client.py      # Claude API client (alternative)
+│   │   ├── claude_parser.py      # Claude response parsing
+│   │   ├── claude_prompts.py     # Claude prompt templates
+│   │   ├── google_maps.py        # Google Maps API integration
+│   │   ├── route_models.py       # Route data models
+│   │   ├── waypoint_extractor.py # Waypoint extraction logic
+│   │   ├── address_parser.py     # Address parsing utilities
+│   │   ├── search_tools.py       # Unified search interface
+│   │   ├── search_cache.py       # Search result caching
+│   │   ├── youtube_search.py     # YouTube API integration
+│   │   ├── spotify_search.py     # Spotify API integration
+│   │   ├── music_search.py       # Music search utilities
+│   │   ├── music_search_utils.py # Music search helpers
+│   │   ├── wikipedia_search.py   # Wikipedia API integration
+│   │   ├── wikipedia_parser.py   # Wikipedia content parsing
+│   │   └── wikipedia_search_utils.py  # Wikipedia utilities
+│   │
 │   ├── core/                     # System orchestration
 │   │   ├── orchestrator.py       # Parallel agent execution
+│   │   ├── executor_config.py    # Thread pool configuration
 │   │   ├── collector.py          # Result aggregation
+│   │   ├── collector_models.py   # Collector data models
+│   │   ├── collector_printer.py  # Output formatting
+│   │   ├── collector_stats.py    # Statistics tracking
 │   │   └── scheduler.py          # Waypoint progression
+│   │
 │   ├── ui/                       # User interface
-│   │   └── cli.py                # Command-line interface
+│   │   ├── cli.py                # Command-line interface
+│   │   ├── input.py              # User input handling
+│   │   ├── display.py            # Display/output formatting
+│   │   ├── display_utils.py      # Display helpers
+│   │   ├── content_display.py    # Media content display
+│   │   └── session.py            # Session management
+│   │
 │   ├── web/                      # Web application
 │   │   ├── app.py                # Flask application
 │   │   ├── routes.py             # API endpoints
-│   │   └── templates/            # HTML templates
-│   ├── utils/                    # Utilities
-│   │   ├── logger.py             # Structured logging
-│   │   └── queue_manager.py      # Thread-safe result queue
-│   └── config.py                 # Configuration management
+│   │   ├── request_validator.py  # Request validation
+│   │   ├── service_factory.py    # Service factory
+│   │   ├── route_processor.py    # Route processing
+│   │   ├── route_handlers.py     # Route handlers
+│   │   ├── route_session.py      # Session management
+│   │   ├── templates/            # HTML templates
+│   │   └── static/               # CSS and JavaScript
+│   │
+│   └── utils/                    # Utilities
+│       ├── logger.py             # Structured logging
+│       ├── queue_manager.py      # Thread-safe result queue
+│       └── queue_waiter.py       # Queue waiting logic
 │
-├── tests/                        # Unit and integration tests (316 tests, 77% coverage)
+├── tests/                        # Unit and integration tests (327 tests, 77% coverage)
 │   ├── conftest.py               # Pytest fixtures and configuration
-│   ├── agents/                   # Agent unit tests (29 tests)
-│   │   ├── test_judge_agent.py   # 5 tests
-│   │   ├── test_video_agent.py   # 10 tests
-│   │   ├── test_song_agent.py    # 4 tests
-│   │   └── test_story_agent.py   # 4 tests
-│   ├── core/                     # Core system tests (40 tests)
-│   │   ├── test_orchestrator.py  # 5 tests
-│   │   ├── test_collector.py     # 18 tests
-│   │   └── test_scheduler.py     # 23 tests
-│   ├── services/                 # Service layer tests (120+ tests)
+│   ├── test_config.py            # Configuration tests
+│   ├── agents/                   # Agent unit tests
+│   │   ├── test_judge_agent.py
+│   │   ├── test_video_agent.py
+│   │   ├── test_song_agent.py
+│   │   └── test_story_agent.py
+│   ├── core/                     # Core system tests
+│   │   ├── test_orchestrator.py
+│   │   ├── test_collector.py
+│   │   └── test_scheduler.py
+│   ├── services/                 # Service layer tests
 │   │   ├── test_gemini_client.py
 │   │   ├── test_google_maps.py
-│   │   └── test_search_tools*.py
-│   ├── utils/                    # Utility tests (60+ tests)
+│   │   ├── test_search_tools.py
+│   │   ├── test_search_tools_additional.py
+│   │   └── test_search_tools_extended.py
+│   ├── utils/                    # Utility tests
 │   │   ├── test_logger.py
 │   │   └── test_queue_manager.py
-│   ├── web/                      # Web interface tests (25 tests)
+│   ├── ui/                       # UI tests
+│   │   └── test_cli.py
+│   ├── web/                      # Web interface tests
 │   │   └── test_routes.py
-│   └── integration/              # Integration tests (6 tests)
+│   └── integration/              # Integration tests
 │       └── test_end_to_end.py
 │
 ├── scripts/                      # Development and deployment scripts
