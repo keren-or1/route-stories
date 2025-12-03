@@ -15,7 +15,7 @@ from src.ui.display import (
     display_final_summary_header,
     display_export_info
 )
-from src.ui.session import process_waypoint, get_waypoints_to_process
+from src.ui.session import process_waypoint
 from src.ui.input import get_route_input, prompt_next
 
 
@@ -88,7 +88,10 @@ class CLI:
         max_waypoints: Optional[int] = None
     ):
         """
-        Run an interactive CLI session for the route.
+        Run an interactive CLI session for the route using the Scheduler.
+
+        According to the assignment specification, the Scheduler manages
+        progression through waypoints one at a time with manual "Next" prompts.
 
         Args:
             route: Route to process
@@ -97,30 +100,52 @@ class CLI:
         # Display route info
         self.display_route_info(route)
 
-        # Create scheduler
+        # Create scheduler to manage waypoint progression
         scheduler = Scheduler(route)
 
-        # Get waypoints to process
-        waypoints_to_process = get_waypoints_to_process(route, max_waypoints)
+        # Apply max_waypoints limit if specified
+        # We'll check this in the loop to stop at the limit
+        processed_count = 0
 
-        # Process each waypoint
-        for index, waypoint in enumerate(waypoints_to_process):
+        # Process waypoints using scheduler
+        while scheduler.has_next():
+            # Get next waypoint from scheduler
+            waypoint = scheduler.get_next()
+
+            if waypoint is None:
+                break
+
             # Display waypoint info
-            self.display_waypoint_info(waypoint, index, len(waypoints_to_process))
+            progress = scheduler.get_progress()
+            self.display_waypoint_info(
+                waypoint,
+                progress['completed'],
+                progress['total_waypoints']
+            )
 
             # Display processing message
             self.display_processing(waypoint)
 
-            # Process waypoint
+            # Process waypoint through orchestrator
             process_waypoint(waypoint, route.route_id, self.orchestrator, self.collector)
 
             # Display results
             self.display_waypoint_result(waypoint)
 
+            # Advance scheduler to next waypoint
+            scheduler.advance()
+            processed_count += 1
+
+            # Check if reached max waypoints limit
+            if max_waypoints and processed_count >= max_waypoints:
+                logger.info(f"Reached max waypoints limit: {max_waypoints}")
+                break
+
             # Check if there are more waypoints
-            if index < len(waypoints_to_process) - 1:
-                # Prompt to continue
+            if scheduler.has_next():
+                # Prompt user to continue (manual progression as per assignment)
                 if not self.prompt_next():
+                    logger.info("Session ended by user")
                     print("\nSession ended by user.")
                     break
 

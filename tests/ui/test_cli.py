@@ -549,14 +549,34 @@ class TestRunInteractiveSession:
             mock_summary.assert_called_once()
 
     @patch('builtins.input')
-    def test_run_interactive_session_scheduler_not_used(self, mock_input, cli, sample_route):
-        """Test that scheduler is created but not actively used in current implementation."""
-        mock_input.return_value = ''
+    def test_run_interactive_session_scheduler_used(self, mock_input, cli, sample_route):
+        """Test that scheduler is properly used to manage waypoint progression."""
+        # User presses 'q' to exit after first waypoint
+        mock_input.return_value = 'q'
 
         with patch('src.ui.cli.Scheduler') as mock_scheduler_class, \
              patch('sys.stdout', StringIO()):
+
+            # Setup mock scheduler
+            mock_scheduler = MagicMock()
+            mock_scheduler_class.return_value = mock_scheduler
+            # has_next returns True once (for first waypoint), then False
+            mock_scheduler.has_next.side_effect = [True, True, False]
+            mock_scheduler.get_next.return_value = sample_route.waypoints[0]
+            mock_scheduler.get_progress.return_value = {
+                'current_index': 0,
+                'total_waypoints': 2,
+                'completed': 0,
+                'remaining': 2,
+                'progress_percent': 0
+            }
 
             cli.run_interactive_session(sample_route)
 
             # Scheduler is instantiated
             mock_scheduler_class.assert_called_once_with(sample_route)
+            # Scheduler methods are called as per assignment specification
+            assert mock_scheduler.has_next.call_count >= 1
+            assert mock_scheduler.get_next.call_count >= 1
+            assert mock_scheduler.advance.call_count >= 1
+            assert mock_scheduler.get_progress.call_count >= 1

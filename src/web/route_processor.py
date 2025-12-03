@@ -1,15 +1,20 @@
 """
 Background route processing logic.
 Handles asynchronous route processing in separate threads.
+Uses Scheduler to manage waypoint progression according to assignment specifications.
 """
 
 from pathlib import Path
 from flask import current_app
+from src.core import Scheduler
 
 
 def process_route_background(session):
     """
-    Process route in background thread.
+    Process route in background thread using Scheduler for waypoint management.
+
+    According to assignment specification section 2.3, the Scheduler is responsible
+    for progressing through waypoints one at a time and delivering them to the orchestrator.
 
     Args:
         session: RouteSession instance
@@ -19,9 +24,20 @@ def process_route_background(session):
         orchestrator = session.orchestrator
         collector = session.collector
 
-        # Process each waypoint
-        for idx, waypoint in enumerate(route.waypoints):
-            session.current_waypoint = idx + 1
+        # Create scheduler to manage waypoint progression (per assignment spec)
+        scheduler = Scheduler(route)
+
+        # Process waypoints using scheduler
+        while scheduler.has_next():
+            # Get next waypoint from scheduler
+            waypoint = scheduler.get_next()
+
+            if waypoint is None:
+                break
+
+            # Update session progress using scheduler state
+            progress = scheduler.get_progress()
+            session.current_waypoint = progress['completed'] + 1
 
             # Process waypoint through orchestrator
             results = orchestrator.process_waypoint(
@@ -38,6 +54,9 @@ def process_route_background(session):
                 location=waypoint.location,
                 results=results
             )
+
+            # Advance to next waypoint (per scheduler protocol)
+            scheduler.advance()
 
         # Mark as completed
         session.status = 'completed'
