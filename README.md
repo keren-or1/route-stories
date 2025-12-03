@@ -369,6 +369,32 @@ Route Stories is built with Python and designed to be cross-platform compatible:
 - **Recommended**: Python 3.11 or 3.12
 - All dependencies compatible with Python 3.11+
 
+## Accessibility
+
+Route Stories is designed with accessibility in mind to ensure all users can effectively interact with the application:
+
+### Web Interface Accessibility
+- **Keyboard Navigation**: Full keyboard support for all interactive elements using Tab, Enter, and Arrow keys
+- **Screen Reader Support**: Semantic HTML with ARIA labels and roles for assistive technologies
+- **Color Contrast**: WCAG AA compliant color contrast ratios (minimum 4.5:1 for text)
+- **Focus Indicators**: Visible focus outlines on all interactive elements for keyboard users
+- **Form Labels**: All input fields properly labeled and associated for screen readers
+- **Status Messages**: Real-time processing updates announced to screen readers via ARIA live regions
+
+### Command-Line Interface Accessibility
+- **Screen Reader Compatible**: Plain text output works with terminal screen readers
+- **Consistent Structure**: Predictable command patterns and output formatting
+- **Error Messages**: Clear, descriptive error messages with suggested actions
+- **Progress Indicators**: Text-based progress updates that work with all terminal configurations
+
+### Additional Accessibility Features
+- **Responsive Design**: Web interface adapts to different screen sizes and zoom levels
+- **Alternative Text**: Descriptive alt text for all UI icons and visual indicators
+- **Skip Navigation**: Quick access to main content areas
+- **Clear Typography**: Readable fonts with adequate spacing and sizing
+
+For accessibility concerns or suggestions, please open an issue on the project repository.
+
 ## License
 
 Academic project for Reichman University - LLM Agents Course
