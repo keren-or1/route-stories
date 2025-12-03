@@ -140,7 +140,7 @@ route-stories/
 │       ├── queue_manager.py      # Thread-safe result queue
 │       └── queue_waiter.py       # Queue waiting logic
 │
-├── tests/                        # Unit and integration tests (327 tests, 77% coverage)
+├── tests/                        # Unit and integration tests (316 tests, 79% coverage)
 │   ├── conftest.py               # Pytest fixtures and configuration
 │   ├── test_config.py            # Configuration tests
 │   ├── agents/                   # Agent unit tests
@@ -210,8 +210,8 @@ route-stories/
 
 The project follows Python packaging standards with a clear separation of concerns:
 
-- **`src/`**: Production source code organized by functionality (agents, services, core orchestration)
-- **`tests/`**: Comprehensive pytest test suite with 316 tests organized by component
+- **`src/`**: Production source code (65 Python modules) organized by functionality (agents, services, core orchestration)
+- **`tests/`**: Comprehensive pytest test suite with 316 tests (79% coverage) organized by component
 - **`docs/`**: Comprehensive documentation covering architecture, setup, and usage
 - **`scripts/`**: Development scripts including manual integration tests
 - **`analysis/`**: Research materials and analytical notebooks
@@ -275,11 +275,11 @@ pytest --cov=src --cov-report=html
 pytest tests/agents/test_video_agent.py
 ```
 
-**Test Coverage**: Achieved **77% coverage** with **316 comprehensive tests** across all components:
+**Test Coverage**: Achieved **79% coverage** with **316 comprehensive tests** across all components:
 - **Unit tests**: 280+ tests for agents, services, core modules, and utilities
 - **Integration tests**: 30+ tests for end-to-end workflows
 - **All tests passing**: 0 failures, 100% success rate
-- Coverage exceeds the 70% requirement by 7 percentage points
+- Coverage exceeds the 70% requirement by 9 percentage points
 
 Test distribution:
 - Agents: 29 tests (judge, video, song, story)
